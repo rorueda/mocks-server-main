@@ -40,7 +40,6 @@
     "@mocks-server/core": "workspace:*",
     "cross-fetch": "4.0.0"
   },
-  "type": "module",
   "engines": {
     "node": ">=14.0.0"
   }
