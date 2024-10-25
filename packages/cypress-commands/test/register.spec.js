@@ -33,7 +33,7 @@ describe("register", () => {
 
     it("should register mocksRestoreRouteVariants command", () => {
       expect(cypressMock.stubs.Cypress.Commands.add.calledWith("mocksRestoreRouteVariants")).toBe(
-        true
+        true,
       );
     });
   });

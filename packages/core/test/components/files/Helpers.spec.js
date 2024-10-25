@@ -101,7 +101,7 @@ describe("Files helpers", () => {
       expect(
         getFilesGlobule("**/*", true, {
           extensions: [".foo", ".foo2"],
-        })
+        }),
       ).toEqual([
         "**/*.json",
         "**/*.js",

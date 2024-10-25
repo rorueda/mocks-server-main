@@ -497,7 +497,7 @@ describe("Server", () => {
       await server.start();
 
       expect(
-        logger.info.calledWith("Server started and listening at http://localhost:500")
+        logger.info.calledWith("Server started and listening at http://localhost:500"),
       ).toEqual(true);
     });
 
@@ -508,7 +508,7 @@ describe("Server", () => {
       await server.start();
 
       expect(
-        logger.info.calledWith("Server started and listening at http://foo-host:600")
+        logger.info.calledWith("Server started and listening at http://foo-host:600"),
       ).toEqual(true);
     });
 

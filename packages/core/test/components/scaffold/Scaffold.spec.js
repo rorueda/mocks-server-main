@@ -138,7 +138,7 @@ describe("Scaffold", () => {
       await scaffold.init({ folderPath: "foo" });
 
       expect(libsMocks.stubs.fsExtra.writeFile.getCall(0).args[0]).toEqual(
-        path.resolve(process.cwd(), "mocks.config.js")
+        path.resolve(process.cwd(), "mocks.config.js"),
       );
     });
 

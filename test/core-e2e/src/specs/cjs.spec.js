@@ -60,8 +60,8 @@ describe("when files have cjs extension", () => {
       expect(users.headers.get("x-mocks-server-example")).toEqual("custom-header");
       expect(mocks.logs.current).toEqual(
         expect.stringContaining(
-          "Custom header added by add-headers:enabled route variant middleware"
-        )
+          "Custom header added by add-headers:enabled route variant middleware",
+        ),
       );
     });
 

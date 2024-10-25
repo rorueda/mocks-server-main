@@ -1,5 +1,5 @@
 {
-  "root": "packages/plugin-admin-api/",
+  "root": "packages/plugin-admin-api",
   "projectType": "library",
   "tags": ["type:lib"]
 }

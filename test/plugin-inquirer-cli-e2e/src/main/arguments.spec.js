@@ -67,7 +67,7 @@ describe("command line arguments", () => {
 
         expect(mocks.currentScreen).toEqual(expect.stringContaining("ALERTS"));
         expect(mocks.currentScreen).toEqual(
-          expect.stringContaining("Collection 'foo' was not found")
+          expect.stringContaining("Collection 'foo' was not found"),
         );
       });
 
@@ -80,7 +80,7 @@ describe("command line arguments", () => {
 
         expect(users.body).toEqual({ id: 1, name: "John Doe" });
         expect(mocks.currentScreen).toEqual(
-          expect.stringContaining("Selecting the first one found")
+          expect.stringContaining("Selecting the first one found"),
         );
         expect(mocks.currentScreen).toEqual(expect.stringContaining("Current collection: base"));
       });

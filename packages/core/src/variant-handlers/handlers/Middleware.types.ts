@@ -44,7 +44,7 @@ export interface VariantHandlerMiddlewareConstructor extends VariantHandlerConst
    */
   new (
     options: VariantHandlerMiddlewareOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerMiddlewareInterface;
 }
 

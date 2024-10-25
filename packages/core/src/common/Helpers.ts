@@ -23,7 +23,7 @@ export function deprecatedMessage(type: string, oldName: string, newName: string
 
 export function resolveWhenConditionPass(
   condition: () => boolean,
-  { interval = 200, timeout = 2000 }: ResolveWhenConditionPassOptions = {}
+  { interval = 200, timeout = 2000 }: ResolveWhenConditionPassOptions = {},
 ): Promise<void> {
   return new Promise((resolve, reject) => {
     const checkConditionInterval = setInterval(() => {

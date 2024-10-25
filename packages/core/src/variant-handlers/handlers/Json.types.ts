@@ -52,7 +52,7 @@ export interface VariantHandlerJsonConstructor extends VariantHandlerConstructor
    */
   new (
     options: VariantHandlerJsonOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerJsonInterface;
 }
 

@@ -2,7 +2,7 @@ import type { RouteInterface } from "../routes/types";
 
 function findBrotherRoute(
   routes: RouteInterface[],
-  route: RouteInterface
+  route: RouteInterface,
 ): RouteInterface | undefined {
   return routes.find((candidateRoute) => {
     return candidateRoute.routeId === route.routeId;
@@ -11,7 +11,7 @@ function findBrotherRoute(
 
 export function addRoutesToCollectionRoutes(
   collectionRoutes: RouteInterface[],
-  routesToAdd: RouteInterface[]
+  routesToAdd: RouteInterface[],
 ): RouteInterface[] {
   const allRoutes: RouteInterface[] = [];
 

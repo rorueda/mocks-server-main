@@ -130,7 +130,7 @@ describe("web tutorial", () => {
       const newScreen = await mocks.pressEnter();
 
       expect(newScreen).toEqual(
-        expect.stringContaining("Current collection: user-real (custom variants: get-user:2)")
+        expect.stringContaining("Current collection: user-real (custom variants: get-user:2)"),
       );
     });
 

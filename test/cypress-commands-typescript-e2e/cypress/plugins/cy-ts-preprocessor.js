@@ -7,7 +7,7 @@ const webpackOptions = {
     alias: {
       "@mocks-server/cypress-commands": path.resolve(
         __dirname,
-        "../../../../packages/cypress-commands/dist/index.js"
+        "../../../../packages/cypress-commands/dist/index.js",
       ),
     },
   },

@@ -38,9 +38,9 @@ describe("options nested", () => {
       parentNamespace = config.addNamespace("foo");
       namespace = parentNamespace.addNamespace("foo");
 
-      expect(() =>
-        namespace.addOption({ name: "fooOption", type: "string", default: 5 })
-      ).toThrowError("default");
+      expect(() => namespace.addOption({ name: "fooOption", type: "string", default: 5 })).toThrow(
+        "default",
+      );
     });
 
     it("should throw when setting value if type is string and value does not match type", async () => {
@@ -49,7 +49,7 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "string" });
 
-      expect(() => (option.value = 5)).toThrowError("5 is not of type string");
+      expect(() => (option.value = 5)).toThrow("5 is not of type string");
     });
 
     it("should throw when type is number and default does not match type", async () => {
@@ -58,8 +58,8 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "number", default: "5" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "number", default: "5" }),
+      ).toThrow("default");
     });
 
     it("should throw when setting value if type is number and value does not match type", async () => {
@@ -68,7 +68,7 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "number" });
 
-      expect(() => (option.value = "foo")).toThrowError("foo is not of type number");
+      expect(() => (option.value = "foo")).toThrow("foo is not of type number");
     });
 
     it("should throw when type is object and default does not match type", async () => {
@@ -77,8 +77,8 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "object", default: "{}" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "object", default: "{}" }),
+      ).toThrow("default");
     });
 
     it("should throw when setting value if type is object and value does not match type", async () => {
@@ -87,7 +87,7 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "object" });
 
-      expect(() => (option.value = "foo")).toThrowError("foo is not of type object");
+      expect(() => (option.value = "foo")).toThrow("foo is not of type object");
     });
 
     it("should throw when type is boolean and default does not match type", async () => {
@@ -96,8 +96,8 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "boolean", default: "foo" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "boolean", default: "foo" }),
+      ).toThrow("default");
     });
 
     it("should throw when setting value if type is boolean and value does not match type", async () => {
@@ -106,7 +106,7 @@ describe("options nested", () => {
       namespace = parentNamespace.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "boolean" });
 
-      expect(() => (option.value = 1)).toThrowError("1 is not of type boolean");
+      expect(() => (option.value = 1)).toThrow("1 is not of type boolean");
     });
   });
 

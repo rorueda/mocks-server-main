@@ -85,7 +85,7 @@ export const VariantHandlerFile: VariantHandlerFileConstructor = class VariantHa
     res.sendFile(this._options.path, this._expressOptions, (err?: Error): void => {
       if (err) {
         this._logger.error(
-          `Error sending file '${this._absPath}' | req: ${req.id} | Error: ${err.message}`
+          `Error sending file '${this._absPath}' | req: ${req.id} | Error: ${err.message}`,
         );
         next(err);
       }

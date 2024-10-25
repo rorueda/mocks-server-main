@@ -46,7 +46,7 @@ interface RoutesAndCollections {
 
 function getRoutesCollection(
   routes: RouteDefinition[],
-  collectionOptions?: OpenApiDefinition.Collection
+  collectionOptions?: OpenApiDefinition.Collection,
 ): CollectionDefinition | null {
   if (!collectionOptions) {
     return null;
@@ -62,7 +62,7 @@ function getRoutesCollection(
       id: collectionOptions.id,
       from: collectionOptions.from || null,
       routes: [],
-    } as CollectionDefinition
+    } as CollectionDefinition,
   );
 }
 
@@ -85,7 +85,7 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
 
     const configCollection = this._config.addNamespace(COLLECTION_NAMESPACE);
     [this._collectionIdOption, this._collectionFromOption] = configCollection.addOptions(
-      COLLECTION_OPTIONS
+      COLLECTION_OPTIONS,
     ) as [OptionInterfaceOfType<string, { hasDefault: true }>, OptionInterfaceOfType<string>];
 
     this._documentsAlerts = this._alerts.collection("documents");
@@ -119,7 +119,7 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
   }
 
   private async _getRoutesAndCollectionsFromFilesContents(
-    filesContents: FilesLoaded
+    filesContents: FilesLoaded,
   ): Promise<RoutesAndCollections> {
     const openApiRoutesAndCollections = await Promise.all(
       filesContents
@@ -127,7 +127,7 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
           const fileContent = fileDetails.content as OpenApiDefinition.Definition[];
           return fileContent.map((openAPIDefinition: OpenApiDefinition.Definition) => {
             this._logger.debug(
-              `Creating routes from openApi definition: '${JSON.stringify(openAPIDefinition)}'`
+              `Creating routes from openApi definition: '${JSON.stringify(openAPIDefinition)}'`,
             );
             return openApiRoutes(openAPIDefinition, {
               defaultLocation: fileDetails.path,
@@ -141,22 +141,22 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
             });
           });
         })
-        .flat()
+        .flat(),
     );
 
     return openApiRoutesAndCollections.reduce(
       (allRoutesAndCollections, definitionRoutesAndCollections) => {
         allRoutesAndCollections.routes = allRoutesAndCollections.routes.concat(
-          definitionRoutesAndCollections.routes
+          definitionRoutesAndCollections.routes,
         );
         if (definitionRoutesAndCollections.collection) {
           allRoutesAndCollections.collections = allRoutesAndCollections.collections.concat(
-            definitionRoutesAndCollections.collection
+            definitionRoutesAndCollections.collection,
           );
         }
         return allRoutesAndCollections;
       },
-      { routes: [], collections: [] } as RoutesAndCollections
+      { routes: [], collections: [] } as RoutesAndCollections,
     );
   }
 
@@ -164,9 +164,8 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
     if (filesContents.length) {
       let collectionsToLoad;
       this._documentsAlerts.clean();
-      const { routes, collections } = await this._getRoutesAndCollectionsFromFilesContents(
-        filesContents
-      );
+      const { routes, collections } =
+        await this._getRoutesAndCollectionsFromFilesContents(filesContents);
       const folderTrace = `from OpenAPI definitions found in folder '${this._files.path}/${DEFAULT_FOLDER}'`;
 
       this._logger.debug(`Routes to load from openApi definitions: '${JSON.stringify(routes)}'`);
@@ -175,13 +174,13 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
       this._loadRoutes(routes);
 
       this._logger.debug(
-        `Collections created from OpenAPI definitions: '${JSON.stringify(collections)}'`
+        `Collections created from OpenAPI definitions: '${JSON.stringify(collections)}'`,
       );
 
       if (this._defaultCollectionOptions) {
         const defaultCollection = getRoutesCollection(routes, this._defaultCollectionOptions);
         this._logger.debug(
-          `Collection created from all OpenAPI definitions: '${JSON.stringify(defaultCollection)}'`
+          `Collection created from all OpenAPI definitions: '${JSON.stringify(defaultCollection)}'`,
         );
         collectionsToLoad = collections.concat([defaultCollection as CollectionDefinition]);
       } else {

@@ -32,7 +32,7 @@ async function filterProjectsByType(projects, type) {
           isOfType,
         };
       });
-    })
+    }),
   );
   return projectsWithTypes
     .filter(({ isOfType }) => {

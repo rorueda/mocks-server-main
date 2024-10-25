@@ -18,7 +18,7 @@ import type { CollectionAndModelRouterOptions } from "./Routers.types";
 
 export function readCollectionAndModelRouter<
   Item extends ApiEntityItem,
-  ParsedItem extends ApiEntityItem
+  ParsedItem extends ApiEntityItem,
 >({
   collectionName,
   modelName,

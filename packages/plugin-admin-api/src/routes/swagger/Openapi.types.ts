@@ -14,7 +14,7 @@ export type OpenApiDocument = OpenAPIV3.Document & {
   servers: [
     {
       url: string;
-    }
+    },
   ];
   components: {
     schemas: {

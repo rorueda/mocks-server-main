@@ -34,4 +34,4 @@ export interface DefaultCollectionsLoaderConstructor {
 }
 
 /** Load file contents from the default Mocks Server collections file and set collection definitions into the mock  */
-export interface DefaultCollectionsLoaderInterface {} // eslint-disable-line @typescript-eslint/no-empty-interface
+export interface DefaultCollectionsLoaderInterface {} // eslint-disable-line @typescript-eslint/no-empty-object-type

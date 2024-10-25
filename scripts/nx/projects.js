@@ -30,7 +30,7 @@ export async function affected(base, { extraArguments = [], fullReport = false }
   const textReport = parseReport(
     await pnpmRun(["nx", "print-affected", "--", "--base", baseArgument, ...extraArguments], {
       silent: true,
-    })
+    }),
   );
   if (fullReport) {
     return textReport;
@@ -54,7 +54,7 @@ export async function printAffectedProjectsWithSonarConfigArray({
   const projectsWithSonarConfig = await allProjectNamesWithTarget(SONAR_TARGET);
 
   const affectedProjectsWithSonar = affectedProjects.filter((project) =>
-    projectsWithSonarConfig.includes(project)
+    projectsWithSonarConfig.includes(project),
   );
   log(stringifyObjectWithPrefix(affectedProjectsWithSonar, prepend));
 }
@@ -71,7 +71,7 @@ export async function printAffectedTargetArrayUsingNx({
   const affectedProjects = uniqueArray(
     affectedProjectsReport.tasks.map((taskInfo) => {
       return taskInfo.target.project;
-    })
+    }),
   );
   log(stringifyObjectWithPrefix(affectedProjects, prepend));
 }

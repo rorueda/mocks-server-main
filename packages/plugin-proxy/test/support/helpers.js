@@ -54,7 +54,7 @@ const startCore = async (mocksPath, options = {}, { loadPlugin = true } = {}) =>
         plugins: { register: loadPlugin ? [Plugin] : [] },
       },
       options,
-    ])
+    ]),
   );
   await core.start();
   return core;
@@ -66,7 +66,7 @@ const startHost = () => {
     {
       server: { port: HOST_PORT },
     },
-    { loadPlugin: false }
+    { loadPlugin: false },
   );
 };
 
@@ -76,7 +76,7 @@ const startHost2 = () => {
     {
       server: { port: HOST_PORT_2 },
     },
-    { loadPlugin: false }
+    { loadPlugin: false },
   );
 };
 

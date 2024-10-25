@@ -64,17 +64,17 @@ const OPTIONS: [DelayOptionDefinition] = [
 
 function getRouteId(
   routeDefinitionId: RouteDefinitionId,
-  variantDefinitionId: VariantDefinitionId
+  variantDefinitionId: VariantDefinitionId,
 ): RouteId {
   return `${routeDefinitionId}:${variantDefinitionId}`;
 }
 
 function findVariantHandler(
   variantHandlers: VariantHandlerConstructor[],
-  handlerId: VariantHandlerId
+  handlerId: VariantHandlerId,
 ): VariantHandlerConstructor | undefined {
   return variantHandlers.find(
-    (variantHandlerCandidate) => variantHandlerCandidate.id === handlerId
+    (variantHandlerCandidate) => variantHandlerCandidate.id === handlerId,
   );
 }
 
@@ -84,7 +84,7 @@ function hasDelayProperty(routeOrVariantDefinition: RouteDefinition | VariantDef
 
 function getRouteDelay(
   variantDefinition: VariantDefinition,
-  routeDefinition: RouteDefinition
+  routeDefinition: RouteDefinition,
 ): number | null {
   if (hasDelayProperty(variantDefinition) && !isUndefined(variantDefinition.delay)) {
     return variantDefinition.delay;
@@ -120,7 +120,7 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
     this._loggerLoad = this._logger.namespace(LOAD_NAMESPACE);
 
     [this._delayOption] = this._config.addOptions(OPTIONS) as [
-      OptionInterfaceOfType<number, { hasDefault: true }>
+      OptionInterfaceOfType<number, { hasDefault: true }>,
     ];
     this._delayOption.onChange(onChange);
   }
@@ -141,7 +141,7 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
     return compact(
       this._routeDefinitions.map((routeDefinition) => {
         const route = this._routes.find(
-          (routeCandidate) => routeCandidate.routeId === routeDefinition.id
+          (routeCandidate) => routeCandidate.routeId === routeDefinition.id,
         );
         if (route) {
           const plainRoute = route.toPlainObject();
@@ -156,7 +156,7 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
             }),
           };
         }
-      })
+      }),
     );
   }
 
@@ -176,7 +176,7 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
 
   public load(
     routeDefinitions: RouteDefinition[],
-    variantHandlers: VariantHandlerConstructor[]
+    variantHandlers: VariantHandlerConstructor[],
   ): void {
     this._variantHandlers = variantHandlers;
     this._init();
@@ -194,20 +194,20 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
         routeDefinitions.map((routeDefinition, index) => {
           const routeIds: RouteId[] = [];
           const loadRouteAlerts = this._alertsLoad.collection(
-            `${(routeDefinition && routeDefinition.id) || index}`
+            `${(routeDefinition && routeDefinition.id) || index}`,
           );
           const routeErrors = routeValidationErrors(routeDefinition);
           if (routeErrors) {
             loadRouteAlerts.set("validation", routeErrors.message);
             this._loggerLoad.silly(
-              `Route validation errors: ${JSON.stringify(routeErrors.errors)}`
+              `Route validation errors: ${JSON.stringify(routeErrors.errors)}`,
             );
             return null;
           }
           if (routeDefinitionIds.includes(routeDefinition.id)) {
             loadRouteAlerts.set(
               "duplicated",
-              `Route with duplicated id '${routeDefinition.id}' detected. It has been ignored`
+              `Route with duplicated id '${routeDefinition.id}' detected. It has been ignored`,
             );
             return null;
           }
@@ -225,7 +225,7 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
                   .collection(route.variantId)
                   .set(
                     "duplicated",
-                    `Route variant with duplicated id '${route.variantId}' detected in route '${routeDefinition.id}'. It has been ignored`
+                    `Route variant with duplicated id '${route.variantId}' detected in route '${routeDefinition.id}'. It has been ignored`,
                   );
                 return null;
               }
@@ -233,8 +233,8 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
             }
             return route;
           });
-        })
-      )
+        }),
+      ),
     );
 
     this._loggerLoad.info(`Created ${this._routes.length} routes`);
@@ -308,14 +308,14 @@ export const Routes: RoutesConstructor = class Routes implements RoutesInterface
 
       const handler: VariantHandlerInterface = new (HandlerToCreate as unknown as new (
         options: VariantHandlerOptions,
-        core: ScopedCoreInterface
+        core: ScopedCoreInterface,
       ) => VariantHandlerInterface)(
         {
           ...variantOptions,
           url: routeDefinition.url, // TODO, pass in another parameter to avoid overriding handler options
           method: routeDefinition.method, // TODO, pass in another parameter to avoid overriding handler options
         },
-        routeVariantScopedCore
+        routeVariantScopedCore,
       );
       route = new Route({
         handler,

@@ -54,6 +54,9 @@ export interface AlertsConstructorInterface {
 
 /** Alerts interface */
 export interface AlertsInterface extends BaseNestedCollections {
+  /** All collection items and children collection items in a flat array **/
+  get flat(): AlertsFlat;
+
   /**
    * Set an alert. If an alert with the same id already exists, it will be replaced
    * @param id - Alert id {@link AlertId}.
@@ -69,7 +72,4 @@ export interface AlertsInterface extends BaseNestedCollections {
    * @example alerts.remove("foo");
    */
   remove(id: AlertId): void;
-
-  /** All collection items and children collection items in a flat array **/
-  get flat(): AlertsFlat;
 }

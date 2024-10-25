@@ -26,7 +26,7 @@ describe("Config from files", () => {
 
       expect(options).toEqual(expect.arrayContaining(["component.alias:string:foo-alias"]));
       expect(options).toEqual(
-        expect.arrayContaining(["firstNamespace.fooOption:string:foo-value"])
+        expect.arrayContaining(["firstNamespace.fooOption:string:foo-value"]),
       );
     });
   });
@@ -36,7 +36,7 @@ describe("Config from files", () => {
       await run("package-config", "two-namespaces");
 
       expect(options).toEqual(
-        expect.arrayContaining(["component.alias:string:alias-from-package"])
+        expect.arrayContaining(["component.alias:string:alias-from-package"]),
       );
     });
   });
@@ -57,8 +57,8 @@ describe("Config from files", () => {
 
       expect(runner.logs.current).toEqual(
         expect.stringContaining(
-          `loadedFile:${path.resolve(fixtureFolder("js-config-empty"), "mocks.config.js")}`
-        )
+          `loadedFile:${path.resolve(fixtureFolder("js-config-empty"), "mocks.config.js")}`,
+        ),
       );
     });
   });
@@ -102,10 +102,10 @@ describe("Config from files", () => {
       await run("json-config-option-types", "option-types");
 
       expect(options).toEqual(
-        expect.arrayContaining(["component.booleanDefaultTrue:boolean:false"])
+        expect.arrayContaining(["component.booleanDefaultTrue:boolean:false"]),
       );
       expect(options).toEqual(
-        expect.arrayContaining(["component.booleanDefaultFalse:boolean:true"])
+        expect.arrayContaining(["component.booleanDefaultFalse:boolean:true"]),
       );
     });
 
@@ -113,7 +113,7 @@ describe("Config from files", () => {
       await run("json-config-option-types", "option-types");
 
       expect(options).toEqual(
-        expect.arrayContaining(["component.stringWithDefault:string:foo-from-file"])
+        expect.arrayContaining(["component.stringWithDefault:string:foo-from-file"]),
       );
     });
 
@@ -123,7 +123,7 @@ describe("Config from files", () => {
       expect(options).toEqual(
         expect.arrayContaining([
           'component.objectWithDefault:object:{"foo":"var","foo2":"var2","foo3":false,"foo4":5}',
-        ])
+        ]),
       );
     });
 
@@ -179,7 +179,7 @@ describe("Config from files", () => {
       });
 
       expect(options).toEqual(
-        expect.not.arrayContaining(["component.alias:string:alias-from-json"])
+        expect.not.arrayContaining(["component.alias:string:alias-from-json"]),
       );
     });
   });
@@ -204,12 +204,12 @@ describe("Config from files", () => {
       await run("json-config-two-namespaces", "several-namespaces");
 
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-json"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-json"]),
       );
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.fooOption:string:option-from-file",
-        ])
+        ]),
       );
     });
 
@@ -217,12 +217,12 @@ describe("Config from files", () => {
       await run("json-config-two-namespaces", "several-namespaces-after-init");
 
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-json"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-json"]),
       );
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.fooOption:string:option-from-file",
-        ])
+        ]),
       );
     });
   });
@@ -232,22 +232,22 @@ describe("Config from files", () => {
       await run("json-config-nested-namespaces", "nested-namespaces");
 
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-json"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-json"]),
       );
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.fooOption:string:option-from-file",
-        ])
+        ]),
       );
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.thirdNamespace.fooOption2:boolean:true",
-        ])
+        ]),
       );
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.thirdNamespace.fooOption3:string:3-from-file",
-        ])
+        ]),
       );
     });
   });
@@ -273,7 +273,7 @@ describe("Config from files", () => {
       await run("js-function-config", "two-namespaces");
 
       expect(options).toEqual(
-        expect.arrayContaining(["component.alias:string:alias-from-js-function"])
+        expect.arrayContaining(["component.alias:string:alias-from-js-function"]),
       );
     });
   });
@@ -283,7 +283,7 @@ describe("Config from files", () => {
       await run("js-async-function-config", "two-namespaces");
 
       expect(options).toEqual(
-        expect.arrayContaining(["component.alias:string:alias-from-async-js-function"])
+        expect.arrayContaining(["component.alias:string:alias-from-async-js-function"]),
       );
     });
   });
@@ -297,7 +297,7 @@ describe("Config from files", () => {
       });
 
       expect(options).toEqual(
-        expect.arrayContaining(["component.alias:string:alias-from-env-var"])
+        expect.arrayContaining(["component.alias:string:alias-from-env-var"]),
       );
     });
   });

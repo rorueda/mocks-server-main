@@ -13,15 +13,15 @@ export function namespaceAndParentNames(namespace: ConfigNamespaceInterface): st
 
 export function findObjectWithName(
   objects: ConfigNamespaceInterface[],
-  name: string
+  name: string,
 ): ConfigNamespaceInterface | undefined;
 export function findObjectWithName(
   objects: OptionInterfaceGeneric[],
-  name: string
+  name: string,
 ): OptionInterfaceGeneric | undefined;
 export function findObjectWithName(
   objects: OptionInterfaceGeneric[] | ConfigNamespaceInterface[],
-  name: string
+  name: string,
 ) {
   const objectsToSearch = objects as ObjectWithName[];
   return objectsToSearch.find((object) => object.name === name);
@@ -44,7 +44,7 @@ export function checkNamespaceName(
   {
     options,
     namespaces,
-  }: { options: OptionInterfaceGeneric[]; namespaces: ConfigNamespaceInterface[] }
+  }: { options: OptionInterfaceGeneric[]; namespaces: ConfigNamespaceInterface[] },
 ): void | never {
   if (!name) {
     throw new Error("Please provide a name for the namespace");
@@ -62,7 +62,7 @@ export function checkOptionName(
   {
     options,
     namespaces,
-  }: { options: OptionInterfaceGeneric[]; namespaces: ConfigNamespaceInterface[] }
+  }: { options: OptionInterfaceGeneric[]; namespaces: ConfigNamespaceInterface[] },
 ): void | never {
   if (options && findObjectWithName(options, name)) {
     throwOptionAlreadyExists(name);

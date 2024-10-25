@@ -27,7 +27,7 @@ function getHeaderStatusColor(statusLevel: HeaderStatusLevel = 0): HeaderColor {
 
 function renderWithStatusColor(
   message: HeaderMessage,
-  statusLevel: HeaderStatusLevel = 0
+  statusLevel: HeaderStatusLevel = 0,
 ): string {
   return chalk[getHeaderStatusColor(statusLevel)](message);
 }
@@ -40,7 +40,7 @@ export function log(...args: string[]) {
 export function formatError(error: Error): string {
   const stack = error.stack as string;
   return `${error.message}${ALERTS_TAB_LINE}${trim(
-    stack.split("\n").slice(0, 3).join("\n").replace(/\n/gim, ALERTS_TAB_LINE)
+    stack.split("\n").slice(0, 3).join("\n").replace(/\n/gim, ALERTS_TAB_LINE),
   )}...`;
 }
 
@@ -66,12 +66,12 @@ export function renderHeader(
   description: string,
   message: HeaderMessage,
   status?: HeaderStatusLevel,
-  context?: string
+  context?: string,
 ): string {
   const contextToRender = context ? chalk.grey(`[${context}] `) : "";
   return `${chalk.bold("‧")} ${description}: ${contextToRender}${renderWithStatusColor(
     message,
-    status
+    status,
   )}`;
 }
 
@@ -81,7 +81,7 @@ export function renderAlert(alert: AlertsFlat[0]): string {
     alert.error ? "Error" : "Warning",
     message,
     alert.error ? 2 : 1,
-    alert.id as string
+    alert.id as string,
   );
 }
 
@@ -95,7 +95,7 @@ export function clearScreen(): void {
 
 export function getCurrentMockMessageLevel(
   customRoutesVariants: ScopedCoreInterface["mock"]["customRouteVariants"],
-  currentMock: string
+  currentMock: string,
 ): HeaderStatusLevel {
   if (customRoutesVariants.length) {
     return 1;

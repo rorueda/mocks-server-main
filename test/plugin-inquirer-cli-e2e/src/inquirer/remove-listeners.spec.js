@@ -52,7 +52,7 @@ describe("when removeListeners is executed", () => {
       setTimeout(async () => {
         try {
           await cliRunner.executeAndWaitUntilNewScreenRendered(
-            cliRunner.pressEnter.bind(cliRunner)
+            cliRunner.pressEnter.bind(cliRunner),
           );
         } catch (error) {
           expect(error.message).toEqual(expect.stringContaining("No new screen was rendered"));

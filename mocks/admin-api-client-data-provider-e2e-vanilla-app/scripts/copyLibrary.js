@@ -9,7 +9,7 @@ const libPath = path.resolve(
   "packages",
   "admin-api-client-data-provider",
   "dist",
-  "index.umd.js"
+  "index.umd.js",
 );
 const publicJsPath = path.resolve(__dirname, "..", "public", "js");
 
@@ -21,7 +21,7 @@ const adminApiPathsLib = path.resolve(
   "packages",
   "admin-api-paths",
   "dist",
-  "index.umd.js"
+  "index.umd.js",
 );
 
 const copyLib = () => {

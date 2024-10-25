@@ -38,7 +38,7 @@ describe("when there is an error loading files", () => {
 
     it("should have added an alert about not mock found", async () => {
       expect(findAlert("mock:collections:empty", core.alerts.flat).message).toEqual(
-        "No collections found"
+        "No collections found",
       );
     });
 

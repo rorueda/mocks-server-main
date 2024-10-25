@@ -46,13 +46,13 @@ describe("when path not exists", () => {
     it("should have created scaffold folder", async () => {
       expect(fsExtra.existsSync(path.resolve(fixturesFolder(FOLDER), "routes"))).toEqual(true);
       expect(fsExtra.existsSync(path.resolve(fixturesFolder(FOLDER), "collections.json"))).toEqual(
-        true
+        true,
       );
     });
 
     it("should have added an alert about folder not found", async () => {
       expect(findAlert("scaffold:folder", core.alerts.flat).message).toEqual(
-        expect.stringContaining("Mocks Server folder was not found")
+        expect.stringContaining("Mocks Server folder was not found"),
       );
     });
 

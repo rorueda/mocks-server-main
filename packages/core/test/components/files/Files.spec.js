@@ -172,7 +172,7 @@ describe("Files", () => {
       await files.init();
 
       expect(libsMocks.stubs.fsExtra.ensureDirSync.getCall(0).args[0]).toEqual(
-        path.resolve(process.cwd(), "foo-path")
+        path.resolve(process.cwd(), "foo-path"),
       );
     });
 
@@ -197,7 +197,7 @@ describe("Files", () => {
 
       expect(alerts.flat[0].id).toEqual("files:loader:routes:file:foo");
       expect(alerts.flat[0].message).toEqual(
-        expect.stringContaining("Error loading routes from file foo")
+        expect.stringContaining("Error loading routes from file foo"),
       );
     });
 
@@ -215,7 +215,7 @@ describe("Files", () => {
 
       expect(alerts.flat[0].id).toEqual("files:loader:collections:error");
       expect(alerts.flat[0].message).toEqual(
-        expect.stringContaining("Error loading collections from file")
+        expect.stringContaining("Error loading collections from file"),
       );
     });
 
@@ -308,7 +308,7 @@ describe("Files", () => {
 
       expect(alerts.flat.length).toEqual(1);
       expect(alerts.flat[0].message).toEqual(
-        expect.stringContaining("No collections file was found")
+        expect.stringContaining("No collections file was found"),
       );
     });
 
@@ -339,7 +339,7 @@ describe("Files", () => {
       await files.init();
 
       expect(alerts.flat[0].message).toEqual(
-        "Defining collections in 'mocks.json' file is deprecated. Please rename it to 'collections.json'"
+        "Defining collections in 'mocks.json' file is deprecated. Please rename it to 'collections.json'",
       );
     });
 
@@ -356,7 +356,7 @@ describe("Files", () => {
       await files.init();
 
       expect(alerts.flat[0].message).toEqual(
-        "Defining collections in 'mocks.json' file is deprecated. Please rename it to 'collections.json'"
+        "Defining collections in 'mocks.json' file is deprecated. Please rename it to 'collections.json'",
       );
 
       libsMocks.stubs.globule.find.returns(["collections.json"]);

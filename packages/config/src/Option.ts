@@ -41,7 +41,7 @@ export class Option<T extends OptionDefinitionGeneric, TypeOfValue = void>
     this._description = optionProperties.description;
     this._itemsType = optionProperties.itemsType;
     this._default = this._clone(
-      optionProperties.default as GetOptionValueTypeFromDefinition<T, TypeOfValue>
+      optionProperties.default as GetOptionValueTypeFromDefinition<T, TypeOfValue>,
     );
     this._value = this._default;
     this._eventsStarted = false;
@@ -95,7 +95,7 @@ export class Option<T extends OptionDefinitionGeneric, TypeOfValue = void>
 
   public set(
     value: GetOptionValueTypeFromDefinition<T, TypeOfValue>,
-    { merge = false }: SetMethodOptions = {}
+    { merge = false }: SetMethodOptions = {},
   ): void {
     if (!isUndefined(value)) {
       this._hasBeenSet = true;
@@ -115,17 +115,17 @@ export class Option<T extends OptionDefinitionGeneric, TypeOfValue = void>
   }
 
   public onChange(
-    listener: EventListener<GetOptionValueTypeFromDefinition<T, TypeOfValue>>
+    listener: EventListener<GetOptionValueTypeFromDefinition<T, TypeOfValue>>,
   ): EventListenerRemover {
     return addEventListener<GetOptionValueTypeFromDefinition<T, TypeOfValue>>(
       listener,
       CHANGE,
-      this._eventEmitter
+      this._eventEmitter,
     );
   }
 
   private _clone(
-    value: GetOptionValueTypeFromDefinition<T, TypeOfValue>
+    value: GetOptionValueTypeFromDefinition<T, TypeOfValue>,
   ): GetOptionValueTypeFromDefinition<T, TypeOfValue> {
     if (isUndefined(value) || (this._nullable === true && isNull(value))) {
       return value;
@@ -147,7 +147,7 @@ export class Option<T extends OptionDefinitionGeneric, TypeOfValue = void>
 
   private _emitChange(
     previousValue: GetOptionValueTypeFromDefinition<T, TypeOfValue>,
-    value: GetOptionValueTypeFromDefinition<T, TypeOfValue>
+    value: GetOptionValueTypeFromDefinition<T, TypeOfValue>,
   ) {
     if (this._eventsStarted && !isEqual(previousValue, value)) {
       this._eventEmitter.emit(CHANGE, this._clone(value));

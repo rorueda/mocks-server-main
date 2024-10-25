@@ -52,7 +52,7 @@ export interface VariantHandlerTextConstructor extends VariantHandlerConstructor
    */
   new (
     options: VariantHandlerTextOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerTextInterface;
 }
 

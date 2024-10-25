@@ -1,5 +1,5 @@
 {
-  "root": "mocks/cypress-commands-e2e-vanilla-app/",
+  "root": "mocks/cypress-commands-e2e-vanilla-app",
   "projectType": "application",
   "implicitDependencies": [],
   "tags": ["type:mock"]

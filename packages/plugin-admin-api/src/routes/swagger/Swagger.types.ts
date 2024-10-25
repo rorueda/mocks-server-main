@@ -41,11 +41,11 @@ export interface SwaggerUiOptions {
 
 /** Swagger interface */
 export interface SwaggerInterface {
+  get router(): Router;
+
   /**
    * Set current configuration for creating the Swagger UI with the right values
    * @example updateNotifier.init();
    */
   setOptions(options: SwaggerUiOptions): void;
-
-  get router(): Router;
 }

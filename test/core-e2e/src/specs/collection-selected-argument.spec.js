@@ -45,7 +45,7 @@ describe("collection.selected argument", () => {
       await waitForServer();
 
       expect(mocks.logs.current).toEqual(
-        expect.stringContaining("Collection 'foo' was not found")
+        expect.stringContaining("Collection 'foo' was not found"),
       );
     });
 

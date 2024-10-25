@@ -25,8 +25,8 @@ describe("programmatic nested", () => {
           parentNamespace: {
             fooNamespace: { fooOption: false },
           },
-        })
-      ).rejects.toThrowError("fooOption");
+        }),
+      ).rejects.toThrow("fooOption");
     });
 
     it("should throw when config does not pass validation and namespaces have several levels", async () => {
@@ -40,8 +40,8 @@ describe("programmatic nested", () => {
           parentNamespace: {
             fooNamespace: { fooOption: "foo", secondNamespace: { fooOption2: 5 } },
           },
-        })
-      ).rejects.toThrowError("fooOption2");
+        }),
+      ).rejects.toThrow("fooOption2");
     });
 
     it("should throw when config does not pass validation and namespaces have several levels when calling to start", async () => {
@@ -55,8 +55,8 @@ describe("programmatic nested", () => {
           parentNamespace: {
             fooNamespace: { fooOption: "foo", secondNamespace: { fooOption2: 5 } },
           },
-        })
-      ).rejects.toThrowError("fooOption2");
+        }),
+      ).rejects.toThrow("fooOption2");
     });
 
     it("should not throw when config includes unknwon namespaces", async () => {

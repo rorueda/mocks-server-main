@@ -30,7 +30,7 @@ describe("cors command line argument", () => {
       expect(users.status).toEqual(204);
       expect(users.headers.get("access-control-allow-origin")).toEqual("*");
       expect(users.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
       expect(users.body).toEqual(null);
     });
@@ -41,7 +41,7 @@ describe("cors command line argument", () => {
       expect(users.status).toEqual(204);
       expect(users.headers.get("access-control-allow-origin")).toEqual("*");
       expect(users.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
       expect(users.body).toEqual(null);
     });
@@ -107,7 +107,7 @@ describe("cors command line argument", () => {
       expect(users.status).toEqual(200);
       expect(users.headers.get("access-control-allow-origin")).toEqual("*");
       expect(users.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
       expect(users.body).toEqual({ id: 1, name: "John Doe" });
     });
@@ -118,7 +118,7 @@ describe("cors command line argument", () => {
       expect(users.status).toEqual(404);
       expect(users.headers.get("access-control-allow-origin")).toEqual("*");
       expect(users.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
       expect(users.body).toEqual({ error: "Not Found", message: "Not Found", statusCode: 404 });
     });

@@ -72,7 +72,7 @@ module.exports = class InteractiveCliRunner {
   async pressEnter() {
     this._log("Pressing Enter");
     const newScreen = await this._cli.executeAndWaitUntilNewScreenRendered(
-      this._cli.pressEnter.bind(this._cli)
+      this._cli.pressEnter.bind(this._cli),
     );
     await this.logCurrentSelection();
     return newScreen;

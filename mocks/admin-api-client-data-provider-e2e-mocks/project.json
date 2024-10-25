@@ -1,6 +1,6 @@
 {
-  "root": "mocks/admin-api-client-data-provider-e2e-mocks/",
+  "root": "mocks/admin-api-client-data-provider-e2e-mocks",
   "projectType": "application",
-  "implicitDependencies": ["main"],
+  "implicitDependencies": ["@mocks-server/main"],
   "tags": ["type:mock"]
 }

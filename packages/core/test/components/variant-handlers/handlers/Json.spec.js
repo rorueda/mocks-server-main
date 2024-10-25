@@ -108,7 +108,7 @@ describe("VariantHandlerJson variant handler", () => {
       const FOO_HEADERS = { "Content-Type": "application/json; charset=utf-8", foo: "foo" };
       routesHandler = new VariantHandlerJson(
         { ...FOO_VARIANT, headers: FOO_HEADERS },
-        coreInstance
+        coreInstance,
       );
       routesHandler.middleware(expressStubs.req, expressStubs.res, expressStubs.next);
 

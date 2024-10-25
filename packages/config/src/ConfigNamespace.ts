@@ -87,7 +87,7 @@ export const ConfigNamespace: ConfigNamespaceConstructor = class ConfigNamespace
   }
 
   public addOption<Type extends OptionDefinitionGeneric>(
-    optionProperties: Type
+    optionProperties: Type,
   ): OptionInterfaceOfType<
     GetOptionValueTypeFromDefinition<Type>,
     {
@@ -111,7 +111,7 @@ export const ConfigNamespace: ConfigNamespaceConstructor = class ConfigNamespace
   }
 
   public addOptions<Type extends OptionDefinitionGeneric[]>(
-    options: [...OptionDefinitionGeneric[]]
+    options: [...OptionDefinitionGeneric[]],
   ): [
     ...OptionInterfaceOfType<
       GetOptionValueTypeFromDefinition<Type[number]>,
@@ -119,7 +119,7 @@ export const ConfigNamespace: ConfigNamespaceConstructor = class ConfigNamespace
         hasDefault: GetOptionHasDefaultFromDefinition<Type[number]>;
         nullable: GetOptionIsNullableFromDefinition<Type[number]>;
       }
-    >[]
+    >[],
   ] {
     return options.map((option) => this.addOption(option)) as [
       ...OptionInterfaceOfType<
@@ -128,7 +128,7 @@ export const ConfigNamespace: ConfigNamespaceConstructor = class ConfigNamespace
           hasDefault: GetOptionHasDefaultFromDefinition<Type[number]>;
           nullable: GetOptionIsNullableFromDefinition<Type[number]>;
         }
-      >[]
+      >[],
     ];
   }
 

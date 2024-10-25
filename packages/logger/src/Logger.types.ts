@@ -125,7 +125,7 @@ export interface LoggerConstructor {
   new (
     label: LoggerNamespaceLabel,
     options?: LoggerOptions,
-    privateOptions?: LoggerPrivateOptions
+    privateOptions?: LoggerPrivateOptions,
   ): LoggerInterface;
 }
 

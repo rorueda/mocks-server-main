@@ -92,7 +92,7 @@ describe("Text variant handler", () => {
       const FOO_HEADERS = { foo: "foo" };
       routesHandler = new VariantHandlerText(
         { ...FOO_VARIANT, headers: FOO_HEADERS },
-        coreInstance
+        coreInstance,
       );
       routesHandler.middleware(expressStubs.req, expressStubs.res, expressStubs.next);
 
@@ -106,7 +106,7 @@ describe("Text variant handler", () => {
       const CUSTOM_HEADERS = { "Content-Type": "text/plain; charset=utf-8", foo: "foo" };
       routesHandler = new VariantHandlerText(
         { ...FOO_VARIANT, headers: CUSTOM_HEADERS },
-        coreInstance
+        coreInstance,
       );
       routesHandler.middleware(expressStubs.req, expressStubs.res, expressStubs.next);
 

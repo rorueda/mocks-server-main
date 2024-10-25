@@ -34,4 +34,4 @@ export interface DefaultRoutesLoaderConstructor {
 }
 
 /** Load file contents from the default Mocks Server routes folder and set route definitions into the mock  */
-export interface DefaultRoutesLoaderInterface {} // eslint-disable-line @typescript-eslint/no-empty-interface
+export interface DefaultRoutesLoaderInterface {} // eslint-disable-line @typescript-eslint/no-empty-object-type

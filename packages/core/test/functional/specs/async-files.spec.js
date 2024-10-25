@@ -35,7 +35,7 @@ describe("async files", () => {
   describe("collection by default", () => {
     it("should have added an alert about collection was not defined", () => {
       expect(findAlert("mock:collections:selected", core.alerts.flat).message).toEqual(
-        expect.stringContaining("Option 'mock.collections.selected' was not defined")
+        expect.stringContaining("Option 'mock.collections.selected' was not defined"),
       );
     });
 

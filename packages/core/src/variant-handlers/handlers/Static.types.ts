@@ -49,7 +49,7 @@ export interface VariantHandlerStaticConstructor extends VariantHandlerConstruct
    */
   new (
     options: VariantHandlerStaticOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerStaticInterface;
 }
 

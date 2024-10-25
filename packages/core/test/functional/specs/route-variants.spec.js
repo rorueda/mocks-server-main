@@ -45,7 +45,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request 1", async () => {
       expect(
-        findTrace("Middleware in request 1 => GET => /api/users", core.logger.globalStore)
+        findTrace("Middleware in request 1 => GET => /api/users", core.logger.globalStore),
       ).toBeDefined();
     });
 
@@ -58,7 +58,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request 2", async () => {
       expect(
-        findTrace("Middleware in request 2 => GET => /api/users/1", core.logger.globalStore)
+        findTrace("Middleware in request 2 => GET => /api/users/1", core.logger.globalStore),
       ).toBeDefined();
     });
 
@@ -71,7 +71,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request 3", async () => {
       expect(
-        findTrace("Middleware in request 3 => GET => /api/users/2", core.logger.globalStore)
+        findTrace("Middleware in request 3 => GET => /api/users/2", core.logger.globalStore),
       ).toBeDefined();
     });
   });
@@ -90,7 +90,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request 4", async () => {
       expect(
-        findTrace("Middleware in request 4 => GET => /api/users", core.logger.globalStore)
+        findTrace("Middleware in request 4 => GET => /api/users", core.logger.globalStore),
       ).toBeDefined();
     });
 
@@ -103,7 +103,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request when requested user 1 again", async () => {
       expect(
-        findTrace("Middleware in request 5 => GET => /api/users/1", core.logger.globalStore)
+        findTrace("Middleware in request 5 => GET => /api/users/1", core.logger.globalStore),
       ).toBeDefined();
     });
 
@@ -116,7 +116,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request when requested user 2 again", async () => {
       expect(
-        findTrace("Middleware in request 6 => GET => /api/users/2", core.logger.globalStore)
+        findTrace("Middleware in request 6 => GET => /api/users/2", core.logger.globalStore),
       ).toBeDefined();
     });
   });
@@ -175,7 +175,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request", async () => {
       expect(
-        findTrace("Middleware in request 10 => GET => /api/users", core.logger.globalStore)
+        findTrace("Middleware in request 10 => GET => /api/users", core.logger.globalStore),
       ).toBeDefined();
     });
 
@@ -188,7 +188,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request 11", async () => {
       expect(
-        findTrace("Middleware in request 11 => GET => /api/users/1", core.logger.globalStore)
+        findTrace("Middleware in request 11 => GET => /api/users/1", core.logger.globalStore),
       ).toBeDefined();
     });
 
@@ -201,7 +201,7 @@ describe("route variants", () => {
 
     it("middleware should have traced request 12", async () => {
       expect(
-        findTrace("Middleware in request 12 => GET => /api/users/2", core.logger.globalStore)
+        findTrace("Middleware in request 12 => GET => /api/users/2", core.logger.globalStore),
       ).toBeDefined();
     });
   });

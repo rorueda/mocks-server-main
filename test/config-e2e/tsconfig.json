@@ -10,14 +10,14 @@
     "moduleResolution": "node",
     "module": "CommonJS",
     "useDefineForClassFields": true,
-    "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "noUnusedParameters": true,
     "allowJs": true,
     "types": ["../../packages/config"],
     "paths": {
       "@mocks-server/config": ["../../packages/config"]
-    }
+    },
+    "skipLibCheck": true
   },
   "include": [
     "src/fixtures/typescript/**/*"

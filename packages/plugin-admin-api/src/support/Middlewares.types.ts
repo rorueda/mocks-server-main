@@ -25,7 +25,7 @@ export interface CollectionMiddlewareOptions<Item extends ApiEntityItem> {
 /** Options for creating an API middleware for an API model */
 export interface ModelMiddlewareOptions<
   Item extends ApiEntityItem,
-  ParsedItem extends ApiEntityItem
+  ParsedItem extends ApiEntityItem,
 > {
   /** model name */
   name: string;

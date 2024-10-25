@@ -51,7 +51,7 @@ const collectionValidator = validator.compile(collectionsSchema);
 
 export function findRouteByVariantId(
   routes: RouteInterface[],
-  variantId: VariantDefinitionId
+  variantId: VariantDefinitionId,
 ): RouteInterface | undefined {
   return routes.find((route) => route.id === variantId);
 }
@@ -70,7 +70,7 @@ function collectionErrorsMessagePrefix(collection: CollectionDefinition): string
 }
 
 export function collectionValidationErrors(
-  collection: CollectionDefinition
+  collection: CollectionDefinition,
 ): ValidationErrors | null {
   const isValid = collectionValidator(collection);
   if (!isValid) {
@@ -78,7 +78,7 @@ export function collectionValidationErrors(
     return {
       message: `${collectionErrorsMessagePrefix(collection)} ${collectionValidationMessage(
         collection,
-        errors
+        errors,
       )}`,
       errors,
     };
@@ -89,20 +89,20 @@ export function collectionValidationErrors(
 function notFoundRouteError(routeId: RouteId): ErrorObject {
   return ajvErrorLike(
     `routeVariant ${withIdMessage(
-      routeId
-    )} was not found, use a valid 'routeId:variantId' identifier`
+      routeId,
+    )} was not found, use a valid 'routeId:variantId' identifier`,
   );
 }
 
 function duplicatedRouteError(routeId: RouteDefinitionId): ErrorObject {
   return ajvErrorLike(
-    `route ${withIdMessage(routeId)} is used more than once in the same collection`
+    `route ${withIdMessage(routeId)} is used more than once in the same collection`,
   );
 }
 
 function collectionRouteVariantsErrors(
   routeIds: RouteId[],
-  routes: RouteInterface[]
+  routes: RouteInterface[],
 ): ErrorObject[] {
   const routeDefinitionIds: RouteDefinitionId[] = [];
   return compact(
@@ -116,13 +116,13 @@ function collectionRouteVariantsErrors(
       }
       routeDefinitionIds.push(route.routeId);
       return null;
-    })
+    }),
   );
 }
 
 function collectionInvalidRouteVariants(
   collectionDefinition: CollectionDefinition,
-  routes: RouteInterface[]
+  routes: RouteInterface[],
 ): ErrorObject[] {
   const routeIdsInCollectionDefinition =
     collectionDefinition && getCollectionRouteIds(collectionDefinition);
@@ -135,13 +135,13 @@ function collectionInvalidRouteVariants(
 
 export function collectionRouteVariantsValidationErrors(
   collection: CollectionDefinition,
-  routes: RouteInterface[]
+  routes: RouteInterface[],
 ): ValidationErrors | null {
   const invalidRouteVariants = collectionInvalidRouteVariants(collection, routes);
   if (invalidRouteVariants.length) {
     return {
       message: `${collectionErrorsMessagePrefix(collection)} ${customValidationSingleMessage(
-        invalidRouteVariants
+        invalidRouteVariants,
       )}`,
       errors: invalidRouteVariants,
     };

@@ -239,7 +239,7 @@ describe("set method", () => {
             foo: { foo4: "foo4" },
           },
         },
-        { merge: true }
+        { merge: true },
       );
 
       expect(config.value).toEqual({
@@ -401,7 +401,7 @@ describe("set method", () => {
             foo3: { foo2: "foo2" },
           },
         },
-        { merge: true }
+        { merge: true },
       );
 
       expect(namespace.value).toEqual({

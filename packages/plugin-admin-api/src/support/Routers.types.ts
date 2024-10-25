@@ -15,7 +15,7 @@ import type { ApiEntityItem } from "../common/Common.types";
 /** Options for creating a router able to read collections and models */
 export interface CollectionAndModelRouterOptions<
   Item extends ApiEntityItem,
-  ParsedItem extends ApiEntityItem
+  ParsedItem extends ApiEntityItem,
 > {
   /** model name */
   modelName: string;

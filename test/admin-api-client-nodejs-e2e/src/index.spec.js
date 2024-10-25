@@ -29,7 +29,7 @@ describe("admin api client methods", () => {
         const alerts = await adminApiClient.readAlerts();
 
         expect(alerts[0].message).toEqual(
-          expect.stringContaining("Option 'mock.collections.selected' was not defined")
+          expect.stringContaining("Option 'mock.collections.selected' was not defined"),
         );
       });
     });
@@ -54,7 +54,7 @@ describe("admin api client methods", () => {
 
         expect(alert.id).toEqual(alertId);
         expect(alert.message).toEqual(
-          expect.stringContaining("Option 'mock.collections.selected' was not defined")
+          expect.stringContaining("Option 'mock.collections.selected' was not defined"),
         );
       });
 

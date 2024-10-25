@@ -35,7 +35,7 @@ describe("collection.selected setting", () => {
   describe("collection by default", () => {
     it("should have added an alert about collection was not defined", () => {
       expect(findAlert("mock:collections:selected", core.alerts.flat).message).toEqual(
-        expect.stringContaining("Option 'mock.collections.selected' was not defined")
+        expect.stringContaining("Option 'mock.collections.selected' was not defined"),
       );
     });
 
@@ -141,7 +141,7 @@ describe("collection.selected setting", () => {
 
     it("should have added an alert", () => {
       expect(findAlert("mock:collections:selected", core.alerts.flat).message).toEqual(
-        expect.stringContaining("Collection 'foo' was not found")
+        expect.stringContaining("Collection 'foo' was not found"),
       );
     });
 

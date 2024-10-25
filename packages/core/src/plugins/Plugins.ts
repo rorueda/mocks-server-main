@@ -70,7 +70,7 @@ export const Plugins: PluginsConstructor = class Plugins implements PluginsInter
     this._logger = logger;
 
     [this._pluginsToRegister] = this._config.addOptions(OPTIONS) as [
-      OptionInterfaceOfType<PluginConstructor[], { hasDefault: true }>
+      OptionInterfaceOfType<PluginConstructor[], { hasDefault: true }>,
     ];
 
     this._alerts = alerts;
@@ -140,7 +140,7 @@ export const Plugins: PluginsConstructor = class Plugins implements PluginsInter
 
   private async _registerPlugin(
     Plugin: PluginConstructor,
-    pluginIndex: number
+    pluginIndex: number,
   ): Promise<PluginInterface> {
     let pluginInstance,
       pluginConfig: ConfigNamespaceInterface | undefined,

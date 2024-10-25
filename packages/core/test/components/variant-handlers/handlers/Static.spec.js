@@ -86,7 +86,7 @@ describe("Static variant handler", () => {
     it("should add headers from express setHeaders option when defined", () => {
       const handler = new VariantHandlerStatic(
         { options: { setHeaders: "foo-method" } },
-        coreInstance
+        coreInstance,
       );
       const router = handler.router;
       const staticOptions = router.options;

@@ -1,4 +1,4 @@
-import Ajv from "ajv";
+import { Ajv } from "ajv";
 import type { ErrorObject } from "ajv";
 import betterAjvErrors from "better-ajv-errors";
 
@@ -15,7 +15,7 @@ export function withIdMessage(id: string): string {
 export function validationSingleMessage(
   schema: JSONSchema7WithInstanceofDefinition,
   data?: object,
-  errors?: ErrorObject[]
+  errors?: ErrorObject[],
 ): string {
   const formattedJson = betterAjvErrors(schema, data || {}, errors || [], {
     format: "js",

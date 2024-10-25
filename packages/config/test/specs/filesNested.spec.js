@@ -1,4 +1,4 @@
-import sinon from "sinon";
+import { stub } from "sinon";
 
 import { createConfigBeforeElements } from "../support/helpers";
 
@@ -104,9 +104,9 @@ describe("files nested", () => {
     });
 
     it("should receive previous config from init as argument", async () => {
-      const func = sinon
-        .stub()
-        .returns({ parentNamespace: { fooNamespace: { fooOption: "value-from-file" } } });
+      const func = stub().returns({
+        parentNamespace: { fooNamespace: { fooOption: "value-from-file" } },
+      });
       cosmiconfigStub.search.resolves({
         config: func,
       });

@@ -46,7 +46,7 @@ describe("when nor config file nor mocks folder exists", () => {
     describe("when started for the first time", () => {
       it("should have created the mocks scaffold", async () => {
         expect(
-          fsExtra.existsSync(path.resolve(fixturesFolder("temp"), "mocks", "collections.json"))
+          fsExtra.existsSync(path.resolve(fixturesFolder("temp"), "mocks", "collections.json")),
         ).toEqual(true);
       });
 
@@ -59,8 +59,8 @@ describe("when nor config file nor mocks folder exists", () => {
 
         expect(removeNewLines(config)).toEqual(
           expect.stringContaining(
-            `mock: {    routes: {      // Global delay to apply to routes      //delay: 0,    },    collections: {      // Selected collection      //selected: "base",    },  }`
-          )
+            `mock: {    routes: {      // Global delay to apply to routes      //delay: 0,    },    collections: {      // Selected collection      //selected: "base",    },  }`,
+          ),
         );
       });
 
@@ -104,8 +104,8 @@ describe("when nor config file nor mocks folder exists", () => {
 
         expect(removeNewLines(config)).toEqual(
           expect.stringContaining(
-            `mock: {    routes: {      // Global delay to apply to routes      //delay: 0,    },    collections: {      // Selected collection      //selected: "base",    },  }`
-          )
+            `mock: {    routes: {      // Global delay to apply to routes      //delay: 0,    },    collections: {      // Selected collection      //selected: "base",    },  }`,
+          ),
         );
       });
 
@@ -141,7 +141,7 @@ describe("when nor config file nor mocks folder exists", () => {
       await fsExtra.ensureDir(fixturesFolder("temp"));
       await fsExtra.copy(
         fixturesFolder("files-error-routes"),
-        path.resolve(fixturesFolder("temp"), "mocks")
+        path.resolve(fixturesFolder("temp"), "mocks"),
       );
       await fsExtra.copy(fixturesFolder("starter"), customStarter);
       mocks = mocksRunner([], {
@@ -162,7 +162,7 @@ describe("when nor config file nor mocks folder exists", () => {
 
     it("should have tried to load provided mocks", async () => {
       expect(mocks.logs.all).toEqual(
-        expect.stringContaining("Collection with id 'user-2' is invalid")
+        expect.stringContaining("Collection with id 'user-2' is invalid"),
       );
     });
   });
@@ -222,7 +222,7 @@ describe("when nor config file nor mocks folder exists", () => {
       await fsExtra.ensureDir(fixturesFolder("temp"));
       await fsExtra.copy(
         path.resolve(fixturesFolder("config-file-no-path"), "mocks.config.js"),
-        path.resolve(fixturesFolder("temp"), "mocks.config.js")
+        path.resolve(fixturesFolder("temp"), "mocks.config.js"),
       );
       await fsExtra.copy(fixturesFolder("starter"), customStarter);
       mocks = mocksRunner([], {
@@ -239,7 +239,7 @@ describe("when nor config file nor mocks folder exists", () => {
 
     it("should have created the mocks scaffold", async () => {
       expect(
-        fsExtra.existsSync(path.resolve(fixturesFolder("temp"), "mocks", "collections.json"))
+        fsExtra.existsSync(path.resolve(fixturesFolder("temp"), "mocks", "collections.json")),
       ).toEqual(true);
     });
 

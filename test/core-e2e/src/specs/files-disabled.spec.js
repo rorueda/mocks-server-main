@@ -42,7 +42,7 @@ describe("when files and config file are disabled", () => {
     describe("when started", () => {
       it("should have not created the mocks scaffold", async () => {
         expect(
-          fsExtra.existsSync(path.resolve(fixturesFolder("temp"), "mocks", "collections.json"))
+          fsExtra.existsSync(path.resolve(fixturesFolder("temp"), "mocks", "collections.json")),
         ).toEqual(false);
       });
 

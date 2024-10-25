@@ -73,7 +73,7 @@ describe("Middleware variant handler", () => {
       const fooResponseMethod = sandbox.stub();
       routesHandler = new VariantHandlerMiddleware(
         { ...FOO_VARIANT, middleware: fooResponseMethod },
-        coreInstance
+        coreInstance,
       );
       routesHandler.middleware(expressStubs.req, expressStubs.res, expressStubs.next);
 

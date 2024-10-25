@@ -1,7 +1,7 @@
-import sinon from "sinon";
+import { createSandbox } from "sinon";
 export default class Cypress {
   constructor() {
-    this._sandbox = sinon.createSandbox();
+    this._sandbox = createSandbox();
 
     this._stubs = {
       Commands: {

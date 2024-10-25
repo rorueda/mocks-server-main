@@ -63,7 +63,7 @@ const DEFAULT_CONFIG_FILE = "mocks.config.js";
 function readTemplate(fileName: string): Promise<string> {
   return readFile(
     path.resolve(TEMPLATES_PATH, fileName),
-    READ_WRITE_FILE_OPTIONS
+    READ_WRITE_FILE_OPTIONS,
   ) as Promise<string>;
 }
 
@@ -84,7 +84,7 @@ function getExtraDataProperty(
     | OptionScaffoldOmitProperty
     | OptionScaffoldCommentedProperty
     | OptionScaffoldValueProperty,
-  defaultValue?: OptionValue
+  defaultValue?: OptionValue,
 ): OptionValue {
   const scaffoldData: OptionsScaffoldExtraData | undefined = option.extraData?.scaffold as
     | OptionsScaffoldExtraData
@@ -99,7 +99,7 @@ function isOptionCommented(option: OptionInterfaceGeneric) {
 
 function isOptionOmitted(
   option: OptionInterfaceGeneric,
-  namespace?: ConfigNamespaceInterface
+  namespace?: ConfigNamespaceInterface,
 ): ScaffoldOptionOmitted {
   // Exclude config options that has no sense to define in file
   if (
@@ -136,7 +136,7 @@ function parseOptionForTemplate(option: OptionInterfaceGeneric) {
 
 function parseOptionsForTemplate(
   options: OptionInterfaceGeneric[],
-  namespace?: ConfigNamespaceInterface
+  namespace?: ConfigNamespaceInterface,
 ): OptionTemplateData[] | undefined {
   if (options) {
     return compact(
@@ -144,7 +144,7 @@ function parseOptionsForTemplate(
         if (!isOptionOmitted(option, namespace)) {
           return parseOptionForTemplate(option);
         }
-      })
+      }),
     );
   }
 }
@@ -158,7 +158,7 @@ function parseNamespaceForTemplate(namespace: ConfigNamespaceInterface): Namespa
 }
 
 function parseNamespacesForTemplates(
-  namespaces?: ConfigNamespaceInterface[]
+  namespaces?: ConfigNamespaceInterface[],
 ): NamespaceTemplateData[] | undefined {
   if (namespaces) {
     return namespaces.map(parseNamespaceForTemplate);
@@ -219,7 +219,7 @@ export const Scaffold: ScaffoldConstructor = class Scaffold implements ScaffoldI
     return writeFile(
       path.resolve(process.cwd(), DEFAULT_CONFIG_FILE),
       fileContent,
-      READ_WRITE_FILE_OPTIONS
+      READ_WRITE_FILE_OPTIONS,
     );
   }
 

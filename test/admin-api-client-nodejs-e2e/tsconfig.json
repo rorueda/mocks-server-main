@@ -10,13 +10,13 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "useDefineForClassFields": true,
-    "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "noUnusedParameters": true,
     "strictPropertyInitialization": false,
     "paths": {
       "@mocks-server/admin-api-client": ["../../packages/admin-api-client"]
-    }
+    },
+    "skipLibCheck": true
   },
   "include": [
     "src/typescript/**/*"

@@ -89,7 +89,7 @@ describe("Routes", () => {
         getPlainRoutes,
         getPlainVariants,
       },
-      coreMocks
+      coreMocks,
     );
   });
 
@@ -107,7 +107,7 @@ describe("Routes", () => {
             variants: [{ ...VALID_VARIANT, type: "json", delay: 5000 }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
       const routeVariants = routes.get();
 
@@ -123,7 +123,7 @@ describe("Routes", () => {
             variants: [{ ...VALID_VARIANT, type: "json" }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
       const routeVariants = routes.get();
 
@@ -138,7 +138,7 @@ describe("Routes", () => {
             variants: [{ ...VALID_VARIANT, type: "json" }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
       const routeVariants = routes.get();
 
@@ -152,7 +152,7 @@ describe("Routes", () => {
             id: "foo-route",
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -161,7 +161,7 @@ describe("Routes", () => {
 
       expect(alerts.flat[0].id).toEqual("foo:load:foo-route:validation");
       expect(alerts.flat[0].message).toEqual(
-        "Route with id 'foo-route' is invalid:  must have required property 'variants'"
+        "Route with id 'foo-route' is invalid:  must have required property 'variants'",
       );
     });
 
@@ -172,7 +172,7 @@ describe("Routes", () => {
             variants: [{ disabled: true }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
       const routeVariants = routes.get();
 
@@ -194,7 +194,7 @@ describe("Routes", () => {
             variants: [{ ...VALID_VARIANT, options: { foo: "bar" } }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -203,7 +203,7 @@ describe("Routes", () => {
 
       expect(alerts.flat[0].id).toEqual("foo:load:foo-route:variants:foo-variant:validation");
       expect(alerts.flat[0].message).toEqual(
-        "Variant with id 'foo-variant' in route with id 'foo-route' is invalid: Invalid 'options' property: must have required property 'body'"
+        "Variant with id 'foo-variant' in route with id 'foo-route' is invalid: Invalid 'options' property: must have required property 'body'",
       );
     });
 
@@ -216,7 +216,7 @@ describe("Routes", () => {
             variants: [{ id: "foo-variant" }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -240,7 +240,7 @@ describe("Routes", () => {
             variants: [{ ...VALID_VARIANT, disabled: true }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -264,7 +264,7 @@ describe("Routes", () => {
             variants: [{ id: "foo-variant", disabled: true }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -281,7 +281,7 @@ describe("Routes", () => {
             variants: [VALID_VARIANT],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
       const routeVariants = routes.get();
 
@@ -303,7 +303,7 @@ describe("Routes", () => {
             variants: [{ id: "foo-variant" }],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -332,7 +332,7 @@ describe("Routes", () => {
           },
           {},
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
       const routeVariants = routes.get();
 
@@ -357,7 +357,7 @@ describe("Routes", () => {
             variants: [VALID_VARIANT],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -366,7 +366,7 @@ describe("Routes", () => {
 
       expect(alerts.flat[0].id).toEqual("foo:load:foo-route:duplicated");
       expect(alerts.flat[0].message).toEqual(
-        "Route with duplicated id 'foo-route' detected. It has been ignored"
+        "Route with duplicated id 'foo-route' detected. It has been ignored",
       );
     });
 
@@ -378,7 +378,7 @@ describe("Routes", () => {
             variants: [VALID_VARIANT, VALID_VARIANT],
           },
         ],
-        [VariantHandlerJson]
+        [VariantHandlerJson],
       );
 
       const routeVariants = routes.get();
@@ -387,7 +387,7 @@ describe("Routes", () => {
 
       expect(alerts.flat[0].id).toEqual("foo:load:foo-route:variants:foo-variant:duplicated");
       expect(alerts.flat[0].message).toEqual(
-        "Route variant with duplicated id 'foo-variant' detected in route 'foo-route'. It has been ignored"
+        "Route variant with duplicated id 'foo-variant' detected in route 'foo-route'. It has been ignored",
       );
     });
 
@@ -400,7 +400,7 @@ describe("Routes", () => {
             variants: [{ ...VALID_VARIANT, type: "foo-handler" }],
           },
         ],
-        [FooHandler]
+        [FooHandler],
       );
       const routeVariants = routes.get();
 

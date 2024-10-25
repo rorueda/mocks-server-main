@@ -230,7 +230,7 @@ describe("server", () => {
       hostOption.value = "foo";
       await wait(1000);
       const error = await doApiFetch("/config", { port: 3103 }).catch((err) =>
-        Promise.resolve(err)
+        Promise.resolve(err),
       );
 
       expect(error.message).toEqual(expect.stringContaining("ECONNREFUSED"));
@@ -244,7 +244,7 @@ describe("server", () => {
       await wait(3000);
 
       const error = await doApiFetch("/config", { port: 3103 }).catch((err) =>
-        Promise.resolve(err)
+        Promise.resolve(err),
       );
 
       expect(error.message).toEqual(expect.stringContaining("ECONNREFUSED"));

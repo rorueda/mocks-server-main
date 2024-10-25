@@ -22,16 +22,16 @@ describe("programmatic", () => {
       await expect(
         config.init({
           fooNamespace: { fooOption: false },
-        })
-      ).rejects.toThrowError("fooOption");
+        }),
+      ).rejects.toThrow("fooOption");
     });
 
     it("should throw when config does not pass validation when calling to start", async () => {
       await expect(
         config.load({
           fooNamespace: { fooOption: false },
-        })
-      ).rejects.toThrowError("fooOption");
+        }),
+      ).rejects.toThrow("fooOption");
     });
 
     it("should throw when option of type array does not pass validation when calling to start", async () => {
@@ -46,8 +46,8 @@ describe("programmatic", () => {
       await expect(
         config.load({
           fooNamespace: { fooOption: "foo" },
-        })
-      ).rejects.toThrowError("fooOption");
+        }),
+      ).rejects.toThrow("fooOption");
     });
 
     it("should throw when contents of option of type array do not pass validation when calling to start", async () => {
@@ -63,8 +63,8 @@ describe("programmatic", () => {
       await expect(
         config.load({
           fooNamespace: { fooOption: [1, 2, "3", 5] },
-        })
-      ).rejects.toThrowError("fooOption");
+        }),
+      ).rejects.toThrow("fooOption");
     });
 
     it("option should get value from it", async () => {

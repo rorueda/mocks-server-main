@@ -37,11 +37,12 @@
     "@mocks-server/core": "5.0.0-beta.3"
   },
   "dependencies": {
-    "express-http-proxy": "1.6.3"
+    "express-http-proxy": "2.1.1"
   },
   "devDependencies": {
     "@mocks-server/core": "workspace:*",
-    "@types/express-http-proxy": "1.6.3"
+    "@types/express": "5.0.0",
+    "@types/express-http-proxy": "1.6.6"
   },
   "engines": {
     "node": ">=14.0.0"

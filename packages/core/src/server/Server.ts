@@ -99,39 +99,39 @@ export const Server: ServerConstructor = class Server implements ServerInterface
     const corsConfigNamespace = this._config.addNamespace(CORS_NAMESPACE);
     const jsonBodyParserConfigNamespace = this._config.addNamespace(JSON_BODY_PARSER_NAMESPACE);
     const formBodyParserConfigNamespace = this._config.addNamespace(
-      URL_ENCODED_BODY_PARSER_NAMESPACE
+      URL_ENCODED_BODY_PARSER_NAMESPACE,
     );
     const httpsConfigNamespace = this._config.addNamespace(HTTPS_NAMESPACE);
 
     [this._portOption, this._hostOption] = this._config.addOptions(OPTIONS) as [
       OptionInterfaceOfType<number, { hasDefault: true }>,
-      OptionInterfaceOfType<string, { hasDefault: true }>
+      OptionInterfaceOfType<string, { hasDefault: true }>,
     ];
 
     [this._corsEnabledOption, this._corsOptionsOption] = corsConfigNamespace.addOptions(
-      CORS_OPTIONS
+      CORS_OPTIONS,
     ) as [
       OptionInterfaceOfType<boolean, { hasDefault: true }>,
-      OptionInterfaceOfType<CorsOptions, { hasDefault: true }>
+      OptionInterfaceOfType<CorsOptions, { hasDefault: true }>,
     ];
 
     [this._jsonBodyParserEnabledOption, this._jsonBodyParserOptionsOption] =
       jsonBodyParserConfigNamespace.addOptions(JSON_BODY_PARSER_OPTIONS) as [
         OptionInterfaceOfType<boolean, { hasDefault: true }>,
-        OptionInterfaceOfType<OptionsJson, { hasDefault: true }>
+        OptionInterfaceOfType<OptionsJson, { hasDefault: true }>,
       ];
 
     [this._urlEncodedBodyParserEnabledOption, this._urlEncodedBodyParserOptionsOption] =
       formBodyParserConfigNamespace.addOptions(URL_ENCODED_BODY_PARSER_OPTIONS) as [
         OptionInterfaceOfType<boolean, { hasDefault: true }>,
-        OptionInterfaceOfType<OptionsUrlencoded, { hasDefault: true }>
+        OptionInterfaceOfType<OptionsUrlencoded, { hasDefault: true }>,
       ];
 
     [this._httpsEnabledOption, this._httpsCertOption, this._httpsKeyOption] =
       httpsConfigNamespace.addOptions(HTTPS_OPTIONS) as [
         OptionInterfaceOfType<boolean, { hasDefault: true }>,
         OptionInterfaceOfType<string>,
-        OptionInterfaceOfType<string>
+        OptionInterfaceOfType<string>,
       ];
 
     this.restart = this.restart.bind(this);
@@ -287,7 +287,7 @@ export const Server: ServerConstructor = class Server implements ServerInterface
           cert: readFileSync(this._httpsCertOption.value as string),
           key: readFileSync(this._httpsKeyOption.value as string),
         },
-        this._express
+        this._express,
       );
     } catch (error) {
       this._alerts.set(HTTPS_ALERT_ID, "Error creating HTTPS server", error as Error);
@@ -337,7 +337,7 @@ export const Server: ServerConstructor = class Server implements ServerInterface
           this._serverStarted = true;
           this._serverStartingPromise = undefined;
           resolve();
-        }
+        },
       );
     } catch (error) {
       this._alerts.set(START_ALERT_ID, START_ERROR_MESSAGE, error as Error);

@@ -79,7 +79,7 @@ export interface VariantHandlerFileConstructor extends VariantHandlerConstructor
    */
   new (
     options: VariantHandlerFileOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerFileInterface;
 }
 

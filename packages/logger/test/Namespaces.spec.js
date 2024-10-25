@@ -42,13 +42,13 @@ describe("Namespaces", () => {
         namespace.info("Hello world");
 
         expect(cleanLogs(console.log.getCall(0).args[0])).toEqual(
-          formattedLog("foo-label:foo-label-2", "info", "Hello world")
+          formattedLog("foo-label:foo-label-2", "info", "Hello world"),
         );
       });
 
       it("should have label composed by all its ancestor labels", () => {
         expect(namespace.namespace("foo-label-3").label).toEqual(
-          "foo-label:foo-label-2:foo-label-3"
+          "foo-label:foo-label-2:foo-label-3",
         );
       });
 
@@ -57,7 +57,7 @@ describe("Namespaces", () => {
         childNamespace.info("Foo");
 
         expect(cleanLogs(console.log.getCall(0).args[0])).toEqual(
-          formattedLog("foo-label:foo-label-2:foo-label-4", "info", "Foo")
+          formattedLog("foo-label:foo-label-2:foo-label-4", "info", "Foo"),
         );
       });
     });
@@ -94,7 +94,7 @@ describe("Namespaces", () => {
         logger.info("Hello world");
 
         expect(cleanLogs(console.log.getCall(0).args[0])).toEqual(
-          formattedLog("", "info", "Hello world")
+          formattedLog("", "info", "Hello world"),
         );
       });
     });
@@ -108,7 +108,7 @@ describe("Namespaces", () => {
         namespace.info("Hello world");
 
         expect(cleanLogs(console.log.getCall(0).args[0])).toEqual(
-          formattedLog("foo-label-2", "info", "Hello world")
+          formattedLog("foo-label-2", "info", "Hello world"),
         );
       });
     });

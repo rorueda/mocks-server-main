@@ -75,7 +75,7 @@ const formatStore = winston.format.printf(template);
 function createArrayTransport(
   store: LogsStore,
   defaultLevel: LogLevel,
-  storeLimit: LogsStoreLimit
+  storeLimit: LogsStoreLimit,
 ): LoggerTransports.LogsArray {
   return new ArrayTransport({
     array: store,
@@ -87,7 +87,7 @@ function createArrayTransport(
 }
 
 function createConsoleTransport(
-  defaultLevel: LogLevel
+  defaultLevel: LogLevel,
 ): winston.transports.ConsoleTransportInstance {
   return new winston.transports.Console({
     level: defaultLevel,
@@ -99,7 +99,7 @@ function createTransports(
   store: LogsStore,
   defaultLevel: LogLevel,
   storeLimit: LogsStoreLimit,
-  globalStoreTransport: LoggerTransports.LogsArray
+  globalStoreTransport: LoggerTransports.LogsArray,
 ): LoggerTransports.Winston {
   return {
     [TRANSPORT_CONSOLE]: createConsoleTransport(defaultLevel),
@@ -143,7 +143,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
       storeLimit = DEFAULT_STORE_LIMIT,
       globalStoreLimit = DEFAULT_STORE_LIMIT,
     }: LoggerOptions = {},
-    { parent, root, globalStore, globalStoreTransport }: LoggerPrivateOptions = {}
+    { parent, root, globalStore, globalStoreTransport }: LoggerPrivateOptions = {},
   ) {
     this._parent = parent;
     this._root = root || this;
@@ -161,7 +161,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
       this._store,
       defaultLevel,
       storeLimit,
-      this._globalStoreTransport
+      this._globalStoreTransport,
     );
 
     this._container = new winston.Container();
@@ -244,7 +244,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
 
   public _setLevelFromParent(
     level: LogLevel,
-    { transport, forcePropagation = false }: LoggerSetLevel.Options
+    { transport, forcePropagation = false }: LoggerSetLevel.Options,
   ): void {
     if (!this._pinnedLevel || forcePropagation) {
       this._set(level, { transport, forcePropagation });
@@ -253,7 +253,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
 
   private _setWinstonTransportLevel(
     level: LogLevel,
-    transport: LoggerTransports.WinstonType
+    transport: LoggerTransports.WinstonType,
   ): void {
     if (level === LEVEL_SILENT) {
       this._transports[transport].silent = true;
@@ -270,7 +270,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
       pinned = false,
       fromBaseLevel = false,
       forcePropagation = false,
-    }: LoggerSetLevel.TransportOptions
+    }: LoggerSetLevel.TransportOptions,
   ): void {
     if (
       forcePropagation ||
@@ -287,7 +287,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
 
   private _setBaseLevel(
     level: LogLevel,
-    { pinned = false, forcePropagation }: LoggerSetLevel.BaseOptions
+    { pinned = false, forcePropagation }: LoggerSetLevel.BaseOptions,
   ): void {
     this._level = level;
     this._pinnedLevel = pinned;
@@ -298,7 +298,7 @@ export const Logger: LoggerConstructor = class Logger implements LoggerInterface
 
   private _set(
     level: LogLevel,
-    { transport, propagate = true, forcePropagation, pinned }: LoggerSetLevel.Options = {}
+    { transport, propagate = true, forcePropagation, pinned }: LoggerSetLevel.Options = {},
   ): void {
     if (transport) {
       this._setTransportLevel(level, transport, { pinned, forcePropagation });

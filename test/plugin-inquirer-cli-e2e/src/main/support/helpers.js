@@ -102,7 +102,7 @@ const mocksRunner = (args = [], options = {}) => {
       ...defaultMocksRunnerOptions,
       ...options,
     },
-    wait
+    wait,
   );
 };
 

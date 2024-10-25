@@ -14,7 +14,7 @@ import type { HTTPMethod } from "../../server/types";
 declare global {
   //eslint-disable-next-line @typescript-eslint/no-namespace
   namespace MocksServer {
-    //eslint-disable-next-line @typescript-eslint/no-empty-interface
+    //eslint-disable-next-line @typescript-eslint/no-empty-object-type
     interface VariantHandlerOptionsByType {}
 
     type VariantDefinitionId = string;

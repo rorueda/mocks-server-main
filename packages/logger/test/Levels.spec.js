@@ -32,7 +32,7 @@ describe("Levels", () => {
       logger[level]("Hello world");
 
       expect(cleanLogs(console.log.getCall(0).args[0])).toEqual(
-        formattedLog(LABEL, level, "Hello world")
+        formattedLog(LABEL, level, "Hello world"),
       );
     });
   }

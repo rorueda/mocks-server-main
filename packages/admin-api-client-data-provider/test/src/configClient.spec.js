@@ -1,4 +1,4 @@
-import sinon from "sinon";
+import { createSandbox } from "sinon";
 import { providers } from "@data-provider/core";
 import { BASE_PATH } from "@mocks-server/admin-api-paths";
 
@@ -12,7 +12,7 @@ describe("configClient method", () => {
   let sandbox;
 
   beforeAll(() => {
-    sandbox = sinon.createSandbox();
+    sandbox = createSandbox();
     sandbox.spy(providers.getByTag(TAG), "config");
   });
 
@@ -27,7 +27,7 @@ describe("configClient method", () => {
     });
 
     expect(providers.getByTag(TAG).config.getCall(0).args[0].baseUrl).toEqual(
-      `http://${HOST}:${PORT}${BASE_PATH}`
+      `http://${HOST}:${PORT}${BASE_PATH}`,
     );
   });
 });

@@ -96,6 +96,6 @@ export function replaceNonSerializableValues<Type>(object: Type): Type {
         return `[${typeOfNonSerializable(value)}]`;
       }
       return value;
-    })
+    }),
   );
 }

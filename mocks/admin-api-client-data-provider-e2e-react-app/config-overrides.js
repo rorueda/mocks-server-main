@@ -18,7 +18,7 @@ function removeEslintPlugin(config) {
 module.exports = (config) => {
   removeEslintPlugin(config);
   config.resolve.plugins = config.resolve.plugins.filter(
-    (plugin) => !(plugin instanceof ModuleScopePlugin)
+    (plugin) => !(plugin instanceof ModuleScopePlugin),
   );
   /* config.resolve.alias = {
     ...config.resolve.alias,

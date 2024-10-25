@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "outDir": "./dist-tsc",
+    "outDir": "./dist",
     "declaration": true,
     "target": "es6",
     "strict": true,
@@ -10,11 +10,11 @@
     "moduleResolution": "node",
     "module": "ESNext",
     "useDefineForClassFields": true,
-    "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "noUnusedParameters": true,
     "isolatedModules": true,
-    "types": ["node"]
+    "types": ["node"],
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"

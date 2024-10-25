@@ -21,16 +21,16 @@
     "access": "public"
   },
   "files": [
-    "dist",
-    "dist-tsc"
+    "dist"
   ],
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist-tsc/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && rollup --config",
     "test:unit": "jest"
   },
+  "type": "module",
   "engines": {
     "node": ">=14.x"
   }

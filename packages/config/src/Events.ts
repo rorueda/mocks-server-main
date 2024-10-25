@@ -7,7 +7,7 @@ import type { EventListener, EventListenerRemover } from "./Events.types";
 export function addEventListener<DataType>(
   listener: EventListener<DataType>,
   eventName: string,
-  eventEmitter: EventEmitter
+  eventEmitter: EventEmitter,
 ): EventListenerRemover {
   const removeCallback = (): void => {
     eventEmitter.removeListener(eventName, listener);

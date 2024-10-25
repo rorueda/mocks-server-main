@@ -9,11 +9,11 @@
     "moduleResolution": "node",
     "module": "CommonJS",
     "useDefineForClassFields": true,
-    "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "noUnusedParameters": true,
     "isolatedModules": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"

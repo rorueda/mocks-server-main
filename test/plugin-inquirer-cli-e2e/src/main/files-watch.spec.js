@@ -177,7 +177,7 @@ describe("files watcher", () => {
       expect(mocks.currentScreen).toEqual(expect.stringContaining("Error: [files:load"));
       expect(mocks.currentScreen).toEqual(expect.stringContaining("Error loading file"));
       expect(mocks.currentScreen).toEqual(
-        expect.stringContaining(`collections.js: foo is not defined`)
+        expect.stringContaining(`collections.js: foo is not defined`),
       );
       expect(mocks.currentScreen).toEqual(expect.stringContaining(`collections.js:11:18`));
     });
@@ -223,7 +223,7 @@ describe("files watcher", () => {
       expect.assertions(2);
       expect(mocks.currentScreen).toEqual(expect.not.stringContaining("ALERTS"));
       expect(mocks.currentScreen).toEqual(
-        expect.stringContaining("[error][alerts:files:load] Error loading file")
+        expect.stringContaining("[error][alerts:files:load] Error loading file"),
       );
     });
 

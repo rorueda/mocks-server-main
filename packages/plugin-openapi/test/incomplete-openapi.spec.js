@@ -52,6 +52,6 @@ describe("when openapi has not enough properties", () => {
   checkOnlyUsersIdRouteIsAvailable("response media examples is empty", "empty-examples");
   checkOnlyUsersIdRouteIsAvailable(
     "response media example or example value is empty",
-    "empty-example"
+    "empty-example",
   );
 });

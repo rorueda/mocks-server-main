@@ -101,6 +101,9 @@ export interface FilesInterface {
   /** Base path where file loaders can load files from */
   get path(): string;
 
+  /** Returns registered files loaders **/
+  get loaders(): FilesLoaders;
+
   /**
    * Initialize files instance. Create default collections and routes loaders and load files
    * @example await files.init();
@@ -131,7 +134,4 @@ export interface FilesInterface {
    * @example const filesLoader = files.createLoader({ id, src, onLoad });
    */
   createLoader(options: CreateFilesLoaderOptions): FilesLoaderInterface;
-
-  /** Returns registered files loaders **/
-  get loaders(): FilesLoaders;
 }

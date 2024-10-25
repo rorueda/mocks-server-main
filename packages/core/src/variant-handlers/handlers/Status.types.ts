@@ -48,7 +48,7 @@ export interface VariantHandlerStatusConstructor extends VariantHandlerConstruct
    */
   new (
     options: VariantHandlerStatusOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerStatusInterface;
 }
 

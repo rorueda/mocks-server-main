@@ -48,7 +48,7 @@ export const UpdateNotifier: UpdateNotifierConstructor = class UpdateNotifier
     if (this._notifier.update) {
       this._alerts.set(
         "out-of-date",
-        `Update available: ${this._package.name}@${this._notifier.update.latest}`
+        `Update available: ${this._package.name}@${this._notifier.update.latest}`,
       );
     }
   }

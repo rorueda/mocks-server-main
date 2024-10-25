@@ -56,14 +56,14 @@ function modelMiddleware<Item extends ApiEntityItem, ParsedItem extends ApiEntit
 
 export function addCollectionMiddleware<Item extends ApiEntityItem>(
   router: Router,
-  options: CollectionMiddlewareOptions<Item>
+  options: CollectionMiddlewareOptions<Item>,
 ) {
   router.get("/", collectionMiddleware<Item>(options));
 }
 
 export function addModelMiddleware<Item extends ApiEntityItem, ParsedItem extends ApiEntityItem>(
   router: Router,
-  options: ModelMiddlewareOptions<Item, ParsedItem>
+  options: ModelMiddlewareOptions<Item, ParsedItem>,
 ) {
   router.get("/:id", modelMiddleware<Item, ParsedItem>(options));
 }

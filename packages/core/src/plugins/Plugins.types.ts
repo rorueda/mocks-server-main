@@ -135,4 +135,4 @@ export interface PluginInterface {
   stop?: PluginLifeCycleMethod;
 }
 
-export interface PluginWithError extends PluginInterface {} // eslint-disable-line @typescript-eslint/no-empty-interface
+export interface PluginWithError extends PluginInterface {} // eslint-disable-line @typescript-eslint/no-empty-object-type

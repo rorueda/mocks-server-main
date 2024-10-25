@@ -22,7 +22,7 @@ async function generateCerts() {
     ],
     {
       cwd: path.resolve(__dirname, ".."),
-    }
+    },
   );
   await runner.hasExited();
 }

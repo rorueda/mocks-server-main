@@ -72,7 +72,7 @@ const startServer = async (mocksPath, options = {}) => {
         },
       },
       options,
-    ])
+    ]),
   );
   await core.start();
   return core;

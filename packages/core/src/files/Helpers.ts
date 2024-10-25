@@ -13,7 +13,7 @@ import path from "path";
 import type { RegisterOptions } from "@babel/register";
 import { readFile } from "fs-extra";
 import { flatten, uniq } from "lodash";
-import yaml from "yaml";
+import { parse } from "yaml";
 
 import type { FileLoaded, ErrorLoadingFile } from "./FilesLoader.types";
 
@@ -37,14 +37,14 @@ function getGlobulePatterns(src: string | string[], extensions: string[]): strin
     flatten(
       srcs.map((srcGlob) => {
         return extensionsGlobulePatterns(srcGlob, extensions);
-      })
-    )
+      }),
+    ),
   );
 }
 
 function getFilesExtensions(
   babelRegister: boolean,
-  babelRegisterOptions: RegisterOptions
+  babelRegisterOptions: RegisterOptions,
 ): string[] {
   if (babelRegister) {
     if (babelRegisterOptions.extensions) {
@@ -58,13 +58,13 @@ function getFilesExtensions(
 export function getFilesGlobule(
   src: string | string[],
   babelRegister: boolean,
-  babelRegisterOptions: RegisterOptions
+  babelRegisterOptions: RegisterOptions,
 ) {
   return getGlobulePatterns(src, uniq(getFilesExtensions(babelRegister, babelRegisterOptions)));
 }
 
 export function babelRegisterOnlyFilter(
-  collectionsFolder: string
+  collectionsFolder: string,
 ): (filePath?: string) => boolean {
   return (filePath?: string): boolean => {
     return filePath ? filePath.indexOf(collectionsFolder) === 0 : false;
@@ -73,7 +73,7 @@ export function babelRegisterOnlyFilter(
 
 export function babelRegisterDefaultOptions(
   collectionsFolder: string,
-  babelRegisterOptions: RegisterOptions
+  babelRegisterOptions: RegisterOptions,
 ): RegisterOptions {
   return {
     only: [babelRegisterOnlyFilter(collectionsFolder)],
@@ -96,7 +96,7 @@ export function isYamlFile(filePath: string): boolean {
 
 export function readYamlFile(filePath: string): Promise<unknown> {
   return readFile(filePath, "utf8").then((fileContent) => {
-    return yaml.parse(fileContent);
+    return parse(fileContent);
   });
 }
 

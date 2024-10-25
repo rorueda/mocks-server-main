@@ -34,7 +34,7 @@ export const HTTPS_NAMESPACE = "https";
 export const HTTPS_OPTIONS: [
   HttpsProtocolOptionDefinition,
   HttpsCertOptionDefinition,
-  HttpsKeyOptionDefinition
+  HttpsKeyOptionDefinition,
 ] = [
   {
     description: "Use https protocol or not",
@@ -78,7 +78,7 @@ export const JSON_BODY_PARSER_NAMESPACE = "jsonBodyParser";
 
 export const JSON_BODY_PARSER_OPTIONS: [
   JsonBodyParserEnabledOptionDefinition,
-  JsonBodyParserOptionsOptionDefinition
+  JsonBodyParserOptionsOptionDefinition,
 ] = [
   {
     description: "Use json body-parser middleware or not",
@@ -99,7 +99,7 @@ export const URL_ENCODED_BODY_PARSER_NAMESPACE = "urlEncodedBodyParser";
 
 export const URL_ENCODED_BODY_PARSER_OPTIONS: [
   UrlEncodedBodyParserEnabledOptionDefinition,
-  UrlEncodedBodyParserOptionsOptionDefinition
+  UrlEncodedBodyParserOptionsOptionDefinition,
 ] = [
   {
     description: "Use urlencoded body-parser middleware or not",

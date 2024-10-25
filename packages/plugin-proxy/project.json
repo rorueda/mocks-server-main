@@ -1,5 +1,5 @@
 {
-  "root": "packages/plugin-proxy/",
+  "root": "packages/plugin-proxy",
   "projectType": "library",
   "tags": ["type:lib"]
 }

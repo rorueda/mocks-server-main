@@ -65,7 +65,7 @@ export const Mock: MockConstructor = class Mock implements MockInterface {
         config: this._config.addNamespace(Routes.id),
         onChange: this._reloadRouter,
       },
-      core
+      core,
     );
 
     this._collections = new Collections({

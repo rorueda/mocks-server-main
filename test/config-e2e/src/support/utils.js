@@ -61,8 +61,8 @@ function logNamespace(namespace) {
     console.log(
       `${LOG_OPTION_START}${logScope(namespace, option.name)}:${option.type}:${parseValue(
         valueType,
-        option.value
-      )}${LOG_OPTION_END}`
+        option.value,
+      )}${LOG_OPTION_END}`,
     );
   });
   logNamespaces(namespace.namespaces);

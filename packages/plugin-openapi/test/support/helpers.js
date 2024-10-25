@@ -59,7 +59,7 @@ export async function startServer(fixturePath, options = {}) {
         },
       },
       options,
-    ])
+    ]),
   );
   await core.start();
   return core;

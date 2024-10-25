@@ -87,7 +87,7 @@ describe("environment", () => {
         type: "object",
       });
 
-      await expect(config.init()).rejects.toThrowError("fooOption");
+      await expect(config.init()).rejects.toThrow("fooOption");
     });
 
     it("should return object value if option is of type object", async () => {
@@ -130,7 +130,7 @@ describe("environment", () => {
         itemsType: "number",
       });
 
-      await expect(config.init()).rejects.toThrowError("fooOption");
+      await expect(config.init()).rejects.toThrow("fooOption");
     });
 
     it("should return object value if option is of type object when added after init method", async () => {

@@ -1,8 +1,8 @@
 {
-  "root": "test/plugin-inquirer-cli-e2e/",
+  "root": "test/plugin-inquirer-cli-e2e",
   "projectType": "application",
   "implicitDependencies": [
-    "plugin-inquirer-cli"
+    "@mocks-server/plugin-inquirer-cli"
   ],
   "tags": ["type:test"]
 }

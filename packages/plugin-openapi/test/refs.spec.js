@@ -256,7 +256,7 @@ describe("when openapi has refs", () => {
         expect(alert.id).toEqual("plugins:openapi:documents:0");
         expect(alert.message).toEqual("Error resolving openapi $ref");
         expect(alert.error.message).toEqual(
-          "JSON Pointer points to missing location: #/componednts/pathItems/Users"
+          "JSON Pointer points to missing location: #/componednts/pathItems/Users",
         );
       });
     });
@@ -310,7 +310,7 @@ describe("when openapi has refs", () => {
         expect(alert.id).toEqual("plugins:openapi:documents:0");
         expect(alert.message).toEqual("Error loading openapi definition");
         expect(alert.error.message).toEqual(
-          "options.subDocPath must be an Array of path segments or a valid JSON Pointer"
+          "options.subDocPath must be an Array of path segments or a valid JSON Pointer",
         );
       });
     });

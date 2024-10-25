@@ -49,7 +49,7 @@ function getOptionGetter({
 
 function getCommanderOptionProperties(
   commanderOptionName: string,
-  option: OptionInterfaceGeneric
+  option: OptionInterfaceGeneric,
 ): BaseCommanderOptionProperties {
   const isBoolean = option.type === BOOLEAN_TYPE;
   const isArray = option.type === ARRAY_TYPE;
@@ -74,7 +74,7 @@ function getCommanderOptionName(namespace: ConfigNamespaceInterface, optionName:
 
 function commanderValueHasToBeIgnored(
   optionValue: unknown,
-  commanderOptionProperties: CommanderOptionProperties
+  commanderOptionProperties: CommanderOptionProperties,
 ): boolean {
   return (
     !commanderOptionProperties ||
@@ -97,7 +97,7 @@ export const CommandLineArguments: CommandLineArgumentsConstructor = class Comma
 
   public read(
     namespaces: ConfigNamespaceInterface[],
-    { allowUnknownOption }: ReadOptions
+    { allowUnknownOption }: ReadOptions,
   ): ConfigurationObject {
     const config = {};
 
@@ -123,7 +123,7 @@ export const CommandLineArguments: CommandLineArgumentsConstructor = class Comma
   private _createNamespaceInterfaceOptions(
     namespace: ConfigNamespaceInterface,
     command: Command,
-    optionsData: CommanderOptionsData
+    optionsData: CommanderOptionsData,
   ) {
     namespace.options.forEach((option) => {
       const commanderOptionName = getCommanderOptionName(namespace, option.name);
@@ -142,7 +142,7 @@ export const CommandLineArguments: CommandLineArgumentsConstructor = class Comma
   private _createNamespaceOptions(
     namespaces: ConfigNamespaceInterface[],
     command: Command,
-    optionsData: CommanderOptionsData
+    optionsData: CommanderOptionsData,
   ) {
     namespaces.forEach((namespace) => {
       this._createNamespaceInterfaceOptions(namespace, command, optionsData);
@@ -152,7 +152,7 @@ export const CommandLineArguments: CommandLineArgumentsConstructor = class Comma
   private _addLevelsToConfig(
     config: ConfigurationObject,
     levels: string[],
-    index = 0
+    index = 0,
   ): ConfigurationObject {
     if (index === levels.length) {
       return config;
@@ -161,14 +161,14 @@ export const CommandLineArguments: CommandLineArgumentsConstructor = class Comma
     return this._addLevelsToConfig(
       config[levels[index]] as ConfigurationObject,
       levels,
-      index + 1
+      index + 1,
     );
   }
 
   private _commanderResultsToConfigObject(
     results: UnknownObject,
     config: ConfigurationObject,
-    commanderOptionsData: CommanderOptionsData
+    commanderOptionsData: CommanderOptionsData,
   ) {
     Object.keys(results).forEach((optionName) => {
       const optionValue = results[optionName];

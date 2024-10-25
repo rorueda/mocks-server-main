@@ -71,7 +71,7 @@ export const Config: ConfigConstructor = class Config implements ConfigInterface
   private _config: ConfigurationObject;
 
   constructor(
-    { moduleName, mergeArrays = true }: ConfigOptions = { moduleName: "", mergeArrays: true }
+    { moduleName, mergeArrays = true }: ConfigOptions = { moduleName: "", mergeArrays: true },
   ) {
     this._initializated = false;
 
@@ -158,7 +158,7 @@ export const Config: ConfigConstructor = class Config implements ConfigInterface
       OptionInterfaceOfType<string>,
       OptionInterfaceOfType<Array<string>>,
       OptionInterfaceOfType<string>,
-      OptionInterfaceOfType<boolean, { hasDefault: true }>
+      OptionInterfaceOfType<boolean, { hasDefault: true }>,
     ];
   }
 
@@ -204,7 +204,7 @@ export const Config: ConfigConstructor = class Config implements ConfigInterface
 
   public validate(
     config: ConfigurationObject,
-    { allowAdditionalProperties = false }: ConfigValidationOptions = {}
+    { allowAdditionalProperties = false }: ConfigValidationOptions = {},
   ): ConfigValidationResult {
     return validateConfig(config, {
       namespaces: this._namespaces,
@@ -250,7 +250,7 @@ export const Config: ConfigConstructor = class Config implements ConfigInterface
   }
 
   public option(
-    name: OptionDefinitionGeneric["name"]
+    name: OptionDefinitionGeneric["name"],
   ): OptionInterface<OptionDefinitionGeneric> | undefined {
     return findObjectWithName(this._rootNamespace.options, name);
   }
@@ -297,7 +297,7 @@ export const Config: ConfigConstructor = class Config implements ConfigInterface
   private _mergeConfig(): void {
     this._config = deepMerge.all(
       [this._programmaticConfig, this._fileConfig, this._envConfig, this._argsConfig],
-      this._deepMergeOptions
+      this._deepMergeOptions,
     );
   }
 
@@ -321,7 +321,7 @@ export const Config: ConfigConstructor = class Config implements ConfigInterface
   }
 
   private async _load(
-    { allowUnknown }: LoadArgumentsOptions = { allowUnknown: false }
+    { allowUnknown }: LoadArgumentsOptions = { allowUnknown: false },
   ): Promise<void> {
     // Programmatic does not change, so we only load it in init method
     if (!this._initializated) {

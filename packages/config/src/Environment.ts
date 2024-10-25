@@ -14,7 +14,7 @@ function varSegment(segment: string): string {
 function envVarName(
   moduleName: string,
   namespace: ConfigNamespaceInterface,
-  optionName: string
+  optionName: string,
 ): string {
   return [moduleName, ...namespaceAndParentNames(namespace), optionName].map(varSegment).join("_");
 }
@@ -37,7 +37,7 @@ export const Environment: EnvironmentConstructor = class Environment
 
   private _loadFromEnv(
     namespace: ConfigNamespaceInterface,
-    optionName: string
+    optionName: string,
   ): string | undefined {
     return process.env[envVarName(this._moduleName, namespace, optionName)];
   }

@@ -1,4 +1,5 @@
 import { PROJECT_NAME } from "../constants.mjs";
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { copyWorkspaceFileToProject } from "../../../../scripts/projects/utils.js";
 
 async function copyDocs() {

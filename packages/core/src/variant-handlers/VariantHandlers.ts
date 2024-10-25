@@ -62,7 +62,7 @@ export const VariantHandlers: VariantHandlersConstructor = class VariantHandlers
     this._config = config;
 
     [this._registerOption] = this._config.addOptions(OPTIONS) as [
-      OptionInterfaceOfType<VariantHandlerConstructor[], { hasDefault: true }>
+      OptionInterfaceOfType<VariantHandlerConstructor[], { hasDefault: true }>,
     ];
   }
 
@@ -88,7 +88,7 @@ export const VariantHandlers: VariantHandlersConstructor = class VariantHandlers
     ];
     this.register(variantHandlersToRegister);
     this._logger.verbose(
-      `Registered ${variantHandlersToRegister.length} variant handlers without errors`
+      `Registered ${variantHandlersToRegister.length} variant handlers without errors`,
     );
 
     return Promise.resolve();

@@ -4,11 +4,11 @@ import { Config } from "../../src/Config";
 
 import { cosmiconfig } from "cosmiconfig";
 import { Command, Option } from "commander";
-import sinon from "sinon";
+import { createSandbox } from "sinon";
 
 function createConfigBeforeElements({ createNamespace = false } = {}) {
   let config, namespace, parentNamespace, option;
-  const sandbox = sinon.createSandbox();
+  const sandbox = createSandbox();
   const cosmiconfigStub = {
     search: sandbox.stub(),
   };

@@ -103,7 +103,7 @@ describe("alerts api", () => {
 
       expect(response.body.length).toEqual(5);
       expect(response.body[4].error.message).toEqual(
-        expect.stringContaining("Cannot find module '../db/users'")
+        expect.stringContaining("Cannot find module '../db/users'"),
       );
     });
   });

@@ -1,6 +1,6 @@
-import Ajv, { ValidateFunction, DefinedError } from "ajv";
+import { Ajv, ValidateFunction, DefinedError } from "ajv";
 import betterAjvErrors from "better-ajv-errors";
-import type { JSONSchema7TypeName, JSONSchema7, JSONSchema7Definition } from "json-schema";
+import type { JSONSchema7TypeName, JSONSchema7 } from "json-schema";
 import { isString, isNumber, isObject, isBoolean } from "lodash";
 
 import {
@@ -26,6 +26,7 @@ import type {
   ConfigValidationResult,
   GetValidationSchemaOptions,
   JSONSchema7WithUnknown,
+  JSONSchema7WithUnknownDefinition,
 } from "./Validation.types";
 
 const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
@@ -49,7 +50,7 @@ function enforceDefaultTypeSchema({
   itemsType?: OptionItemsType;
   nullable?: boolean;
 }): JSONSchema7WithUnknown {
-  const properties: { [key: string]: JSONSchema7 } = {
+  const properties: { [key: string]: JSONSchema7WithUnknown } = {
     name: { type: STRING_TYPE as JSONSchema7TypeName },
     type: { enum: [type] },
     nullable: { enum: [false] },
@@ -60,12 +61,12 @@ function enforceDefaultTypeSchema({
     },
   };
 
-  const schema: JSONSchema7 = {
+  const schema: JSONSchema7WithUnknown = {
     additionalProperties: false,
     required: ["name", "type", "nullable"],
   };
 
-  const defaultProperty: JSONSchema7 = {};
+  const defaultProperty: JSONSchema7WithUnknown = {};
 
   if (nullable) {
     if (type !== UNKNOWN_TYPE) {
@@ -199,7 +200,7 @@ const typeAndThrowValidators: TypeAndThrowValidators = {
 function validateSchema(
   config: UnknownObject | OptionDefinitionGeneric,
   schema: JSONSchema7,
-  validator?: ValidateFunction
+  validator?: ValidateFunction,
 ): ConfigValidationResult {
   const validateProperties = validator || ajv.compile(schema);
   const valid = validateProperties(config);
@@ -212,7 +213,7 @@ function validateSchema(
 function formatErrors(
   schema: JSONSchema7,
   data: UnknownObject | OptionDefinitionGeneric,
-  errors: DefinedError[]
+  errors: DefinedError[],
 ): string {
   const formattedJson = betterAjvErrors(schema, data, errors, {
     format: "js",
@@ -223,7 +224,7 @@ function formatErrors(
 function validateSchemaAndThrow(
   object: UnknownObject | OptionDefinitionGeneric,
   schema: JSONSchema7,
-  validator?: ValidateFunction
+  validator?: ValidateFunction,
 ): void | never {
   const { valid, errors } = validateSchema(object, schema, validator);
   if (!valid) {
@@ -238,10 +239,10 @@ function addNamespaceSchema(
     allowAdditionalProperties,
     removeCustomProperties,
   }: {
-    rootSchema?: JSONSchema7;
+    rootSchema?: JSONSchema7WithUnknown;
     allowAdditionalProperties: boolean;
     removeCustomProperties?: boolean;
-  }
+  },
 ): JSONSchema7WithUnknown {
   const initialSchema = rootSchema || emptySchema({ allowAdditionalProperties });
   const schema = namespace.options.reduce(
@@ -271,7 +272,7 @@ function addNamespaceSchema(
         if (option.itemsType !== UNKNOWN_TYPE) {
           properties[option.name].items = {
             type: option.itemsType,
-          } as JSONSchema7Definition;
+          } as JSONSchema7WithUnknownDefinition;
         } else {
           if (!removeCustomProperties) {
             properties[option.name].items = {
@@ -286,7 +287,7 @@ function addNamespaceSchema(
       };
       return currentSchema;
     },
-    initialSchema
+    initialSchema,
   );
   addNamespacesSchema(namespace.namespaces, {
     rootSchema: initialSchema,
@@ -303,31 +304,34 @@ function addNamespacesSchema(
     allowAdditionalProperties,
     removeCustomProperties,
   }: {
-    rootSchema: JSONSchema7;
+    rootSchema: JSONSchema7WithUnknown;
     allowAdditionalProperties: boolean;
     removeCustomProperties?: boolean;
-  }
+  },
 ): JSONSchema7WithUnknown {
-  return namespaces.reduce((currentSchema: JSONSchema7, namespace: ConfigNamespaceInterface) => {
-    const properties: { [key: string]: JSONSchema7WithUnknown } = {};
-    if (!namespace.isRoot) {
-      properties[namespace.name] = addNamespaceSchema(namespace, {
-        allowAdditionalProperties,
-        removeCustomProperties,
-      });
-    } else {
-      addNamespaceSchema(namespace, {
-        rootSchema: currentSchema,
-        allowAdditionalProperties,
-        removeCustomProperties,
-      });
-    }
-    currentSchema.properties = {
-      ...currentSchema.properties,
-      ...properties,
-    };
-    return currentSchema;
-  }, rootSchema);
+  return namespaces.reduce(
+    (currentSchema: JSONSchema7WithUnknown, namespace: ConfigNamespaceInterface) => {
+      const properties: { [key: string]: JSONSchema7WithUnknown } = {};
+      if (!namespace.isRoot) {
+        properties[namespace.name] = addNamespaceSchema(namespace, {
+          allowAdditionalProperties,
+          removeCustomProperties,
+        });
+      } else {
+        addNamespaceSchema(namespace, {
+          rootSchema: currentSchema,
+          allowAdditionalProperties,
+          removeCustomProperties,
+        });
+      }
+      currentSchema.properties = {
+        ...currentSchema.properties,
+        ...properties,
+      };
+      return currentSchema;
+    },
+    rootSchema,
+  );
 }
 
 function getConfigValidationSchema({
@@ -356,11 +360,11 @@ export function validateConfigAndThrow(
     namespaces: ConfigNamespaceInterface[];
     allowAdditionalProperties: boolean;
     removeCustomProperties?: boolean;
-  }
+  },
 ): void | never {
   validateSchemaAndThrow(
     config,
-    getConfigValidationSchema({ namespaces, allowAdditionalProperties, removeCustomProperties })
+    getConfigValidationSchema({ namespaces, allowAdditionalProperties, removeCustomProperties }),
   );
 }
 
@@ -374,11 +378,11 @@ export function validateConfig(
     namespaces: ConfigNamespaceInterface[];
     allowAdditionalProperties: boolean;
     removeCustomProperties?: boolean;
-  }
+  },
 ): ConfigValidationResult {
   return validateSchema(
     config,
-    getConfigValidationSchema({ namespaces, allowAdditionalProperties, removeCustomProperties })
+    getConfigValidationSchema({ namespaces, allowAdditionalProperties, removeCustomProperties }),
   );
 }
 
@@ -402,7 +406,7 @@ export function validateValueTypeAndThrow(
   value: unknown,
   type: OptionType,
   nullable?: boolean,
-  itemsType?: OptionItemsType
+  itemsType?: OptionItemsType,
 ): undefined | never {
   if ((nullable && value === null) || type === UNKNOWN_TYPE) {
     return;

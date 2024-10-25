@@ -1,7 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
-import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 
 const BASE_CONFIG = {
@@ -21,7 +20,7 @@ const BASE_PLUGINS = [
   }),
 ];
 
-module.exports = [
+export default [
   {
     ...BASE_CONFIG,
     output: {
@@ -54,11 +53,6 @@ module.exports = [
       }),
       commonjs({
         include: [/node_modules/],
-      }),
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        presets: ["@babel/env"],
       }),
       terser(),
     ],

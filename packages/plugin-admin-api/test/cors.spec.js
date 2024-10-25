@@ -28,7 +28,7 @@ describe("cors middleware", () => {
 
       expect(response.headers.get("access-control-allow-origin")).toEqual("*");
       expect(response.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
     });
 
@@ -37,7 +37,7 @@ describe("cors middleware", () => {
 
       expect(response.headers.get("access-control-allow-origin")).toEqual("*");
       expect(response.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
     });
   });
@@ -59,7 +59,7 @@ describe("cors middleware", () => {
 
       expect(response.headers.get("access-control-allow-origin")).toEqual("*");
       expect(response.headers.get("access-control-allow-methods")).toEqual(
-        "GET,HEAD,PUT,PATCH,POST,DELETE"
+        "GET,HEAD,PUT,PATCH,POST,DELETE",
       );
     });
 

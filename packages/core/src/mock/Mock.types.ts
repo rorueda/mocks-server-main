@@ -32,7 +32,7 @@ import type { RouteId, RoutesInterface } from "./routes/types";
 declare global {
   //eslint-disable-next-line @typescript-eslint/no-namespace
   namespace MocksServer {
-    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     interface ConfigMockNamespace {}
 
     interface Config {
@@ -83,6 +83,27 @@ export interface MockConstructor {
 }
 
 export interface MockInterface {
+  /** Returns routes object
+   * @returns Routes object {@link RoutesInterface}
+   */
+  get routes(): RoutesInterface;
+
+  /** Returns collections object
+   * @returns Collections object {@link CollectionsInterface}
+   */
+  get collections(): CollectionsInterface;
+
+  /** Returns definitions object
+   * @returns Definitions object {@link DefinitionsInterface}
+   */
+  get definitions(): DefinitionsInterface;
+
+  /** Returns legacy custom route variants
+   * @returns Array of route ids {@link RouteId[]}
+   * @deprecated Use mock.collections.current.customRouteIds instead
+   */
+  get customRouteVariants(): RouteId[];
+
   /** Express router with current collection routes
    * @param req - Request object {@link Request}
    * @param res - Response object {@link Response}
@@ -123,25 +144,4 @@ export interface MockInterface {
    * @returns Function to remove the listener {@link EventListenerRemover}
    * */
   onChange(listener: EventListener): EventListenerRemover;
-
-  /** Returns routes object
-   * @returns Routes object {@link RoutesInterface}
-   */
-  get routes(): RoutesInterface;
-
-  /** Returns collections object
-   * @returns Collections object {@link CollectionsInterface}
-   */
-  get collections(): CollectionsInterface;
-
-  /** Returns definitions object
-   * @returns Definitions object {@link DefinitionsInterface}
-   */
-  get definitions(): DefinitionsInterface;
-
-  /** Returns legacy custom route variants
-   * @returns Array of route ids {@link RouteId[]}
-   * @deprecated Use mock.collections.current.customRouteIds instead
-   */
-  get customRouteVariants(): RouteId[];
 }

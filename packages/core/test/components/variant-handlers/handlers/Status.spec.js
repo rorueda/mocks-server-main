@@ -86,7 +86,7 @@ describe("Status variant handler", () => {
       const FOO_HEADERS = { foo: "foo" };
       routesHandler = new VariantHandlerStatus(
         { ...FOO_VARIANT, headers: FOO_HEADERS },
-        coreInstance
+        coreInstance,
       );
       routesHandler.middleware(expressStubs.req, expressStubs.res, expressStubs.next);
 

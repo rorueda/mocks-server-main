@@ -328,7 +328,7 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
       renderHeader(
         `Current collection`,
         currentCollectionMessage,
-        getCurrentMockMessageLevel(this._mock.customRouteVariants, currentCollection)
+        getCurrentMockMessageLevel(this._mock.customRouteVariants, currentCollection),
       ),
       renderHeader(`Collections`, availableCollections, availableCollections < 1 ? 2 : 0),
       renderHeader(`Routes`, availableRoutes, availableRoutes < 1 ? 2 : 0),
@@ -381,7 +381,7 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
           return Promise.resolve(collectionsIds);
         }
         return Promise.resolve(
-          collectionsIds.filter((currentCollection) => currentCollection.includes(input))
+          collectionsIds.filter((currentCollection) => currentCollection.includes(input)),
         );
       },
     } as Partial<InquirerQuestion>);
@@ -424,7 +424,7 @@ export const Plugin: PluginConstructor = class Plugin implements PluginInterface
   private async _restartServer(): Promise<void> {
     try {
       await this._server.restart();
-    } catch (_err) {
+    } catch (_) {
       this._logger.error("Failed to restart server");
     }
     return this._displayMainMenu();

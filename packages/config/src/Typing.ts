@@ -38,7 +38,7 @@ export function typeIsObject(type?: OptionType): boolean {
 }
 
 export function optionIsObject(
-  optionInterface: OptionInterfaceGeneric
+  optionInterface: OptionInterfaceGeneric,
 ): optionInterface is OptionInterface<OptionObject> {
   return optionInterface.type === OBJECT_TYPE;
 }
@@ -48,13 +48,13 @@ export function typeIsArray(type?: OptionType): boolean {
 }
 
 export function optionIsArray(
-  option: OptionInterfaceGeneric
+  option: OptionInterfaceGeneric,
 ): option is OptionInterface<OptionArrayGeneric> {
   return typeIsArray(option.type);
 }
 
 function optionIsBoolean(
-  option: OptionInterfaceGeneric
+  option: OptionInterfaceGeneric,
 ): option is OptionInterface<OptionBoolean> {
   return typeIsBoolean(option.type);
 }
@@ -66,7 +66,7 @@ function doNothingParser(value: unknown): unknown {
 export function parseObject(value: string): UnknownObject | string {
   try {
     return JSON.parse(value);
-  } catch (error) {
+  } catch (_) {
     return value;
   }
 }
@@ -104,14 +104,14 @@ function ParseArrayContents(option: OptionInterface<OptionArrayGeneric>): ArrayV
 }
 
 export function getOptionParserWithBooleansAndArrays<T extends OptionInterfaceGeneric>(
-  option: T
+  option: T,
 ): T extends OptionInterface<OptionArrayGeneric>
   ? StringObjectParser
   : T extends OptionInterface<OptionBoolean>
-  ? BooleanParser
-  : ValueParser;
+    ? BooleanParser
+    : ValueParser;
 export function getOptionParserWithBooleansAndArrays(
-  option: OptionInterfaceGeneric
+  option: OptionInterfaceGeneric,
 ): ValueParser | StringObjectParser | BooleanParser {
   if (optionIsArray(option)) {
     return parseObject as ValueParser;
@@ -123,10 +123,10 @@ export function getOptionParserWithBooleansAndArrays(
 }
 
 export function getOptionParserWithArrayContents<T extends OptionInterfaceGeneric>(
-  option: T
+  option: T,
 ): T extends OptionInterface<OptionArrayGeneric> ? ArrayValueParser : ValueParser;
 export function getOptionParserWithArrayContents(
-  option: OptionInterfaceGeneric
+  option: OptionInterfaceGeneric,
 ): ArrayValueParser | ValueParser {
   if (optionIsArray(option)) {
     return ParseArrayContents(option);

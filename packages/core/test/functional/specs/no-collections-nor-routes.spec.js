@@ -29,13 +29,13 @@ describe("collection.selected setting when there are no collections", () => {
   describe("when loaded", () => {
     it("should have added an alert about no selected collection", () => {
       expect(findAlert("mock:collections:selected", core.alerts.flat).message).toEqual(
-        expect.stringContaining("Option 'mock.collections.selected' was not defined")
+        expect.stringContaining("Option 'mock.collections.selected' was not defined"),
       );
     });
 
     it("should have added an alert about no collections found", () => {
       expect(findAlert("mock:collections:empty", core.alerts.flat).message).toEqual(
-        expect.stringContaining("No collections found")
+        expect.stringContaining("No collections found"),
       );
     });
   });
@@ -51,7 +51,7 @@ describe("collection.selected setting when there are no collections", () => {
 
     it("should have not removed alert about no collections found", () => {
       expect(findAlert("mock:collections:empty", core.alerts.flat).message).toEqual(
-        expect.stringContaining("No collections found")
+        expect.stringContaining("No collections found"),
       );
     });
   });

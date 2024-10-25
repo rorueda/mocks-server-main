@@ -23,7 +23,7 @@ describe("with no behaviors", () => {
 
     expect(mocks.currentScreen).toEqual(expect.stringContaining("ALERTS"));
     expect(mocks.currentScreen).toEqual(
-      expect.stringContaining("Warning: [mock:collections:empty] No collections found")
+      expect.stringContaining("Warning: [mock:collections:empty] No collections found"),
     );
   });
 

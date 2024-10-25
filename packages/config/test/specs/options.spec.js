@@ -1,4 +1,4 @@
-import sinon from "sinon";
+import { spy as sinonSpy } from "sinon";
 
 import { createConfigBeforeElements, wait } from "../support/helpers";
 
@@ -242,7 +242,7 @@ describe("options", () => {
       option = namespace.addOption({ name: "fooOption", type: "string" });
 
       expect(() => namespace.addOption({ name: "fooOption", type: "string" })).toThrow(
-        "already exists"
+        "already exists",
       );
     });
 
@@ -251,7 +251,7 @@ describe("options", () => {
       option = config.addOption({ name: "fooOption", type: "string" });
 
       expect(() => config.addOption({ name: "fooOption", type: "string" })).toThrow(
-        "already exists"
+        "already exists",
       );
     });
 
@@ -261,7 +261,7 @@ describe("options", () => {
       namespace.addNamespace("fooOption");
 
       expect(() => namespace.addOption({ name: "fooOption", type: "string" })).toThrow(
-        "already exists"
+        "already exists",
       );
     });
 
@@ -288,9 +288,9 @@ describe("options", () => {
       config = new Config();
       namespace = config.addNamespace("foo");
 
-      expect(() =>
-        namespace.addOption({ name: "fooOption", type: "string", default: 5 })
-      ).toThrowError("default");
+      expect(() => namespace.addOption({ name: "fooOption", type: "string", default: 5 })).toThrow(
+        "default",
+      );
     });
 
     it("should not throw when type is unknown and default is string", async () => {
@@ -298,7 +298,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "unknown", default: "foo" })
+        namespace.addOption({ name: "fooOption", type: "unknown", default: "foo" }),
       ).not.toThrow();
     });
 
@@ -307,7 +307,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "unknown", default: 5 })
+        namespace.addOption({ name: "fooOption", type: "unknown", default: 5 }),
       ).not.toThrow();
     });
 
@@ -316,7 +316,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "unknown", default: [] })
+        namespace.addOption({ name: "fooOption", type: "unknown", default: [] }),
       ).not.toThrow();
     });
 
@@ -325,7 +325,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "unknown", default: {} })
+        namespace.addOption({ name: "fooOption", type: "unknown", default: {} }),
       ).not.toThrow();
     });
 
@@ -340,7 +340,7 @@ describe("options", () => {
           default: () => {
             // do nothing
           },
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -353,7 +353,7 @@ describe("options", () => {
           name: "fooOption",
           type: "unknown",
           default: false,
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -367,7 +367,7 @@ describe("options", () => {
           type: "array",
           itemsType: "unknown",
           default: ["foo"],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -381,7 +381,7 @@ describe("options", () => {
           type: "array",
           itemsType: "unknown",
           default: [5],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -395,7 +395,7 @@ describe("options", () => {
           type: "array",
           itemsType: "unknown",
           default: [[]],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -409,7 +409,7 @@ describe("options", () => {
           type: "array",
           itemsType: "unknown",
           default: [{}],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -427,7 +427,7 @@ describe("options", () => {
               // do nothing
             },
           ],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -441,7 +441,7 @@ describe("options", () => {
           type: "array",
           itemsType: "unknown",
           default: [false],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -464,7 +464,7 @@ describe("options", () => {
               // do nothing
             },
           ],
-        })
+        }),
       ).not.toThrow();
     });
 
@@ -478,8 +478,8 @@ describe("options", () => {
           type: "string",
           itemsType: "number",
           default: "foo",
-        })
-      ).toThrowError("itemsType");
+        }),
+      ).toThrow("itemsType");
     });
 
     it("should throw when type is array and default does not match type", async () => {
@@ -487,8 +487,8 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "array", default: "foo" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "array", default: "foo" }),
+      ).toThrow("default");
     });
 
     it("should throw when type is array and contents does not match itemsType", async () => {
@@ -501,8 +501,8 @@ describe("options", () => {
           type: "array",
           itemsType: "number",
           default: [1, "foo", 3],
-        })
-      ).toThrowError("default");
+        }),
+      ).toThrow("default");
     });
 
     it("should not throw when setting value if type is unknown and value is string", async () => {
@@ -549,7 +549,7 @@ describe("options", () => {
         () =>
           (opt.value = () => {
             // do nothing
-          })
+          }),
       ).not.toThrow();
     });
 
@@ -659,7 +659,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "array" });
 
-      expect(() => (option.value = 5)).toThrowError("5 is not of type array");
+      expect(() => (option.value = 5)).toThrow("5 is not of type array");
     });
 
     it("should throw when setting value if type is array and contents don't match string type", async () => {
@@ -667,7 +667,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "array", itemsType: "string" });
 
-      expect(() => (option.value = ["5", "4", 5, "2"])).toThrowError("5 is not of type string");
+      expect(() => (option.value = ["5", "4", 5, "2"])).toThrow("5 is not of type string");
     });
 
     it("should set value if type is array and contents match string type", async () => {
@@ -684,7 +684,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "array", itemsType: "number" });
 
-      expect(() => (option.value = [5, 4, "5", 1])).toThrowError("5 is not of type number");
+      expect(() => (option.value = [5, 4, "5", 1])).toThrow("5 is not of type number");
     });
 
     it("should set value if type is array and contents match number type", async () => {
@@ -701,9 +701,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "array", itemsType: "boolean" });
 
-      expect(() => (option.value = [false, true, 5, false])).toThrowError(
-        "5 is not of type boolean"
-      );
+      expect(() => (option.value = [false, true, 5, false])).toThrow("5 is not of type boolean");
     });
 
     it("should set value if type is array and contents match boolean type", async () => {
@@ -720,9 +718,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "array", itemsType: "object" });
 
-      expect(() => (option.value = [{ foo: "foo" }, "foo"])).toThrowError(
-        "foo is not of type object"
-      );
+      expect(() => (option.value = [{ foo: "foo" }, "foo"])).toThrow("foo is not of type object");
     });
 
     it("should set value if type is array and contents match object type", async () => {
@@ -739,7 +735,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "string" });
 
-      expect(() => (option.value = 5)).toThrowError("5 is not of type string");
+      expect(() => (option.value = 5)).toThrow("5 is not of type string");
     });
 
     it("should throw when type is number and default does not match type", async () => {
@@ -747,8 +743,8 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "number", default: "5" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "number", default: "5" }),
+      ).toThrow("default");
     });
 
     it("should throw when setting value if type is number and value does not match type", async () => {
@@ -756,7 +752,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "number" });
 
-      expect(() => (option.value = "foo")).toThrowError("foo is not of type number");
+      expect(() => (option.value = "foo")).toThrow("foo is not of type number");
     });
 
     it("should throw when type is object and default does not match type", async () => {
@@ -764,8 +760,8 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "object", default: "{}" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "object", default: "{}" }),
+      ).toThrow("default");
     });
 
     it("should throw when setting value if type is object and value does not match type", async () => {
@@ -773,7 +769,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "object" });
 
-      expect(() => (option.value = "foo")).toThrowError("foo is not of type object");
+      expect(() => (option.value = "foo")).toThrow("foo is not of type object");
     });
 
     it("should throw when type is boolean and default does not match type", async () => {
@@ -781,8 +777,8 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
 
       expect(() =>
-        namespace.addOption({ name: "fooOption", type: "boolean", default: "foo" })
-      ).toThrowError("default");
+        namespace.addOption({ name: "fooOption", type: "boolean", default: "foo" }),
+      ).toThrow("default");
     });
 
     it("should throw when setting value if type is boolean and value does not match type", async () => {
@@ -790,7 +786,7 @@ describe("options", () => {
       namespace = config.addNamespace("foo");
       option = namespace.addOption({ name: "fooOption", type: "boolean" });
 
-      expect(() => (option.value = 1)).toThrowError("1 is not of type boolean");
+      expect(() => (option.value = 1)).toThrow("1 is not of type boolean");
     });
   });
 
@@ -1088,7 +1084,7 @@ describe("options", () => {
     it("option should not emit an event after setting same value", async () => {
       expect.assertions(2);
 
-      const spy = sinon.spy();
+      const spy = sinonSpy();
       await config.load();
 
       expect(option.value).toEqual("default-str");
@@ -1111,7 +1107,7 @@ describe("options", () => {
 
       expect.assertions(2);
 
-      const spy = sinon.spy();
+      const spy = sinonSpy();
       await config.load();
 
       expect(option.value).toEqual(["foo", "foo2"]);
@@ -1126,7 +1122,7 @@ describe("options", () => {
     it("option should not emit an event before calling to start", async () => {
       expect.assertions(2);
 
-      const spy = sinon.spy();
+      const spy = sinonSpy();
       await config.init();
 
       expect(option.value).toEqual("default-str");
@@ -1141,7 +1137,7 @@ describe("options", () => {
     it("option event should be removed if returned callback is executed", async () => {
       expect.assertions(2);
 
-      const spy = sinon.spy();
+      const spy = sinonSpy();
       await config.load();
 
       expect(option.value).toEqual("default-str");

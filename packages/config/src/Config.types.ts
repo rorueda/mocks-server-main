@@ -119,7 +119,7 @@ export interface ConfigInterface {
    * @example const option = config.addOption({ name: "foo", type: "number"})
    */
   addOption<Type extends OptionDefinitionGeneric>(
-    optionProperties: Type
+    optionProperties: Type,
   ): OptionInterfaceOfType<
     GetOptionValueTypeFromDefinition<Type>,
     {
@@ -134,7 +134,7 @@ export interface ConfigInterface {
    * @example const [option1, option2] = config.addOptions([{ name: "foo", type: "number"}, { name: "foo2", type: "string"}])
    */
   addOptions<Type extends OptionDefinitionGeneric[]>(
-    options: [...OptionDefinitionGeneric[]]
+    options: [...OptionDefinitionGeneric[]],
   ): [
     ...OptionInterfaceOfType<
       GetOptionValueTypeFromDefinition<Type[number]>,
@@ -142,7 +142,7 @@ export interface ConfigInterface {
         hasDefault: GetOptionHasDefaultFromDefinition<Type[number]>;
         nullable: GetOptionIsNullableFromDefinition<Type[number]>;
       }
-    >[]
+    >[],
   ];
 
   /**
@@ -208,7 +208,7 @@ export interface ConfigNamespaceInterface extends ObjectWithName {
    * @example const option = namespace.addOption({ name: "foo", type: "number"})
    */
   addOption<Type extends OptionDefinitionGeneric>(
-    optionProperties: Type
+    optionProperties: Type,
   ): OptionInterfaceOfType<
     GetOptionValueTypeFromDefinition<Type>,
     {
@@ -223,7 +223,7 @@ export interface ConfigNamespaceInterface extends ObjectWithName {
    * @example const [option1, option2] = namespace.addOptions([{ name: "foo", type: "number"}, { name: "foo2", type: "string"}])
    */
   addOptions<Type extends OptionDefinitionGeneric[]>(
-    options: [...OptionDefinitionGeneric[]]
+    options: [...OptionDefinitionGeneric[]],
   ): [
     ...OptionInterfaceOfType<
       GetOptionValueTypeFromDefinition<Type[number]>,
@@ -231,7 +231,7 @@ export interface ConfigNamespaceInterface extends ObjectWithName {
         hasDefault: GetOptionHasDefaultFromDefinition<Type[number]>;
         nullable: GetOptionIsNullableFromDefinition<Type[number]>;
       }
-    >[]
+    >[],
   ];
   /**
    * Set the value of the options, including child namespaces, using the values in the provided configuration object

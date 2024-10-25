@@ -76,6 +76,20 @@ export interface RoutesInterface {
   get logger(): LoggerInterface;
 
   /**
+   * Returns array of route representations as legacy plain objects
+   * @example routes.plain;
+   * @deprecated Use routes.toPlainObject instead
+   */
+  get plain(): RoutePlainObjectLegacy[];
+
+  /**
+   * Returns array of route variants representations as legacy plain objects
+   * @example routes.plainVariants;
+   * @deprecated Use routes.toPlainObject instead
+   */
+  get plainVariants(): RouteVariantPlainObjectLegacy[];
+
+  /**
    * Create routes from route definitions
    * @param routeDefinitions - Route definitions {@link RouteDefinition}
    * @param variantHandlers - Variant Handlers {@link VariantHandlerConstructor}
@@ -101,18 +115,4 @@ export interface RoutesInterface {
    * @example routes.toPlainObject();
    */
   toPlainObject(): RoutePlainObject[];
-
-  /**
-   * Returns array of route representations as legacy plain objects
-   * @example routes.plain;
-   * @deprecated Use routes.toPlainObject instead
-   */
-  get plain(): RoutePlainObjectLegacy[];
-
-  /**
-   * Returns array of route variants representations as legacy plain objects
-   * @example routes.plainVariants;
-   * @deprecated Use routes.toPlainObject instead
-   */
-  get plainVariants(): RouteVariantPlainObjectLegacy[];
 }

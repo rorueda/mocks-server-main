@@ -214,8 +214,8 @@ describe("mocks helpers", () => {
               from: "mock-id-1",
               routeVariants: ["variant-id-3"],
             },
-          ]
-        )
+          ],
+        ),
       ).toEqual([
         {
           id: "mock-id-1",
@@ -285,8 +285,8 @@ describe("mocks helpers", () => {
               variants: [{ id: "variant-1" }],
             },
           ],
-          ROUTES_VARIANTS
-        )
+          ROUTES_VARIANTS,
+        ),
       ).toEqual([
         {
           id: "route-id-1",
@@ -342,8 +342,8 @@ describe("mocks helpers", () => {
             },
             {},
           ],
-          ROUTES_VARIANTS
-        )
+          ROUTES_VARIANTS,
+        ),
       ).toEqual([
         {
           id: "route-id-2",
@@ -394,8 +394,8 @@ describe("mocks helpers", () => {
               variants: "foo",
             },
           ],
-          ROUTES_VARIANTS
-        )
+          ROUTES_VARIANTS,
+        ),
       ).toEqual([
         {
           id: "route-id-1",
@@ -441,8 +441,8 @@ describe("mocks helpers", () => {
               variants: [{ id: "variant-1" }, { id: "variant-2" }, { id: "variant-3" }, null],
             },
           ],
-          ROUTES_VARIANTS
-        )
+          ROUTES_VARIANTS,
+        ),
       ).toEqual([
         {
           id: "route-id-1",
@@ -475,7 +475,7 @@ describe("mocks helpers", () => {
             delay: "delay-2",
             foo: "foo-2",
           },
-        ])
+        ]),
       ).toEqual([
         {
           id: "route-1:variant-1",
@@ -513,7 +513,7 @@ describe("mocks helpers", () => {
             delay: "delay-2",
             foo: "foo-2",
           },
-        ])
+        ]),
       ).toEqual([
         {
           id: "route-1:variant-1",
@@ -549,7 +549,7 @@ describe("mocks helpers", () => {
             delay: "delay-2",
             foo: "foo-2",
           },
-        ])
+        ]),
       ).toEqual([
         {
           id: "route-1:variant-1",
@@ -616,7 +616,7 @@ describe("mocks helpers", () => {
 
       expect(alerts.flat[0].id).toEqual("foo:variants");
       expect(alerts.flat[0].message).toEqual(
-        "Collection with id 'foo-id' is invalid: routeVariant with id 'foo-route:foo-id' was not found, use a valid 'routeId:variantId' identifier"
+        "Collection with id 'foo-id' is invalid: routeVariant with id 'foo-route:foo-id' was not found, use a valid 'routeId:variantId' identifier",
       );
     });
 

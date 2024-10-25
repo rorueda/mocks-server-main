@@ -67,6 +67,10 @@ export interface ServerConstructor {
 
 /** Server interface */
 export interface ServerInterface {
+  /** Get the server protocol */
+  get protocol(): string;
+  /** Get the server url */
+  get url(): string;
   /** Initialize the server */
   init(): void;
   /** Start the server */
@@ -75,10 +79,6 @@ export interface ServerInterface {
   restart(): Promise<void>;
   /** Stop the server */
   stop(): Promise<void>;
-  /** Get the server protocol */
-  get protocol(): string;
-  /** Get the server url */
-  get url(): string;
   /** Add router to the server */
   addRouter(router: ServerRouter): void;
 }

@@ -1,6 +1,6 @@
 {
-  "root": "packages/admin-api-client-data-provider/",
+  "root": "packages/admin-api-client-data-provider",
   "projectType": "library",
-  "implicitDependencies": ["admin-api-paths"],
+  "implicitDependencies": ["@mocks-server/admin-api-paths"],
   "tags": ["type:lib"]
 }

@@ -162,8 +162,8 @@ describe("scaffold", () => {
 
       expect(newScreen).toEqual(
         expect.stringContaining(
-          "Current collection: proxy-disabled (custom variants: proxy-all:enabled)"
-        )
+          "Current collection: proxy-disabled (custom variants: proxy-all:enabled)",
+        ),
       );
     });
 
@@ -195,7 +195,7 @@ describe("scaffold", () => {
       await wait(500);
 
       expect(mocks.currentScreen).toEqual(
-        expect.stringContaining("Current collection: proxy-disabled")
+        expect.stringContaining("Current collection: proxy-disabled"),
       );
       expect(mocks.currentScreen).toEqual(expect.not.stringContaining("(custom variants:"));
     });

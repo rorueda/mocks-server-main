@@ -26,7 +26,7 @@ import type { VariantHandlersInterface } from "./variant-handlers/types";
 declare global {
   //eslint-disable-next-line @typescript-eslint/no-namespace
   namespace MocksServer {
-    //eslint-disable-next-line @typescript-eslint/no-empty-interface
+    //eslint-disable-next-line @typescript-eslint/no-empty-object-type
     interface Config extends BuiltInConfig {}
   }
 }

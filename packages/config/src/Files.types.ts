@@ -20,6 +20,6 @@ export interface FilesInterface {
    **/
   read(
     initialConfig: ConfigurationObject,
-    options: FilesReadOptions
+    options: FilesReadOptions,
   ): Promise<ConfigurationObject>;
 }

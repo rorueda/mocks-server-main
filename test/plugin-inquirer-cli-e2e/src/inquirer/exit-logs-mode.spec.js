@@ -50,7 +50,7 @@ describe("when exitLogsMode is executed", () => {
   it('should print selected option as "option1" when user selects "Option 1"', async () => {
     await cliRunner.waitUntilHasLogged(END_SCREEN);
     const newScreen = await cliRunner.executeAndWaitUntilNewScreenRendered(
-      cliRunner.pressEnter.bind(cliRunner)
+      cliRunner.pressEnter.bind(cliRunner),
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Selected option: option1"));
@@ -62,7 +62,7 @@ describe("when exitLogsMode is executed", () => {
     await cliRunner.waitUntilHasLogged(END_SCREEN);
     cliRunner.cursorDown();
     let newScreen = await await cliRunner.executeAndWaitUntilNewScreenRendered(
-      cliRunner.pressEnter.bind(cliRunner)
+      cliRunner.pressEnter.bind(cliRunner),
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Displaying logs"));
@@ -72,7 +72,7 @@ describe("when exitLogsMode is executed", () => {
     expect(cliRunner.logs.current).toEqual(expect.stringContaining("Option 1"));
 
     newScreen = await await cliRunner.executeAndWaitUntilNewScreenRendered(
-      cliRunner.pressEnter.bind(cliRunner)
+      cliRunner.pressEnter.bind(cliRunner),
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Selected option: option1"));

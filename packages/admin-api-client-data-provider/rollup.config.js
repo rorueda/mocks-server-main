@@ -30,7 +30,7 @@ const BASE_PLUGINS = [
   }),
 ];
 
-module.exports = [
+export default [
   {
     ...BASE_CONFIG,
     output: {

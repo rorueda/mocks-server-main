@@ -66,7 +66,7 @@ const HTTPS_NAMESPACE = "https";
 const HTTPS_OPTIONS: [
   HttpsProtocolOptionDefinition,
   HttpsCertOptionDefinition,
-  HttpsKeyOptionDefinition
+  HttpsKeyOptionDefinition,
 ] = [
   {
     description: "Use https protocol or not",
@@ -115,13 +115,13 @@ export const Server: ServerConstructor = class Server implements ServerInterface
 
     [this._portOption, this._hostOption] = this._config.addOptions(OPTIONS) as [
       OptionInterfaceOfType<number, { hasDefault: true }>,
-      OptionInterfaceOfType<string, { hasDefault: true }>
+      OptionInterfaceOfType<string, { hasDefault: true }>,
     ];
     [this._httpsEnabledOption, this._httpsCertOption, this._httpsKeyOption] =
       httpsConfigNamespace.addOptions(HTTPS_OPTIONS) as [
         OptionInterfaceOfType<boolean, { hasDefault: true }>,
         OptionInterfaceOfType<string>,
-        OptionInterfaceOfType<string>
+        OptionInterfaceOfType<string>,
       ];
     this._onChangeOptions = onChangeOptions;
 
@@ -226,7 +226,7 @@ export const Server: ServerConstructor = class Server implements ServerInterface
           cert: readFileSync(this._httpsCertOption.value as string),
           key: readFileSync(this._httpsKeyOption.value as string),
         },
-        this._express
+        this._express,
       );
     } catch (error) {
       this._alerts.set(START_ALERT_ID, "Error creating HTTPS server", error as Error);
@@ -282,7 +282,7 @@ export const Server: ServerConstructor = class Server implements ServerInterface
           port,
           host,
         },
-        callback
+        callback,
       );
     }
   }

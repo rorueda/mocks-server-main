@@ -36,7 +36,7 @@ export interface VariantHandlerProxyConstructor extends VariantHandlerConstructo
    */
   new (
     options: VariantHandlerProxyOptions & MocksServer.VariantHandlerBaseOptions,
-    core: ScopedCoreInterface
+    core: ScopedCoreInterface,
   ): VariantHandlerProxyInterface;
 }
 

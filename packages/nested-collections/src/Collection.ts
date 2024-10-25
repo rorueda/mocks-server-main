@@ -100,11 +100,11 @@ export abstract class BaseNestedCollections implements CollectionBaseInterface {
         const collectionItems = collection._flat.map(
           (collectionFlatItem: CollectionFlatItem): CollectionFlatItem => {
             return collectionFlatItem;
-          }
+          },
         );
         return [...allItems, ...collectionItems];
       },
-      []
+      [],
     );
 
     return [...items, ...collections];
@@ -210,7 +210,7 @@ export abstract class BaseNestedCollections implements CollectionBaseInterface {
   private _createCollection(collectionId: CollectionId): this {
     const collection = new (this.constructor as new (
       id: CollectionId,
-      options: CollectionOptions
+      options: CollectionOptions,
     ) => this)(collectionId, { ...this._options, parent: this, root: this._root });
     collection.onChange(this._emitChange);
     this._collections.push(collection);

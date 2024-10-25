@@ -93,6 +93,11 @@ export interface CollectionsInterface {
   /** Return currently selected collection interface */
   get current(): CollectionInterface | null;
 
+  /** Collection plain object in legacy format
+   * @deprecated - Use collections.toPlainObject instead
+   */
+  get plain(): CollectionPlainObjectLegacy[];
+
   /**
    * Create collections from collection definitions
    * @param collectionDefinitions - Collection definitions {@link CollectionDefinition}
@@ -118,9 +123,4 @@ export interface CollectionsInterface {
    * @example collections.toPlainObject();
    */
   toPlainObject(): CollectionPlainObject[];
-
-  /** Collection plain object in legacy format
-   * @deprecated - Use collections.toPlainObject instead
-   */
-  get plain(): CollectionPlainObjectLegacy[];
 }

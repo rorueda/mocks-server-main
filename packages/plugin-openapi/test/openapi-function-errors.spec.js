@@ -16,9 +16,9 @@ describe("when function is used and openapi definition is wrong", () => {
               },
             },
           }),
-        })
+        }),
       ).rejects.toEqual(
-        new Error("JSON Pointer points to missing location: #/foo/pathItems/Users")
+        new Error("JSON Pointer points to missing location: #/foo/pathItems/Users"),
       );
     });
   });
@@ -44,11 +44,11 @@ describe("when function is used and openapi definition is wrong", () => {
               },
             },
           }),
-        })
+        }),
       ).rejects.toEqual(
         new Error(
-          "JSON Pointer points to missing location: #/foo/pathItems/Users. JSON Pointer points to missing location: #/components/foo/User"
-        )
+          "JSON Pointer points to missing location: #/foo/pathItems/Users. JSON Pointer points to missing location: #/components/foo/User",
+        ),
       );
     });
   });
@@ -63,9 +63,9 @@ describe("when function is used and openapi definition is wrong", () => {
             location: "foo.json",
           },
           document: openApiDocument,
-        })
+        }),
       ).rejects.toEqual(
-        new Error("options.subDocPath must be an Array of path segments or a valid JSON Pointer")
+        new Error("options.subDocPath must be an Array of path segments or a valid JSON Pointer"),
       );
     });
   });

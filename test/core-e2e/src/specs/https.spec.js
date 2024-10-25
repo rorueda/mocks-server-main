@@ -44,7 +44,7 @@ describe("https option", () => {
       ],
       {
         customBinary: "openssl",
-      }
+      },
     );
     await generateCerts.hasExited();
     cli = mocksRunner([

@@ -55,7 +55,7 @@ describe("https error handling", () => {
       });
 
       expect(response.message).toEqual(
-        expect.stringContaining("https://127.0.0.1:3110/api/about")
+        expect.stringContaining("https://127.0.0.1:3110/api/about"),
       );
       expect(response.message).toEqual(expect.stringContaining("ECONNREFUSED"));
     });

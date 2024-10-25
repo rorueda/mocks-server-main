@@ -614,7 +614,7 @@ describe("Cli", () => {
       await cli.start();
 
       expect(cli._cli.questions.delay.validate(cli._cli.questions.delay.filter("asdads"))).toEqual(
-        false
+        false,
       );
     });
 
@@ -622,7 +622,7 @@ describe("Cli", () => {
       await cli.start();
 
       expect(cli._cli.questions.delay.validate(cli._cli.questions.delay.filter("123230"))).toEqual(
-        true
+        true,
       );
     });
   });
@@ -808,7 +808,7 @@ describe("Cli", () => {
       await cli.start();
 
       expect(cli._header()[2]).toEqual(
-        expect.stringContaining(chalk.yellow("foo (custom variants: foo-variant,foo-variant-2)"))
+        expect.stringContaining(chalk.yellow("foo (custom variants: foo-variant,foo-variant-2)")),
       );
     });
 
@@ -907,9 +907,9 @@ describe("Cli", () => {
       expect(cli._alertsHeader()[0]).toEqual(
         expect.stringContaining(
           chalk.red(
-            `foo message: Foo error message\n         Testing stack\n         Testing stack 2\n         Testing stack 3...`
-          )
-        )
+            `foo message: Foo error message\n         Testing stack\n         Testing stack 2\n         Testing stack 3...`,
+          ),
+        ),
       );
     });
   });

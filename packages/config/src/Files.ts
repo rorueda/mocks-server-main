@@ -21,7 +21,7 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
 
   public async read(
     initConfig: ConfigurationObject,
-    { searchPlaces, searchFrom, searchStop }: FilesReadOptions
+    { searchPlaces, searchFrom, searchStop }: FilesReadOptions,
   ): Promise<ConfigurationObject> {
     interface PrivateOptions extends FilesReadOptions {
       stopDir: string;
@@ -47,7 +47,7 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
 
   private async _transformConfig(
     config: ConfigurationObject | ConfigFunction,
-    initConfig: ConfigurationObject
+    initConfig: ConfigurationObject,
   ): Promise<ConfigurationObject> {
     if (isFunction(config)) {
       return config(initConfig);

@@ -263,8 +263,8 @@ describe("scaffold", () => {
 
       expect(newScreen).toEqual(
         expect.stringContaining(
-          "Current collection: user-real (custom variants: get-user:success)"
-        )
+          "Current collection: user-real (custom variants: get-user:success)",
+        ),
       );
     });
 
@@ -383,7 +383,7 @@ describe("scaffold", () => {
       await wait(500);
 
       expect(mocks.currentScreen).toEqual(
-        expect.stringContaining("Current collection: base (custom variants: get-user:real)")
+        expect.stringContaining("Current collection: base (custom variants: get-user:real)"),
       );
     });
 

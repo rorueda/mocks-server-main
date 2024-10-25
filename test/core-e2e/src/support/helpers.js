@@ -56,7 +56,7 @@ const createCore = (options = {}) => {
         },
       },
       options,
-    ])
+    ]),
   );
 };
 
@@ -73,7 +73,7 @@ const startExistingCore = (core, mocksPath, options = {}) => {
           },
         },
         options,
-      ])
+      ]),
     )
     .then(() => {
       return core.start().then(() => {

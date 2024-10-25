@@ -1,5 +1,5 @@
 {
-  "root": "test/core-e2e/",
+  "root": "test/core-e2e",
   "projectType": "application",
   "implicitDependencies": [],
   "tags": ["type:test"]

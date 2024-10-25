@@ -46,12 +46,12 @@ export const CollectionDefinitions: CollectionDefinitionsConstructor = class Col
 
   public findById(id: CollectionId): CollectionDefinition | undefined {
     return this._collectionDefinitions.find(
-      (collectionDefinition) => collectionDefinition.id === id
+      (collectionDefinition) => collectionDefinition.id === id,
     );
   }
 
   private _normalizeCollection(
-    collectionDefinition: CollectionDefinition
+    collectionDefinition: CollectionDefinition,
   ): CollectionDefinitionNormalized {
     return {
       ...collectionDefinition,

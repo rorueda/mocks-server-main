@@ -113,7 +113,7 @@ describe("plugins", () => {
         it("should have executed logger in register method", () => {
           expect(
             filterLogs(core.logger.globalStore, "[plugins:test-plugin] Log from register method")
-              .length
+              .length,
           ).toEqual(1);
         });
 
@@ -124,7 +124,7 @@ describe("plugins", () => {
         it("should have executed logger in init method", () => {
           expect(
             filterLogs(core.logger.globalStore, "[plugins:test-plugin] Log from init method")
-              .length
+              .length,
           ).toEqual(1);
         });
 
@@ -141,7 +141,7 @@ describe("plugins", () => {
         it("should have executed logger in start method", () => {
           expect(
             filterLogs(core.logger.globalStore, "[plugins:test-plugin] Log from start method")
-              .length
+              .length,
           ).toEqual(1);
         });
 
@@ -155,10 +155,10 @@ describe("plugins", () => {
           it("should have added two plugin alerts", async () => {
             const alerts = filterPluginAlerts(core.alerts.flat);
             const registerAlert = alerts.find(
-              (alert) => alert.id === "plugins:test-plugin:test-register"
+              (alert) => alert.id === "plugins:test-plugin:test-register",
             );
             const startAlert = alerts.find(
-              (alert) => alert.id === "plugins:test-plugin:test-start"
+              (alert) => alert.id === "plugins:test-plugin:test-start",
             );
 
             expect(alerts.length).toEqual(2);
@@ -169,10 +169,10 @@ describe("plugins", () => {
           it("should have added three plugin alerts", async () => {
             const alerts = filterPluginAlerts(core.alerts.flat);
             const registerAlert = alerts.find(
-              (alert) => alert.id === "plugins:test-plugin:test-register"
+              (alert) => alert.id === "plugins:test-plugin:test-register",
             );
             const startAlert = alerts.find(
-              (alert) => alert.id === "plugins:test-plugin:test-start"
+              (alert) => alert.id === "plugins:test-plugin:test-start",
             );
             const idAlert = alerts.find((alert) => alert.id === "plugins:format:0");
 
@@ -214,7 +214,7 @@ describe("plugins", () => {
         it("should have executed logger in stop method", () => {
           expect(
             filterLogs(core.logger.globalStore, "[plugins:test-plugin] Log from stop method")
-              .length
+              .length,
           ).toEqual(1);
         });
       });
@@ -237,7 +237,7 @@ describe("plugins", () => {
 
           expect(
             filterLogs(core.logger.globalStore, "[plugins:test-plugin] Log from stop method")
-              .length
+              .length,
           ).toEqual(2);
         });
       });
@@ -332,7 +332,7 @@ describe("plugins", () => {
         initSpy(
           this._config.root.namespace("files").option("path").value,
           this._config.root.namespace("server").option("port").value,
-          this._config.root.namespace("mock").namespace("routes").option("delay").value
+          this._config.root.namespace("mock").namespace("routes").option("delay").value,
         );
         this._config.root.option("log").value = "silly";
         this._alerts.onChange(changeAlertsSpy);
@@ -347,7 +347,7 @@ describe("plugins", () => {
         this._logger.info("Log from stop method");
         this._alerts.clean();
       }
-    }
+    },
   );
 
   testPlugin(
@@ -394,7 +394,7 @@ describe("plugins", () => {
         initSpy(
           this._config.root.namespace("files").option("path").value,
           this._config.root.namespace("server").option("port").value,
-          this._config.root.namespace("mock").namespace("routes").option("delay").value
+          this._config.root.namespace("mock").namespace("routes").option("delay").value,
         );
         this._config.root.option("log").value = "silly";
         this._alerts.onChange(changeAlertsSpy);
@@ -409,7 +409,7 @@ describe("plugins", () => {
         this._logger.info("Log from stop method");
         this._alerts.clean();
       }
-    }
+    },
   );
 
   testAsyncPlugin(
@@ -457,6 +457,6 @@ describe("plugins", () => {
         this._alerts.set("test-start", "Warning starting plugin");
         await wait(1000);
       }
-    }
+    },
   );
 });

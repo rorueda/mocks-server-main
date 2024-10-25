@@ -53,7 +53,7 @@ describe("when readme example is executed", () => {
   it('should print selected option as "option1" when user selects "Main option 1"', async () => {
     await cliRunner.waitUntilHasLogged(END_SCREEN);
     const newScreen = await cliRunner.executeAndWaitUntilNewScreenRendered(
-      cliRunner.pressEnter.bind(cliRunner)
+      cliRunner.pressEnter.bind(cliRunner),
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Selected option: option1"));
@@ -63,7 +63,7 @@ describe("when readme example is executed", () => {
     await cliRunner.waitUntilHasLogged(END_SCREEN);
     cliRunner.cursorDown();
     const newScreen = await cliRunner.executeAndWaitUntilNewScreenRendered(
-      cliRunner.pressEnter.bind(cliRunner)
+      cliRunner.pressEnter.bind(cliRunner),
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Selected option: option2"));

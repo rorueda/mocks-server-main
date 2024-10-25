@@ -50,9 +50,9 @@ export async function projectStatus(projectName) {
     try {
       projectIsPublished = await versionIsPublished(
         projectPackageInfo.name,
-        projectPackageInfo.version
+        projectPackageInfo.version,
       );
-    } catch (error) {
+    } catch (_) {
       projectIsPublished = false;
       errorCheckingPublished = true;
     }
@@ -88,7 +88,7 @@ export function projectsStatus(projectNames) {
   return Promise.all(
     projectNames.map((projectName) => {
       return projectStatus(projectName);
-    })
+    }),
   );
 }
 
@@ -118,7 +118,7 @@ export async function allProjectNamesWithTarget(target) {
   const projectsWithConfig = await Promise.all(
     projectNames.map((projectName) => {
       return projectConfig(projectName);
-    })
+    }),
   );
   return projectsWithConfig
     .filter((projectWithConfig) => {

@@ -63,7 +63,7 @@ function isTextMediaType(mediaType: string): boolean {
 function openApiResponseBaseVariant(
   variantType: VariantDefinitionTypes,
   code: number,
-  options: { customId?: string; exampleId?: string }
+  options: { customId?: string; exampleId?: string },
 ): Partial<VariantDefinition> {
   let id;
   if (options.customId) {
@@ -103,7 +103,7 @@ function openApiResponseExampleToVariant(
   variantType: VariantDefinitionTypes,
   mediaType: string,
   openApiResponseExample: MocksServerOpenAPIV3.ExampleObject,
-  openApiResponseHeaders?: MocksServerOpenAPIV3.ResponseHeaders
+  openApiResponseHeaders?: MocksServerOpenAPIV3.ResponseHeaders,
 ): VariantDefinition | null {
   if (!notEmpty(openApiResponseExample) || !notEmpty(openApiResponseExample.value)) {
     return null;
@@ -129,7 +129,7 @@ function openApiResponseExampleToVariant(
 
 function openApiResponseNoContentToVariant(
   code: number,
-  openApiResponse: MocksServerOpenAPIV3.ResponseObject
+  openApiResponse: MocksServerOpenAPIV3.ResponseObject,
 ): VariantDefinition {
   const baseVariant = openApiResponseBaseVariant(VariantTypes.STATUS, code, {
     customId: openApiResponse[MOCKS_SERVER_VARIANT_ID],
@@ -148,7 +148,7 @@ function openApiResponseExamplesToVariants(
   variantType: VariantDefinitionTypes,
   mediaType: string,
   openApiResponseMediaType: MocksServerOpenAPIV3.MediaTypeObject,
-  openApiResponseHeaders?: MocksServerOpenAPIV3.ResponseHeaders
+  openApiResponseHeaders?: MocksServerOpenAPIV3.ResponseHeaders,
 ): VariantDefinition[] | null {
   const examples = openApiResponseMediaType.examples;
   if (!notEmpty(examples)) {
@@ -162,7 +162,7 @@ function openApiResponseExamplesToVariants(
         variantType,
         mediaType,
         examples[exampleId] as MocksServerOpenAPIV3.ExampleObject,
-        openApiResponseHeaders
+        openApiResponseHeaders,
       );
     })
     .filter(notEmpty);
@@ -172,7 +172,7 @@ function openApiResponseMediaToVariants(
   code: number,
   mediaType: string,
   openApiResponseMediaType?: MocksServerOpenAPIV3.MediaTypeObject,
-  openApiResponseHeaders?: MocksServerOpenAPIV3.ResponseHeaders
+  openApiResponseHeaders?: MocksServerOpenAPIV3.ResponseHeaders,
 ): VariantDefinition[] | null {
   if (!notEmpty(openApiResponseMediaType)) {
     return null;
@@ -183,7 +183,7 @@ function openApiResponseMediaToVariants(
       VariantTypes.JSON,
       mediaType,
       openApiResponseMediaType,
-      openApiResponseHeaders
+      openApiResponseHeaders,
     );
   }
   if (isTextMediaType(mediaType)) {
@@ -192,7 +192,7 @@ function openApiResponseMediaToVariants(
       VariantTypes.TEXT,
       mediaType,
       openApiResponseMediaType,
-      openApiResponseHeaders
+      openApiResponseHeaders,
     );
   }
   return null;
@@ -200,7 +200,7 @@ function openApiResponseMediaToVariants(
 
 function openApiResponseCodeToVariants(
   code: number,
-  openApiResponse?: MocksServerOpenAPIV3.ResponseObject
+  openApiResponse?: MocksServerOpenAPIV3.ResponseObject,
 ): VariantDefinition[] {
   if (!notEmpty(openApiResponse)) {
     return [];
@@ -213,7 +213,7 @@ function openApiResponseCodeToVariants(
           code,
           mediaType,
           content[mediaType],
-          openApiResponse.headers
+          openApiResponse.headers,
         );
       })
       .flat()
@@ -223,7 +223,7 @@ function openApiResponseCodeToVariants(
 }
 
 function routeVariants(
-  openApiResponses?: MocksServerOpenAPIV3.ResponsesObject
+  openApiResponses?: MocksServerOpenAPIV3.ResponsesObject,
 ): VariantDefinition[] {
   if (!notEmpty(openApiResponses)) {
     return [];
@@ -240,7 +240,7 @@ function routeVariants(
 }
 
 function getCustomRouteId(
-  openApiOperation: MocksServerOpenAPIV3.OperationObject
+  openApiOperation: MocksServerOpenAPIV3.OperationObject,
 ): string | undefined {
   return openApiOperation[MOCKS_SERVER_ROUTE_ID] || openApiOperation.operationId;
 }
@@ -248,7 +248,7 @@ function getCustomRouteId(
 function openApiPathToRoutes(
   path: string,
   basePath = "",
-  openApiPathObject?: MocksServerOpenAPIV3.PathItemObject
+  openApiPathObject?: MocksServerOpenAPIV3.PathItemObject,
 ): RouteDefinition[] | null {
   if (!notEmpty(openApiPathObject)) {
     return null;
@@ -269,7 +269,7 @@ function openApiPathToRoutes(
 }
 
 function openApiDefinitionToRoutes(
-  openApiDefinition: OpenApiDefinition.Definition
+  openApiDefinition: OpenApiDefinition.Definition,
 ): RouteDefinition[] {
   const openApiDocument = openApiDefinition.document;
   const basePath = openApiDefinition.basePath;
@@ -304,7 +304,7 @@ function addOpenApiRefAlert(alerts: AlertsInterface, error: Error): void {
 function resolveDocumentRefs(
   document: MocksServerOpenAPIV3.Document,
   refsOptions: OpenApiDefinition.Refs,
-  { alerts, logger }: OpenApiDefinition.Options
+  { alerts, logger }: OpenApiDefinition.Options,
 ): Promise<MocksServerOpenAPIV3.Document | null> {
   return resolveRefs(document, refsOptions)
     .then((res) => {
@@ -334,12 +334,12 @@ function resolveDocumentRefs(
 
 async function resolveOpenApiDocumentRefs(
   openApiDefinition: OpenApiDefinition.Definition,
-  { defaultLocation, alerts, logger }: OpenApiDefinition.Options = {}
+  { defaultLocation, alerts, logger }: OpenApiDefinition.Options = {},
 ): Promise<OpenApiDefinition.Definition | null> {
   const document = await resolveDocumentRefs(
     openApiDefinition.document,
     { location: defaultLocation, ...openApiDefinition.refs },
-    { alerts, logger }
+    { alerts, logger },
   );
   if (document) {
     return {
@@ -352,11 +352,11 @@ async function resolveOpenApiDocumentRefs(
 
 export async function openApiRoutes(
   openApiDefinition: OpenApiDefinition.Definition,
-  advancedOptions?: OpenApiDefinition.Options
+  advancedOptions?: OpenApiDefinition.Options,
 ): Promise<RouteDefinition[]> {
   const resolvedOpenApiDefinition = await resolveOpenApiDocumentRefs(
     openApiDefinition,
-    advancedOptions
+    advancedOptions,
   );
   if (!resolvedOpenApiDefinition) {
     return [];

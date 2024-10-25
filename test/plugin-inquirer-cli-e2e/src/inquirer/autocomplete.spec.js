@@ -60,7 +60,7 @@ describe("when autocomplete fixture is executed", () => {
       cliRunner.pressEnter.bind(cliRunner),
       {
         newScreenTimeout: RENDER_TIME_OUT,
-      }
+      },
     );
 
     expect(newScreen).toEqual(expect.stringContaining("a-tag"));
@@ -81,7 +81,7 @@ describe("when autocomplete fixture is executed", () => {
         cliRunner.write("a");
       },
       "a-tag",
-      { timeout: RENDER_TIME_OUT }
+      { timeout: RENDER_TIME_OUT },
     );
     cliRunner.logs.flushCurrent();
     await cliRunner.executeAndWaitUntilHasLogged(
@@ -89,7 +89,7 @@ describe("when autocomplete fixture is executed", () => {
         cliRunner.write("-");
       },
       "a-tag",
-      { timeout: RENDER_TIME_OUT }
+      { timeout: RENDER_TIME_OUT },
     );
 
     expect(cliRunner.logs.current).toEqual(expect.stringContaining("a-tag"));
@@ -108,21 +108,21 @@ describe("when autocomplete fixture is executed", () => {
         cliRunner.write("a");
       },
       "a-tag",
-      { timeout: RENDER_TIME_OUT }
+      { timeout: RENDER_TIME_OUT },
     );
     await cliRunner.executeAndWaitUntilHasLogged(
       () => {
         cliRunner.write("-");
       },
       "a-tag",
-      { timeout: RENDER_TIME_OUT }
+      { timeout: RENDER_TIME_OUT },
     );
     await wait(1000);
     const newScreen = await cliRunner.executeAndWaitUntilNewScreenRendered(
       cliRunner.pressEnter.bind(cliRunner),
       {
         newScreenTimeout: RENDER_TIME_OUT,
-      }
+      },
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Selected option: a-tag"));
@@ -139,21 +139,21 @@ describe("when autocomplete fixture is executed", () => {
         cliRunner.write("c");
       },
       "c-tag",
-      { timeout: RENDER_TIME_OUT }
+      { timeout: RENDER_TIME_OUT },
     );
     await cliRunner.executeAndWaitUntilHasLogged(
       () => {
         cliRunner.write("-");
       },
       "c-tag",
-      { timeout: RENDER_TIME_OUT }
+      { timeout: RENDER_TIME_OUT },
     );
     await wait(1000);
     const newScreen = await cliRunner.executeAndWaitUntilNewScreenRendered(
       cliRunner.pressEnter.bind(cliRunner),
       {
         newScreenTimeout: RENDER_TIME_OUT,
-      }
+      },
     );
 
     expect(newScreen).toEqual(expect.stringContaining("Selected option: c-tag"));

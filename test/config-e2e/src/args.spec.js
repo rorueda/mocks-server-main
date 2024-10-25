@@ -46,7 +46,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"]),
       );
     });
 
@@ -57,7 +57,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"]),
       );
     });
   });
@@ -70,7 +70,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["component.stringWithDefault:string:foo-from-args"])
+        expect.arrayContaining(["component.stringWithDefault:string:foo-from-args"]),
       );
     });
   });
@@ -85,7 +85,7 @@ describe("Config from args", () => {
       expect(options).toEqual(
         expect.arrayContaining([
           'component.arrayWithDefault:array:["foo-from-args-1","foo-from-args-2"]',
-        ])
+        ]),
       );
     });
 
@@ -101,7 +101,7 @@ describe("Config from args", () => {
       expect(options).toEqual(
         expect.arrayContaining([
           'component.arrayWithDefault:array:["foo-from-env-1","foo-from-env-2","foo-from-args-1","foo-from-args-2"]',
-        ])
+        ]),
       );
     });
 
@@ -121,7 +121,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(['component.arrayObject:array:[{"foo":"foo1"},{"foo2":"foo2"}]'])
+        expect.arrayContaining(['component.arrayObject:array:[{"foo":"foo1"},{"foo2":"foo2"}]']),
       );
     });
 
@@ -132,7 +132,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["component.arrayBoolean:array:[false,true,false,true]"])
+        expect.arrayContaining(["component.arrayBoolean:array:[false,true,false,true]"]),
       );
     });
   });
@@ -145,7 +145,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(['component.objectWithDefault:object:{"foo":"var","foo2":"var2"}'])
+        expect.arrayContaining(['component.objectWithDefault:object:{"foo":"var","foo2":"var2"}']),
       );
     });
 
@@ -160,7 +160,7 @@ describe("Config from args", () => {
       expect(options).toEqual(
         expect.arrayContaining([
           'component.objectWithDefault:object:{"foo":"var","foo2":"from-arg","foo3":true,"foo4":5}',
-        ])
+        ]),
       );
     });
   });
@@ -173,7 +173,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["component.booleanDefaultTrue:boolean:false"])
+        expect.arrayContaining(["component.booleanDefaultTrue:boolean:false"]),
       );
     });
   });
@@ -189,7 +189,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["component.booleanDefaultTrue:boolean:false"])
+        expect.arrayContaining(["component.booleanDefaultTrue:boolean:false"]),
       );
     });
   });
@@ -202,7 +202,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["component.booleanDefaultFalse:boolean:true"])
+        expect.arrayContaining(["component.booleanDefaultFalse:boolean:true"]),
       );
     });
   });
@@ -238,7 +238,7 @@ describe("Config from args", () => {
 
       expect(runner.exitCode).toEqual(0);
       expect(options).toEqual(
-        expect.arrayContaining(["component.booleanDefaultFalse:boolean:true"])
+        expect.arrayContaining(["component.booleanDefaultFalse:boolean:true"]),
       );
     });
   });
@@ -251,7 +251,7 @@ describe("Config from args", () => {
 
       expect(options).toEqual(expect.arrayContaining(["component.alias:string:alias-from-arg"]));
       expect(options).toEqual(
-        expect.arrayContaining(["firstNamespace.fooOption:string:option-from-arg"])
+        expect.arrayContaining(["firstNamespace.fooOption:string:option-from-arg"]),
       );
     });
   });
@@ -268,7 +268,7 @@ describe("Config from args", () => {
 
       expect(options).toEqual(expect.arrayContaining(["component.alias:string:alias-from-arg"]));
       expect(options).toEqual(
-        expect.arrayContaining(["firstNamespace.fooOption:string:option-from-arg"])
+        expect.arrayContaining(["firstNamespace.fooOption:string:option-from-arg"]),
       );
     });
   });
@@ -300,10 +300,12 @@ describe("Config from args", () => {
       });
 
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"]),
       );
       expect(options).toEqual(
-        expect.arrayContaining(["firstNamespace.secondNamespace.fooOption:string:option-from-arg"])
+        expect.arrayContaining([
+          "firstNamespace.secondNamespace.fooOption:string:option-from-arg",
+        ]),
       );
     });
 
@@ -320,10 +322,12 @@ describe("Config from args", () => {
       });
 
       expect(options).toEqual(
-        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"])
+        expect.arrayContaining(["namespace.component.alias:string:alias-from-arg"]),
       );
       expect(options).toEqual(
-        expect.arrayContaining(["firstNamespace.secondNamespace.fooOption:string:option-from-arg"])
+        expect.arrayContaining([
+          "firstNamespace.secondNamespace.fooOption:string:option-from-arg",
+        ]),
       );
     });
   });
@@ -337,7 +341,7 @@ describe("Config from args", () => {
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.thirdNamespace.fooOption3:string:3-from-arg",
-        ])
+        ]),
       );
     });
 
@@ -349,7 +353,7 @@ describe("Config from args", () => {
       expect(options).toEqual(
         expect.arrayContaining([
           "firstNamespace.secondNamespace.thirdNamespace.fooOption2:boolean:false",
-        ])
+        ]),
       );
     });
   });
@@ -366,7 +370,7 @@ describe("Config from args", () => {
 
       expect(options).toEqual(expect.arrayContaining(["component.alias:string:alias-from-arg"]));
       expect(options).toEqual(
-        expect.arrayContaining(["firstNamespace.fooOption:string:option-from-arg"])
+        expect.arrayContaining(["firstNamespace.fooOption:string:option-from-arg"]),
       );
     });
   });

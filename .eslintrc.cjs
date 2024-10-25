@@ -9,8 +9,8 @@ module.exports = {
     sourceType: "module",
   },
   ignorePatterns: ["node_modules/**/*"],
-  plugins: ["prettier", "@nrwl/nx"],
-  extends: ["eslint:recommended", "prettier", "plugin:json/recommended"],
+  plugins: ["prettier", "@nx/eslint-plugin"],
+  extends: ["eslint:recommended", "prettier", "plugin:json/recommended-legacy"],
   rules: {
     "prettier/prettier": [
       2,
@@ -23,8 +23,8 @@ module.exports = {
     "no-console": [2, { allow: ["warn", "error"] }],
     "no-shadow": [2, { builtinGlobals: true, hoist: "all" }],
     "no-undef": 2,
-    "no-unused-vars": [2, { vars: "all", args: "after-used", ignoreRestSiblings: false }],
-    "@nrwl/nx/enforce-module-boundaries": [
+    "no-unused-vars": [2, { vars: "all", args: "after-used", ignoreRestSiblings: false, caughtErrors: "all", caughtErrorsIgnorePattern: "^_" }],
+    "@nx/enforce-module-boundaries": [
       2,
       {
         allow: [],
@@ -83,6 +83,10 @@ module.exports = {
         "jest/no-conditional-expect": [0],
         "no-only-tests/no-only-tests": [2],
         "jest/no-done-callback": [0],
+        "jest/no-standalone-expect": [
+          "error",
+          { "additionalTestBlockFunctions": ["beforeEach"] }
+        ]
       },
       settings: {
         "import/resolver": {
@@ -140,7 +144,7 @@ module.exports = {
           { overrides: { constructors: "no-public" } },
         ],
         "import/no-relative-packages": [2],
-        "@typescript-eslint/no-unused-vars": [2],
+        "@typescript-eslint/no-unused-vars": [2, { vars: "all", args: "after-used", ignoreRestSiblings: false, caughtErrors: "all", caughtErrorsIgnorePattern: "^_" }],
         "@typescript-eslint/no-shadow": "error",
         "no-shadow": "off",
         "prettier/prettier": [

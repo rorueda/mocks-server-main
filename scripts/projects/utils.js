@@ -36,7 +36,7 @@ export async function allProjectNames() {
 export async function copyWorkspaceFileToProject(
   projectName,
   workspaceRelativePath,
-  relativePathInProject
+  relativePathInProject,
 ) {
   const dest = await projectFilePath(projectName, relativePathInProject || workspaceRelativePath);
   return copyFile(workspacePath(workspaceRelativePath), dest);

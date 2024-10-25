@@ -63,8 +63,8 @@ describe("when babelRegister is enabled and typescript files are used", () => {
         expect(users.headers.get("x-mocks-server-example")).toEqual("custom-header-typescript");
         expect(mocks.logs.current).toEqual(
           expect.stringContaining(
-            "Custom header added by add-headers:enabled route variant middleware using TypeScript"
-          )
+            "Custom header added by add-headers:enabled route variant middleware using TypeScript",
+          ),
         );
       });
 

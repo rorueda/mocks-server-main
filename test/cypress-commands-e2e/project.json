@@ -1,6 +1,6 @@
 {
-  "root": "test/cypress-commands-e2e/",
+  "root": "test/cypress-commands-e2e",
   "projectType": "application",
-  "implicitDependencies": ["main", "cypress-commands-e2e-vanilla-app"],
+  "implicitDependencies": ["@mocks-server/main", "cypress-commands-e2e-vanilla-app"],
   "tags": ["type:test"]
 }

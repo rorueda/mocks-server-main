@@ -79,7 +79,7 @@ export const Collections: CollectionsConstructor = class Collections
     this._loggerLoad = this._logger.namespace(LOAD_NAMESPACE);
 
     [this._selectedOption] = this._config.addOptions(OPTIONS) as [
-      OptionInterfaceOfType<CollectionId>
+      OptionInterfaceOfType<CollectionId>,
     ];
     this._selectedOption.onChange(this._setCurrent.bind(this));
     this._onChange = onChange;
@@ -151,19 +151,19 @@ export const Collections: CollectionsConstructor = class Collections
         if (ids.includes(collection.id)) {
           collectionAlerts.set(
             "duplicated",
-            `Collection with duplicated id '${collection.id}' detected. It has been ignored`
+            `Collection with duplicated id '${collection.id}' detected. It has been ignored`,
           );
           return null;
         }
 
         ids.push(collection.id);
         return collection;
-      })
+      }),
     );
     if (errorsProcessing > 0) {
       this._alertsLoad.set(
         "critical-error",
-        `Critical errors found while loading collections: ${errorsProcessing}`
+        `Critical errors found while loading collections: ${errorsProcessing}`,
       );
     }
     this._loggerLoad.info(`Created ${this._collections.length} collections`);
@@ -192,12 +192,12 @@ export const Collections: CollectionsConstructor = class Collections
       if (selected) {
         this._alerts.set(
           SELECTED_COLLECTION_ALERT,
-          "Option 'mock.collections.selected' was not defined. Selecting the first collection found"
+          "Option 'mock.collections.selected' was not defined. Selecting the first collection found",
         );
       } else {
         this._alerts.set(
           SELECTED_COLLECTION_ALERT,
-          "Option 'mock.collections.selected' was not defined"
+          "Option 'mock.collections.selected' was not defined",
         );
       }
     } else {
@@ -207,7 +207,7 @@ export const Collections: CollectionsConstructor = class Collections
         if (selected) {
           this._alerts.set(
             SELECTED_COLLECTION_ALERT,
-            `Collection '${id}' was not found. Selecting the first one found`
+            `Collection '${id}' was not found. Selecting the first one found`,
           );
         }
       }
@@ -239,16 +239,16 @@ export const Collections: CollectionsConstructor = class Collections
       collectionAlerts: AlertsInterface;
       routes: RouteInterface[];
     },
-    routesToAdd: RouteInterface[] = []
+    routesToAdd: RouteInterface[] = [],
   ): RouteInterface[] {
     const collectionRoutes = compact(
       getCollectionRouteIds(collectionDefinition).map((routeId: RouteId) => {
         return findRouteByVariantId(routes, routeId);
-      })
+      }),
     ) as RouteInterface[];
     if (collectionDefinition.from) {
       const from = this._collectionDefinitions.find(
-        (collectionCandidate) => collectionCandidate.id === collectionDefinition.from
+        (collectionCandidate) => collectionCandidate.id === collectionDefinition.from,
       );
       if (from) {
         return this._getCollectionRoutes(
@@ -257,13 +257,13 @@ export const Collections: CollectionsConstructor = class Collections
             routes,
             collectionAlerts,
           },
-          addRoutesToCollectionRoutes(collectionRoutes, routesToAdd)
+          addRoutesToCollectionRoutes(collectionRoutes, routesToAdd),
         );
       }
       // TODO, throw an error in strict validation mode
       collectionAlerts.set(
         "from",
-        `Collection with invalid 'from' property detected, '${collectionDefinition.from}' was not found`
+        `Collection with invalid 'from' property detected, '${collectionDefinition.from}' was not found`,
       );
     }
     return addRoutesToCollectionRoutes(collectionRoutes, routesToAdd);
@@ -281,14 +281,14 @@ export const Collections: CollectionsConstructor = class Collections
 
     const collectionRouteVariantsErrors = collectionRouteVariantsValidationErrors(
       collectionDefinition,
-      routes
+      routes,
     );
     if (collectionRouteVariantsErrors) {
       collectionAlerts.set("variants", collectionRouteVariantsErrors.message);
       this._loggerLoad.silly(
         `Collection route variants validation errors: ${JSON.stringify(
-          collectionRouteVariantsErrors.errors
-        )}`
+          collectionRouteVariantsErrors.errors,
+        )}`,
       );
     }
 
@@ -296,7 +296,7 @@ export const Collections: CollectionsConstructor = class Collections
     if (collectionErrors) {
       collectionAlerts.set("validation", collectionErrors.message);
       this._loggerLoad.silly(
-        `Collection validation errors: ${JSON.stringify(collectionErrors.errors)}`
+        `Collection validation errors: ${JSON.stringify(collectionErrors.errors)}`,
       );
       return null;
     }

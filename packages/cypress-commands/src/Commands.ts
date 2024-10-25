@@ -74,7 +74,7 @@ export function commands(Cyp: typeof Cypress, CypCy: typeof cy): CypressCommands
     client: AdminApiClientInterface,
     clientCommand: Promise<void>,
     successMessages: Log | Log[],
-    errorMessages: Log | Log[]
+    errorMessages: Log | Log[],
   ): void {
     CypCy.wrap(handlePromise(clientCommand), { log: false }).then((error?: unknown) => {
       if (error) {
@@ -99,7 +99,7 @@ export function commands(Cyp: typeof Cypress, CypCy: typeof cy): CypressCommands
         },
       }),
       `Collection changed to '${id}'`,
-      `Error trying to change collection to '${id}'`
+      `Error trying to change collection to '${id}'`,
     );
   }
 
@@ -113,7 +113,7 @@ export function commands(Cyp: typeof Cypress, CypCy: typeof cy): CypressCommands
         },
       }),
       `Delay changed to '${delay}'`,
-      `Error trying to change delay to '${delay}'`
+      `Error trying to change delay to '${delay}'`,
     );
   }
 
@@ -124,7 +124,7 @@ export function commands(Cyp: typeof Cypress, CypCy: typeof cy): CypressCommands
       client,
       client.updateConfig(mocksServerConfig),
       [`Configuration changed`, configMessage],
-      [`Error trying to change configuration`, configMessage]
+      [`Error trying to change configuration`, configMessage],
     );
   }
 
@@ -134,7 +134,7 @@ export function commands(Cyp: typeof Cypress, CypCy: typeof cy): CypressCommands
       client,
       client.useRouteVariant(id),
       `Collection now is using custom route variant '${id}'`,
-      `Error trying to set route variant '${id}'`
+      `Error trying to set route variant '${id}'`,
     );
   }
 
@@ -144,13 +144,13 @@ export function commands(Cyp: typeof Cypress, CypCy: typeof cy): CypressCommands
       client,
       client.restoreRouteVariants(),
       `Collection route variants restored`,
-      `Error trying to restore collection route variants`
+      `Error trying to restore collection route variants`,
     );
   }
 
   function configClient(
     customConfig: AdminApiClientConfig,
-    apiClient?: AdminApiClientInterface
+    apiClient?: AdminApiClientInterface,
   ): void {
     return getClient(apiClient).configClient(customConfig);
   }

@@ -27,7 +27,7 @@ describe("when files watch is disabled", () => {
     await fsExtra.copy(fixturesFolder("yaml-files"), fixturesFolder("temp"));
     await fsExtra.move(
       path.resolve(fixturesFolder("temp"), "routes"),
-      path.resolve(fixturesFolder("temp"), "custom-routes")
+      path.resolve(fixturesFolder("temp"), "custom-routes"),
     );
     core = await startCore("temp", {
       files: {
@@ -45,7 +45,7 @@ describe("when files watch is disabled", () => {
             .map((fileDetails) => {
               return Array.isArray(fileDetails.content) ? fileDetails.content : null;
             })
-            .filter((fileContent) => !!fileContent)
+            .filter((fileContent) => !!fileContent),
         );
         loadRoutes(routes);
         logger.verbose(`Loaded routes from folder "${core.files.path}/custom-routes"`);

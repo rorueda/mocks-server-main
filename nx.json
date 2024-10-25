@@ -1,15 +1,14 @@
 {
-  "extends": "@nrwl/workspace/presets/npm.json",
-  "npmScope": "@mocks-server",
-  "affected": {
-    "defaultBase": "master"
+  "targetDefaults": {
+    "build": {
+      "cache": true
+    }
   },
+  "extends": "@nx/workspace/presets/npm.json",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build"]
-      }
+      "runner": "@nx/workspace/tasks-runners/default",
+      "options": {}
     }
   },
   "implicitDependencies": {
@@ -23,9 +22,15 @@
     "nx.json": "*",
     "scripts/**/*.*": "*",
     ".github/workflows/*.*": "*",
-    "README.md": ["main"],
-    "LICENSE": ["main"],
-    "NOTICE": ["main"]
+    "README.md": [
+      "main"
+    ],
+    "LICENSE": [
+      "main"
+    ],
+    "NOTICE": [
+      "main"
+    ]
   },
   "targetDependencies": {
     "build": [
@@ -52,5 +57,6 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "defaultBase": "master"
 }

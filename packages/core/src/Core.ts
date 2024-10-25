@@ -101,7 +101,7 @@ export const Core: CoreConstructor = class Core implements CoreInterface {
     this._configFilesLoaders = this._config.addNamespace(Files.id);
 
     [this._logOption] = this._config.addOptions(ROOT_OPTIONS) as [
-      OptionInterfaceOfType<LogLevel, { hasDefault: true }>
+      OptionInterfaceOfType<LogLevel, { hasDefault: true }>,
     ];
 
     this._logOption.onChange((data) => {
@@ -136,7 +136,7 @@ export const Core: CoreConstructor = class Core implements CoreInterface {
         // TODO, pass router methods that the collection has to call when routes are set. This is needed to update routes in the server, and it allows to add more types of routers (http interceptors, etc)
         onChange: () => this._eventEmitter.emit(CHANGE_MOCK),
       },
-      this // To be used only by routeHandlers
+      this, // To be used only by routeHandlers
     );
 
     // Create plugins
@@ -146,7 +146,7 @@ export const Core: CoreConstructor = class Core implements CoreInterface {
         alerts: this._alerts.collection(Plugins.id),
         logger: this._logger.namespace(Plugins.id),
       },
-      this //To be used only by plugins
+      this, //To be used only by plugins
     );
 
     // Create server
@@ -285,7 +285,7 @@ export const Core: CoreConstructor = class Core implements CoreInterface {
     await this._config.load();
 
     this._configLogger.debug(
-      `Programmatic config: ${JSON.stringify(this._config.programmaticLoadedValues)}`
+      `Programmatic config: ${JSON.stringify(this._config.programmaticLoadedValues)}`,
     );
     this._configLogger.debug(`Config from file: ${JSON.stringify(this._config.fileLoadedValues)}`);
     this._configLogger.debug(`Config from env: ${JSON.stringify(this._config.envLoadedValues)}`);

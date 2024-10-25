@@ -141,13 +141,13 @@ export const Collection: CollectionConstructor = class Collection implements Col
       const logAndApplyDelay: RequestHandler = (
         req: Request,
         _res: Response,
-        next: NextFunction
+        next: NextFunction,
       ) => {
         route.logger.info(`Request ${req.method} => ${req.url} | req: ${req.id}`);
         const delay = route.delay !== null ? route.delay : this._routesManager.delay;
         if (delay > 0) {
           this._routesManager.logger.verbose(
-            `Applying delay of ${delay}ms to route variant '${this._id}'`
+            `Applying delay of ${delay}ms to route variant '${this._id}'`,
           );
           setTimeout(() => {
             next();

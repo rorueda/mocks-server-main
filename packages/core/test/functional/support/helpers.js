@@ -54,7 +54,7 @@ const createCore = (options = {}) => {
         },
       },
       options,
-    ])
+    ]),
   );
 };
 
@@ -69,7 +69,7 @@ const startCore = async (mocksPath, options = {}) => {
           path: fixturesFolder(mocks),
         },
       },
-    ])
+    ]),
   );
   await core.start();
   return core;

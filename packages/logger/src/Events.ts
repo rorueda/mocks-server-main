@@ -6,7 +6,7 @@ export const CHANGE_EVENT = "change";
 export function addEventListener(
   listener: EventsListener,
   eventName: string,
-  eventEmitter: EventsEmitter
+  eventEmitter: EventsEmitter,
 ): EventsListenerRemover {
   const removeCallback = (): void => {
     eventEmitter.removeListener(eventName, listener);
@@ -17,7 +17,7 @@ export function addEventListener(
 
 export function observableStore(
   eventEmitter: EventsEmitter,
-  storeLimit: LogsStoreLimit
+  storeLimit: LogsStoreLimit,
 ): LogsStore {
   const array: LogsStore = [];
   return new Proxy(array, {

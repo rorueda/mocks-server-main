@@ -55,7 +55,7 @@ import type { FilesLoaderInterface, FileLoaded, ErrorLoadingFile } from "./Files
 const OPTIONS: [
   FilesEnabledOptionDefinition,
   FilesPathOptionDefinition,
-  FilesWatchOptionDefinition
+  FilesWatchOptionDefinition,
 ] = [
   {
     name: "enabled",
@@ -122,7 +122,7 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
 
   constructor(
     { config, loadCollections, logger, loadRoutes, alerts }: FilesOptions,
-    extraOptions: FilesExtraOptions = {}
+    extraOptions: FilesExtraOptions = {},
   ) {
     this._loaders = {};
     this._logger = logger;
@@ -140,17 +140,17 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
     this._config = config;
 
     [this._enabledOption, this._pathOption, this._watchOption] = this._config.addOptions(
-      OPTIONS
+      OPTIONS,
     ) as [
       OptionInterfaceOfType<boolean, { hasDefault: true }>,
       OptionInterfaceOfType<string, { hasDefault: true }>,
-      OptionInterfaceOfType<boolean, { hasDefault: true }>
+      OptionInterfaceOfType<boolean, { hasDefault: true }>,
     ];
     [this._babelRegisterOption, this._babelRegisterOptionsOption] = this._config
       .addNamespace(BABEL_REGISTER_NAMESPACE)
       .addOptions(BABEL_REGISTER_OPTIONS) as [
       OptionInterfaceOfType<boolean, { hasDefault: true }>,
-      OptionInterfaceOfType<RegisterOptions, { hasDefault: true }>
+      OptionInterfaceOfType<RegisterOptions, { hasDefault: true }>,
     ];
     this._pathOption.onChange(this._onChangePathOption.bind(this));
     this._watchOption.onChange(this._onChangeWatchOption.bind(this));
@@ -234,12 +234,12 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
         const exportedContent = (content && content.default) || content;
         if (isFunction(exportedContent)) {
           this._logger.debug(
-            `Function exported by '${filePath}'. Executing it to return its result`
+            `Function exported by '${filePath}'. Executing it to return its result`,
           );
           const exportedContentResult = exportedContent();
           if (isPromise(exportedContentResult)) {
             this._logger.debug(
-              `Function in '${filePath}' returned a promise. Waiting for it to resolve its result`
+              `Function in '${filePath}' returned a promise. Waiting for it to resolve its result`,
             );
             const promiseToWait = exportedContentResult as Promise<unknown>;
             promiseToWait
@@ -307,7 +307,7 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
     this._logger.info(`Loading files from folder ${this._path}`);
     if (this._babelRegisterOption.value) {
       this._require("@babel/register")(
-        babelRegisterDefaultOptions(this._path, this._babelRegisterOptionsOption.value)
+        babelRegisterDefaultOptions(this._path, this._babelRegisterOptionsOption.value),
       );
     }
     this._cleanRequireCacheFolder();
@@ -324,12 +324,12 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
       getFilesGlobule(
         loader.src,
         this._babelRegisterOption.value,
-        this._babelRegisterOptionsOption.value
+        this._babelRegisterOptionsOption.value,
       ),
       {
         srcBase: this._getPath(),
         prefixBase: true,
-      }
+      },
     );
 
     this._logger.silly(`Files to load for loader '${loader.id}': ${JSON.stringify(filesToLoad)}`);
@@ -351,7 +351,7 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
               error: fileError,
             });
           });
-      })
+      }),
     ).then((filesDetails) => {
       const loadedFiles = filesDetails.filter(isFileLoaded);
       const erroredFiles = filesDetails.filter(isErrorLoadingFile);
@@ -387,8 +387,8 @@ export const Files: FilesConstructor = class Files implements FilesInterface {
             this._loadFiles();
           },
           200,
-          { maxWait: 1000 }
-        )
+          { maxWait: 1000 },
+        ),
       );
     }
   }

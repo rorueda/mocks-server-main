@@ -1,4 +1,4 @@
-import sinon from "sinon";
+import { createSandbox } from "sinon";
 
 function wait(time = 200) {
   return new Promise((resolve) => {
@@ -57,7 +57,7 @@ describe("commands", () => {
   let cyStub;
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
+    sandbox = createSandbox();
     sandbox.stub(apiClient, "updateConfig").resolves();
     sandbox.stub(apiClient, "useRouteVariant").resolves();
     sandbox.stub(apiClient, "restoreRouteVariants").resolves();
@@ -84,7 +84,7 @@ describe("commands", () => {
           host: "foo-host",
           https: true,
           agent: undefined,
-        })
+        }),
       ).toBe(true);
     });
   });
@@ -101,7 +101,7 @@ describe("commands", () => {
               selected: "foo",
             },
           },
-        })
+        }),
       ).toBe(true);
     });
 
@@ -139,7 +139,7 @@ describe("commands", () => {
       await wait();
 
       expect(cyStub.log.getCall(1).args[0]).toEqual(
-        expect.stringContaining("http://127.0.0.1:3110")
+        expect.stringContaining("http://127.0.0.1:3110"),
       );
     });
 
@@ -153,7 +153,7 @@ describe("commands", () => {
       await wait();
 
       expect(cyStub.log.getCall(1).args[0]).toEqual(
-        expect.stringContaining("https://127.0.0.1:3110")
+        expect.stringContaining("https://127.0.0.1:3110"),
       );
     });
 
@@ -168,7 +168,7 @@ describe("commands", () => {
       await wait();
 
       expect(cyStub.log.getCall(1).args[0]).toEqual(
-        expect.stringContaining("http://foo-host:4000")
+        expect.stringContaining("http://foo-host:4000"),
       );
     });
   });
@@ -185,7 +185,7 @@ describe("commands", () => {
               delay: 3000,
             },
           },
-        })
+        }),
       ).toBe(true);
     });
 
@@ -307,7 +307,7 @@ describe("commands", () => {
           port: undefined,
           https: undefined,
           agent: undefined,
-        })
+        }),
       ).toBe(true);
     });
 
@@ -324,7 +324,7 @@ describe("commands", () => {
           port: "foo-port",
           https: undefined,
           agent: undefined,
-        })
+        }),
       ).toBe(true);
     });
   });
@@ -341,13 +341,13 @@ describe("commands", () => {
           {
             host: "foo-host",
           },
-          customApiClient
+          customApiClient,
         );
 
         expect(
           customApiClient.configClient.calledWith({
             host: "foo-host",
-          })
+          }),
         ).toBe(true);
 
         expect(apiClient.configClient.callCount).toEqual(0);
@@ -369,7 +369,7 @@ describe("commands", () => {
             port: undefined,
             https: undefined,
             agent: undefined,
-          })
+          }),
         ).toBe(true);
 
         expect(customApiClient.configClient.callCount).toEqual(0);
@@ -390,7 +390,7 @@ describe("commands", () => {
                 selected: "foo",
               },
             },
-          })
+          }),
         ).toBe(true);
       });
 
@@ -403,13 +403,13 @@ describe("commands", () => {
             host: "foo-host",
             port: 4000,
           },
-          customApiClient
+          customApiClient,
         );
         setCollection("foo", customApiClient);
         await wait();
 
         expect(cyStub.log.getCall(1).args[0]).toEqual(
-          expect.stringContaining("http://foo-host:4000")
+          expect.stringContaining("http://foo-host:4000"),
         );
       });
     });
@@ -428,7 +428,7 @@ describe("commands", () => {
                 delay: 3000,
               },
             },
-          })
+          }),
         ).toBe(true);
       });
     });

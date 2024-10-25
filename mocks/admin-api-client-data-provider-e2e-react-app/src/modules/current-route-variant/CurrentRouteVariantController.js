@@ -14,14 +14,14 @@ const currentCollection = new Selector(
   collections,
   (_query, configResults, collectionsResults) => {
     return collection.queries.byId(
-      configResults.mock.collections.selected || collectionsResults[0].id
+      configResults.mock.collections.selected || collectionsResults[0].id,
     );
   },
   {
     initialState: {
       data: {},
     },
-  }
+  },
 );
 
 const currentRouteVariant = new Selector(
@@ -33,12 +33,12 @@ const currentRouteVariant = new Selector(
     initialState: {
       data: {},
     },
-  }
+  },
 );
 
 const CurrentRouteVariantController = withData(
   currentRouteVariant,
-  "variant"
+  "variant",
 )(withData(currentCollection, "collection")(CurrentRouteVariantView));
 
 export default CurrentRouteVariantController;

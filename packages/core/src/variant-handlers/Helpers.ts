@@ -22,7 +22,7 @@ export function getOptionsFromVariant(variant: VariantDefinition): VariantHandle
 }
 
 export function getPreview(
-  variantInstance: VariantHandlerBaseInterface
+  variantInstance: VariantHandlerBaseInterface,
 ): VariantHandlerBaseInterface["preview"] {
   return variantInstance.preview;
 }
@@ -32,7 +32,7 @@ export function getHandlerId(variant: VariantDefinition): VariantHandlerId {
 }
 
 export function handlerIsRouter(
-  variantHandler: VariantHandlerInterface
+  variantHandler: VariantHandlerInterface,
 ): variantHandler is VariantHandlerInterfaceWithRouter {
   return (variantHandler as VariantHandlerInterfaceWithRouter).router !== undefined;
 }

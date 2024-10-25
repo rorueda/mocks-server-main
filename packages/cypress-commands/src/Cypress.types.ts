@@ -33,7 +33,7 @@ declare global {
        */
       mocksSetConfig(
         mocksServerConfig: Configuration,
-        adminApiClient?: AdminApiClientInterface
+        adminApiClient?: AdminApiClientInterface,
       ): Promise<void>;
 
       /**
@@ -44,7 +44,7 @@ declare global {
        */
       mocksUseRouteVariant(
         routeVariantId: EntityId,
-        adminApiClient?: AdminApiClientInterface
+        adminApiClient?: AdminApiClientInterface,
       ): Promise<void>;
 
       /**
@@ -62,7 +62,7 @@ declare global {
        */
       mocksConfigClient(
         apiClientConfig: AdminApiClientConfig,
-        adminApiClient?: AdminApiClientInterface
+        adminApiClient?: AdminApiClientInterface,
       ): Promise<void>;
     }
   }

@@ -138,7 +138,7 @@ const mocksRunner = (args = [], options = {}) => {
       ...defaultMocksRunnerOptions,
       ...options,
     },
-    wait
+    wait,
   );
 };
 
@@ -162,7 +162,7 @@ async function createCertFiles() {
     ],
     {
       cwd: baseFixturesFolder,
-    }
+    },
   );
   await runner.hasExited();
 }

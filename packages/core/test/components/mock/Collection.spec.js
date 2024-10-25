@@ -165,7 +165,7 @@ describe("Collection", () => {
       delayMiddleware(
         middlewareMethodsStubs.req,
         middlewareMethodsStubs.res,
-        middlewareMethodsStubs.next
+        middlewareMethodsStubs.next,
       );
 
       expect(middlewareMethodsStubs.next.callCount).toEqual(1);
@@ -178,7 +178,7 @@ describe("Collection", () => {
       delayMiddleware(
         middlewareMethodsStubs.req,
         middlewareMethodsStubs.res,
-        middlewareMethodsStubs.next
+        middlewareMethodsStubs.next,
       );
 
       expect(middlewareMethodsStubs.next.callCount).toEqual(0);
@@ -194,7 +194,7 @@ describe("Collection", () => {
       delayMiddleware(
         middlewareMethodsStubs.req,
         middlewareMethodsStubs.res,
-        middlewareMethodsStubs.next
+        middlewareMethodsStubs.next,
       );
 
       expect(middlewareMethodsStubs.next.callCount).toEqual(0);

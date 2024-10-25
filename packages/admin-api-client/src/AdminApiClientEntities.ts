@@ -84,7 +84,7 @@ const ApiClient: ApiClientContructor = class ApiClient implements ApiClientInter
         method: "PATCH",
         body: JSON.stringify(data),
         headers: JSON_HEADERS,
-      })
+      }),
     ).then(handleResponse);
   }
 
@@ -93,7 +93,7 @@ const ApiClient: ApiClientContructor = class ApiClient implements ApiClientInter
       this._fullUrl(apiPath),
       this._addAgent({
         method: "DELETE",
-      })
+      }),
     ).then(handleResponse);
   }
 
@@ -104,7 +104,7 @@ const ApiClient: ApiClientContructor = class ApiClient implements ApiClientInter
         method: "POST",
         body: JSON.stringify(data),
         headers: JSON_HEADERS,
-      })
+      }),
     ).then(handleResponse);
   }
 

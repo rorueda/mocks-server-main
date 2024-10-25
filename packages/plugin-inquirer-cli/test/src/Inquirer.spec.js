@@ -95,7 +95,7 @@ describe("Inquirer", () => {
       sandbox.stub(process.stdout, "write");
       const cli = new Inquirer(
         () => [],
-        () => [fooAlert]
+        () => [fooAlert],
       );
       cli.clearScreen();
 
@@ -108,7 +108,7 @@ describe("Inquirer", () => {
       sandbox.stub(process.stdout, "write");
       const cli = new Inquirer(
         () => [],
-        () => [fooAlert]
+        () => [fooAlert],
       );
       cli.clearScreen();
 
@@ -124,7 +124,7 @@ describe("Inquirer", () => {
         () => [fooAlert],
         {
           emojis: true,
-        }
+        },
       );
       cli.clearScreen();
 
@@ -140,7 +140,7 @@ describe("Inquirer", () => {
         () => [fooAlert],
         {
           emojis: true,
-        }
+        },
       );
       cli.emojis = false;
       cli.clearScreen();
@@ -283,8 +283,8 @@ describe("Inquirer", () => {
 
       expect(
         console.log.calledWith(
-          chalk.blue("Displaying logs. Press any key to display main menu again")
-        )
+          chalk.blue("Displaying logs. Press any key to display main menu again"),
+        ),
       ).toEqual(true);
     });
 

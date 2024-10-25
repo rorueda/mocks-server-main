@@ -180,7 +180,7 @@ class Logs {
       }
       forceScreenRenderedTimeout = setTimeout(() => {
         printLog(
-          `Still receiving logs after ${screenRenderedTimeout}ms. Resolving with received data until now`
+          `Still receiving logs after ${screenRenderedTimeout}ms. Resolving with received data until now`,
         );
         stopAndResolve();
       }, screenRenderedTimeoutLimit);

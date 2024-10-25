@@ -20,7 +20,7 @@ describe("common helpers", () => {
   describe("deprecatedMessage", () => {
     it("should return message based on method name and include a link to web docs", () => {
       expect(deprecatedMessage("method", "foo", "fooNew", "foo-url")).toEqual(
-        "Usage of 'foo' method is deprecated. Use 'fooNew' instead: https://www.mocks-server.org/docs/foo-url"
+        "Usage of 'foo' method is deprecated. Use 'fooNew' instead: https://www.mocks-server.org/docs/foo-url",
       );
     });
   });
@@ -32,7 +32,7 @@ describe("common helpers", () => {
 
       expect(readFileSync("file-path")).toEqual(fileContent);
       expect(readFileSyncStub.getCall(0).args[0]).toEqual(
-        path.resolve(process.cwd(), "file-path")
+        path.resolve(process.cwd(), "file-path"),
       );
       expect(readFileSyncStub.getCall(0).args[1]).toEqual("utf-8");
     });

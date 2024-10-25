@@ -299,7 +299,7 @@ describe("validate method", () => {
           fooOption: "2",
           foo2: "x",
         },
-        { allowAdditionalProperties: true }
+        { allowAdditionalProperties: true },
       );
 
       expect(validation.valid).toEqual(true);

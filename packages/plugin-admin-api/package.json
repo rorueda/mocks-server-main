@@ -36,19 +36,25 @@
     "@mocks-server/core": "5.0.0-beta.3"
   },
   "dependencies": {
-    "@hapi/boom": "9.1.4",
+    "@hapi/boom": "10.0.1",
     "@mocks-server/admin-api-paths": "workspace:*",
-    "swagger-ui-dist": "4.14.0",
-    "body-parser": "1.20.0",
+    "body-parser": "1.20.3",
     "cors": "2.8.5",
-    "express": "4.18.1",
-    "express-request-id": "1.4.1",
-    "openapi-types": "12.0.2"
+    "express": "5.0.1",
+    "express-request-id": "3.0.0",
+    "openapi-types": "12.1.3",
+    "swagger-ui-dist": "5.17.14"
   },
   "devDependencies": {
-    "@types/swagger-ui-dist": "3.30.1",
+    "@mocks-server/config": "workspace:*",
     "@mocks-server/core": "workspace:*",
-    "@mocks-server/config": "workspace:*"
+    "@types/body-parser": "^1.19.5",
+    "@types/connect": "^3.4.38",
+    "@types/cors": "2.8.17",
+    "@types/express": "5.0.0",
+    "@types/express-serve-static-core": "^5.0.1",
+    "@types/qs": "^6.9.16",
+    "@types/swagger-ui-dist": "3.30.5"
   },
   "engines": {
     "node": ">=14.0.0"

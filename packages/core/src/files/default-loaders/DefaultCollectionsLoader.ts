@@ -55,7 +55,7 @@ export const DefaultCollectionsLoader: DefaultCollectionsLoaderConstructor = cla
   private _onLoad(
     filesContents: FileLoaded[],
     filesErrors: ErrorLoadingFile[],
-    { logger, alerts }: FilesLoaderCoreTools
+    { logger, alerts }: FilesLoaderCoreTools,
   ): void {
     const deprecationAlerts = alerts.collection("deprecated");
     alerts.clean();
@@ -64,7 +64,7 @@ export const DefaultCollectionsLoader: DefaultCollectionsLoaderConstructor = cla
     if (!filesContents.length && !filesErrors.length) {
       alerts.set(
         "not-found",
-        `No collections file was found: '${path.resolve(this._getBasePath(), FILE_NAME)}.*'`
+        `No collections file was found: '${path.resolve(this._getBasePath(), FILE_NAME)}.*'`,
       );
     }
 
@@ -78,8 +78,8 @@ export const DefaultCollectionsLoader: DefaultCollectionsLoaderConstructor = cla
           LEGACY_FILE_NAME,
           `Defining collections in '${fileName}' file is deprecated. Please rename it to '${fileName.replace(
             LEGACY_FILE_NAME,
-            FILE_NAME
-          )}'`
+            FILE_NAME,
+          )}'`,
         );
       } else {
         deprecationAlerts.remove(LEGACY_FILE_NAME);

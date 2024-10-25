@@ -37,7 +37,7 @@ describe("path argument", () => {
 
     it("should print a warning about creating folder", async () => {
       expect(mocks.logs.current).toEqual(
-        expect.stringContaining("Mocks Server folder was not found")
+        expect.stringContaining("Mocks Server folder was not found"),
       );
     });
 
@@ -48,7 +48,7 @@ describe("path argument", () => {
     it("should have created scaffold folder", async () => {
       expect(fsExtra.existsSync(path.resolve(fixturesFolder(FOLDER), "routes"))).toEqual(true);
       expect(fsExtra.existsSync(path.resolve(fixturesFolder(FOLDER), "collections.json"))).toEqual(
-        true
+        true,
       );
     });
   });

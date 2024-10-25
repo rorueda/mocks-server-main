@@ -5,7 +5,7 @@ export const CHANGE_EVENT = "change";
 export function addEventListener(
   listener: EventsListener,
   eventName: string,
-  eventEmitter: EventsEmitter
+  eventEmitter: EventsEmitter,
 ): EventsListenerRemover {
   const removeCallback = (): void => {
     eventEmitter.removeListener(eventName, listener);

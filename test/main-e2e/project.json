@@ -1,6 +1,6 @@
 {
-  "root": "test/main-e2e/",
+  "root": "test/main-e2e",
   "projectType": "application",
-  "implicitDependencies": ["main"],
+  "implicitDependencies": ["@mocks-server/main"],
   "tags": ["type:test"]
 }

@@ -1,8 +1,8 @@
 {
-  "root": "packages/plugin-inquirer-cli/",
+  "root": "packages/plugin-inquirer-cli",
   "projectType": "library",
   "implicitDependencies": [
-    "core"
+    "@mocks-server/core"
   ],
   "tags": ["type:lib"]
 }

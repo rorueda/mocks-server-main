@@ -17,7 +17,7 @@ export const CHANGE_ALERTS: EventName = "change:alerts";
 export function addEventListener(
   listener: EventListener,
   eventName: EventName,
-  eventEmitter: EventEmitter
+  eventEmitter: EventEmitter,
 ): EventListenerRemover {
   const removeCallback: EventListenerRemover = (): void => {
     eventEmitter.removeListener(eventName, listener);

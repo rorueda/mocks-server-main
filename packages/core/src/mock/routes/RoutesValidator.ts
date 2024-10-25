@@ -180,14 +180,14 @@ export function routeValidationErrors(route: RouteDefinition): ValidationErrors 
 export function variantValidationErrors(
   route: RouteDefinition,
   variant: VariantDefinition,
-  Handler?: VariantHandlerConstructor
+  Handler?: VariantHandlerConstructor,
 ): ValidationErrors | null {
   const variantId = variant.id || "";
   if (!variant.disabled && !variant.type) {
     const error = "'type' property is required or 'disabled' property should be true";
     return {
       message: `Variant ${withIdMessage(variantId)} in route ${withIdMessage(
-        route.id
+        route.id,
       )} is invalid: ${error}`,
       errors: [ajvErrorLike(error)],
     };
@@ -207,15 +207,15 @@ export function variantValidationErrors(
       validationMessage = validationSingleMessage(
         HandlerToValidate.validationSchema,
         dataToCheck || {},
-        errors
+        errors,
       );
-    } catch (error) {
+    } catch (_) {
       validationMessage = " Wrong type";
     }
     const idTrace = variant && variant.id ? `${withIdMessage(variant.id)} ` : "";
     return {
       message: `Variant ${idTrace}in route ${withIdMessage(
-        route.id
+        route.id,
       )} is invalid: ${dataMessage}${validationMessage}`,
       errors: variantValidator.errors,
     };

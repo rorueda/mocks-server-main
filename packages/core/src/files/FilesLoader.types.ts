@@ -51,7 +51,7 @@ export interface FilesLoaderOnLoadMethod {
   (
     filesLoaded: FilesLoaded,
     errorsLoadingFiles: ErrorsLoadingFiles,
-    loaderCoreTools: FilesLoaderCoreTools
+    loaderCoreTools: FilesLoaderCoreTools,
   ): void;
 }
 

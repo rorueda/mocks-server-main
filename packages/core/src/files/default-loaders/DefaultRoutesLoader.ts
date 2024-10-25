@@ -46,7 +46,7 @@ export const DefaultRoutesLoader: DefaultRoutesLoaderConstructor = class Default
   private _onLoad(
     filesContents: FileLoaded[],
     _filesErrors: ErrorLoadingFile[],
-    { logger, alerts }: FilesLoaderCoreTools
+    { logger, alerts }: FilesLoaderCoreTools,
   ) {
     const alertsFiles = alerts.collection("file");
     alerts.clean();
@@ -64,11 +64,11 @@ export const DefaultRoutesLoader: DefaultRoutesLoaderConstructor = class Default
           }
           return fileContent;
         })
-        .filter((fileContent) => !!fileContent)
+        .filter((fileContent) => !!fileContent),
     );
     this._loadRoutes(routes as RouteDefinition[]);
     logger.verbose(
-      `Loaded routes from folder '${path.resolve(this._getBasePath(), FOLDER_NAME)}'`
+      `Loaded routes from folder '${path.resolve(this._getBasePath(), FOLDER_NAME)}'`,
     );
   }
 };

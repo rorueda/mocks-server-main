@@ -35,7 +35,7 @@ describe("environment nested", () => {
         type: "object",
       });
 
-      await expect(config.init()).rejects.toThrowError("fooOption");
+      await expect(config.init()).rejects.toThrow("fooOption");
     });
 
     it("should return object value if option is of type object", async () => {

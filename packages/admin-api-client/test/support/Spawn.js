@@ -43,7 +43,7 @@ module.exports = class CliRunner {
         this._exitCode = code;
         this._resolveExitPromise();
       });
-    } catch (error) {
+    } catch (_) {
       this._exitCode = 1;
       this._resolveExitPromise();
     }
