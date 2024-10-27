@@ -11,7 +11,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 import { EventEmitter } from "events";
 
-import inquirer, { Answers } from "inquirer";
+import { Answers, registerPrompt, prompt, Separator } from "inquirer";
+import type { ListQuestion } from "inquirer";
+import autocomplete from "inquirer-autocomplete-prompt";
 import { cloneDeep } from "lodash";
 
 import {
@@ -33,6 +35,8 @@ import type {
   InquirerQuestionsMap,
 } from "./Inquirer.types";
 
+registerPrompt("autocomplete", autocomplete);
+
 const STDIN_ENCODING = "utf8";
 const CTRL_C = "\u0003";
 
@@ -52,7 +56,7 @@ function exitProcess(): never {
   process.exit();
 }
 
-function isListQuestion(question: InquirerQuestion) {
+function isListQuestion(question: InquirerQuestion): question is ListQuestion {
   return question.type === "list";
 }
 
@@ -146,12 +150,10 @@ export const Inquirer: InquirerConstructor = class Inquirer implements InquirerI
     this.removeListeners();
     return new Promise((resolve) => {
       this._currentInquirers.add(resolve);
-      const question: InquirerQuestion = {
+      prompt({
         ...this._questions[questionKey],
         ...extendProperties,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } as any;
-      inquirer.prompt(question).then((answers: Answers) => {
+      }).then((answers: Answers) => {
         this._currentInquirers.delete(resolve);
         this.removeListeners();
         if (questionKey === MAIN_MENU_ID && answers.value === QUIT_ACTION_ID) {
@@ -182,8 +184,10 @@ export const Inquirer: InquirerConstructor = class Inquirer implements InquirerI
   private _initQuestions(questions: InquirerQuestionsMap): InquirerQuestionsMap {
     const clonedQuestions = cloneDeep(questions);
     if (clonedQuestions[MAIN_MENU_ID] && isListQuestion(clonedQuestions[MAIN_MENU_ID])) {
-      const questionChoices = clonedQuestions[MAIN_MENU_ID]?.choices as [unknown];
-      questionChoices.push(new inquirer.Separator());
+      const questionChoices = (clonedQuestions[MAIN_MENU_ID] as ListQuestion)?.choices as [
+        unknown,
+      ];
+      questionChoices.push(new Separator());
       questionChoices.push(QUIT_QUESTION);
     }
     return clonedQuestions;

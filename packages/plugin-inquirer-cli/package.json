@@ -37,8 +37,8 @@
   },
   "dependencies": {
     "chalk": "4.1.2",
-    "inquirer": "12.0.0",
-    "inquirer-autocomplete-prompt": "3.0.1",
+    "inquirer": "8.2.6",
+    "inquirer-autocomplete-prompt": "^1.4.0",
     "lodash": "4.17.21",
     "node-emoji": "2.1.3"
   },
@@ -46,8 +46,8 @@
     "@mocks-server/config": "workspace:*",
     "@mocks-server/core": "workspace:*",
     "@mocks-server/logger": "workspace:*",
-    "@types/inquirer": "9.0.7",
-    "@types/inquirer-autocomplete-prompt": "3.0.3",
+    "@types/inquirer": "8.2.10",
+    "@types/inquirer-autocomplete-prompt": "1.3.5",
     "@types/node-emoji": "2.1.0"
   },
   "engines": {
