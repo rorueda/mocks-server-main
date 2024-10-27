@@ -43,7 +43,7 @@ declare global {
         watch?: GetOptionValueTypeFromDefinition<FilesWatchOptionDefinition>;
         babelRegister?: {
           enabled?: GetOptionValueTypeFromDefinition<BabelEnabledOptionDefinition>;
-          config?: GetOptionValueTypeFromDefinition<BabelConfigOptionDefinition, RegisterOptions>;
+          options?: GetOptionValueTypeFromDefinition<BabelConfigOptionDefinition, RegisterOptions>;
         };
       };
     }
