@@ -44,7 +44,7 @@ describe("file variant handler", () => {
 
       expect(users.body).toEqual([{ id: 1, name: "John Doe" }]);
       expect(users.status).toEqual(200);
-      expect(users.headers.get("Content-Type")).toEqual("application/json; charset=UTF-8");
+      expect(users.headers.get("Content-Type")).toEqual("application/json; charset=utf-8");
     });
 
     it("should serve user route", async () => {
@@ -52,7 +52,7 @@ describe("file variant handler", () => {
 
       expect(users.body).toEqual({ id: 1, name: "John Doe" });
       expect(users.status).toEqual(200);
-      expect(users.headers.get("Content-Type")).toEqual("application/json; charset=UTF-8");
+      expect(users.headers.get("Content-Type")).toEqual("application/json; charset=utf-8");
       expect(users.headers.get("x-custom-header")).toEqual("foo-custom-header");
     });
 
@@ -61,7 +61,7 @@ describe("file variant handler", () => {
 
       expect(users.body).toEqual("<div>Hello world</div>");
       expect(users.status).toEqual(200);
-      expect(users.headers.get("Content-Type")).toEqual("text/html; charset=UTF-8");
+      expect(users.headers.get("Content-Type")).toEqual("text/html; charset=utf-8");
       expect(users.headers.get("x-custom-header")).toEqual("web-custom-header");
     });
   });
@@ -74,7 +74,7 @@ describe("file variant handler", () => {
 
       expect(users.body).toEqual(expect.stringContaining("Error loaded from file"));
       expect(users.status).toEqual(400);
-      expect(users.headers.get("Content-Type")).toEqual("text/plain; charset=UTF-8");
+      expect(users.headers.get("Content-Type")).toEqual("text/plain; charset=utf-8");
     });
 
     it("should return txt error in user route", async () => {
@@ -82,7 +82,7 @@ describe("file variant handler", () => {
 
       expect(users.body).toEqual(expect.stringContaining("Error loaded from file"));
       expect(users.status).toEqual(400);
-      expect(users.headers.get("Content-Type")).toEqual("text/plain; charset=UTF-8");
+      expect(users.headers.get("Content-Type")).toEqual("text/plain; charset=utf-8");
     });
   });
 
