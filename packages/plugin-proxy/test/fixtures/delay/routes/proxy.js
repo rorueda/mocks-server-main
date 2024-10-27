@@ -1,7 +1,7 @@
 module.exports = [
   {
     id: "proxy-all",
-    url: "*",
+    url: "{*path}",
     method: ["GET", "POST", "PATCH", "PUT"],
     variants: [
       {

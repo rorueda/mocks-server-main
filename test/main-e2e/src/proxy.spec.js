@@ -95,7 +95,7 @@ describe("scaffold", () => {
       expect(response.body).toEqual([
         {
           id: "proxy-all",
-          url: "*",
+          url: "{*path}",
           delay: null,
           method: ["get", "post", "patch", "put"],
           variants: ["proxy-all:enabled", "proxy-all:disabled"],

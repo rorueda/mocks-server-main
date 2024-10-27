@@ -66,7 +66,7 @@ module.exports = [
   },
   {
     id: "get-web-error",
-    url: "/web/**",
+    url: "/web{/*path}",
     method: "*",
     variants: [
       {

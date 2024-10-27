@@ -43,7 +43,7 @@ describe("routes with static variants", () => {
         },
         {
           id: "get-web-error",
-          url: "/web/**",
+          url: "/web{/*path}",
           method: ["get", "post", "patch", "delete", "put", "options", "head", "trace"],
           delay: null,
           variants: ["get-web-error:disabled", "get-web-error:error"],

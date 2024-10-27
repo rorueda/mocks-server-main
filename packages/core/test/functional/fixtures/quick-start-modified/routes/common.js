@@ -5,7 +5,7 @@
 module.exports = [
   {
     id: "add-headers", //route id
-    url: "*", // url in express format
+    url: "{*path}", // url in express format
     method: ["GET", "POST", "PUT", "PATCH"], // HTTP methods
     variants: [
       {

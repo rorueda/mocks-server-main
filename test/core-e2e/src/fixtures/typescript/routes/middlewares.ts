@@ -13,7 +13,7 @@ function middleware(req: Object, res: Object, next: () => void, core: Object) : 
 const middlewares = [
   {
     id: "add-headers",
-    url: "*",
+    url: "{*path}",
     method: "GET",
     variants: [
       {

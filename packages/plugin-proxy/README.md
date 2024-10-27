@@ -31,7 +31,7 @@ If you want a [route variant](https://www.mocks-server.org/docs/usage/variants) 
 module.exports = [
   {
     id: "proxy-all",
-    url: "*",
+    url: "{*path}",
     method: ["GET", "POST", "PATCH", "PUT"],
     variants: [
       {
@@ -69,7 +69,7 @@ If you want a Mocks Server v3 [route variant](https://www.mocks-server.org/docs/
 module.exports = [
   {
     id: "proxy-all",
-    url: "*",
+    url: "{*path}",
     method: ["GET", "POST", "PATCH", "PUT"],
     variants: [
       {

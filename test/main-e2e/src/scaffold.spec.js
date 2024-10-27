@@ -105,7 +105,7 @@ describe("scaffold", () => {
       expect(response.body).toEqual([
         {
           id: "add-headers",
-          url: "*",
+          url: "{*path}",
           method: ["get", "post", "put", "patch"],
           delay: null,
           variants: ["add-headers:enabled", "add-headers:disabled"],

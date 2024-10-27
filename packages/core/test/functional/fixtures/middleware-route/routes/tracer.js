@@ -13,7 +13,7 @@ const { USERS } = require("../db/users");
 module.exports = [
   {
     id: "tracer",
-    url: "/api/**",
+    url: "/api{/*path}",
     method: "GET",
     variants: [
       {

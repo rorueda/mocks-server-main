@@ -5,7 +5,7 @@
 module.exports = [
   {
     id: "add-headers",
-    url: "*",
+    url: "{*path}",
     method: "GET",
     variants: [
       {
