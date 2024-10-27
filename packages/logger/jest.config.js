@@ -1,7 +1,11 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
+var esmModules = ["strip-ansi", "ansi-regex"];
+
 module.exports = {
+  transformIgnorePatterns: [`node_modules/(?!(?:.pnpm/)?(${esmModules.join("|")}))`],
+
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
 
