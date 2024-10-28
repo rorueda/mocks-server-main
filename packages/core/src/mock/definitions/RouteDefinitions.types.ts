@@ -23,10 +23,15 @@ declare global {
     interface VariantDefinitionCommon {
       /** Route variant id */
       id: VariantDefinitionId;
-      /** Variant is disabled */
-      disabled?: boolean;
       /** Delay to apply to the response */
       delay?: number;
+    }
+
+    interface VariantDefinitionDisabled {
+      /** Route variant id */
+      id: VariantDefinitionId;
+      /** Variant is disabled */
+      disabled: true;
     }
 
     /** Different variant properties by variant handler id */
@@ -40,8 +45,9 @@ declare global {
     type VariantHandlerTypes = keyof VariantHandlerOptionsByType;
 
     /** Route variant definition */
-    type VariantDefinition = VariantHandlersDefinitions[keyof VariantHandlersDefinitions] &
-      VariantDefinitionCommon;
+    type VariantDefinition =
+      | VariantDefinitionDisabled
+      | (VariantHandlersDefinitions[keyof VariantHandlersDefinitions] & VariantDefinitionCommon);
 
     type VariantHandlerTypeOptions =
       VariantHandlerOptionsByType[keyof VariantHandlerOptionsByType];
